@@ -1,0 +1,107 @@
+<!doctype html>
+<!-- <html class="ios ios-7 ios-7-1 ios-gt-6 retina pixel-ratio-2 with-statusbar-overlay"> -->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#2196f3">
+    <link rel="stylesheet" href="/framework7/css/framework7.ios.min.css">
+    <link rel="stylesheet" href="/framework7/css/framework7.ios.colors.min.css">
+    <link rel="stylesheet" href="/framework7/css/framework7-icons.css">
+    <link rel="stylesheet" type="text/css" href="/css/stylesheet.css">
+    <title>Honey Spot</title>
+</head>
+
+<body>
+    <div class="views">
+        <div class="view view-main">
+            <!-- Navbar -->
+            <div class="navbar">
+                <!-- Control mode navbar -->
+                <div data-page="index" class="navbar-inner">
+                    <%- include('../partials/nav_control'); %>
+                </div>
+                <!-- Saved navbar-->
+                <div data-page="saved" class="navbar-inner cached">
+                    <%- include('../partials/nav_saved'); %>
+                </div>
+                <!-- Help navbar -->
+                <div data-page="help" class="navbar-inner cached">
+                    <div class="left sliding"><a href="#index" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>
+                    <div class="center sliding">Help</div>
+                </div>
+                <!-- Details navbar -->
+                <div data-page="details" class="navbar-inner cached">
+                <div class="left sliding"><a href="#index" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>
+                    <div class="center sliding">Details</div>
+                </div>
+            </div>
+            <!-- Pages -->
+            <div class="pages navbar-fixed toolbar-fixed">
+                <!-- Control page -->
+                <div data-page="index" class="page">
+                    <div id="touchPad" class="page-content">
+                        <%- include('./control_mode'); %>
+                    </div>
+<!--                         <p id="testtest"></p> -->
+                    <%- include('../partials/tabbar'); %>
+                </div>
+                <!-- Saved page -->
+                <div data-page="saved" class="page cached">
+                    <div class="page-content" style="margin-top: 25px;">
+                        <%- include('./saved'); %>
+                    </div>
+                </div>
+                <!-- Help page -->
+                <div data-page="help" class="page cached">
+                    <div class="page-content">
+                        <p>Under Instruction</p>
+                    </div>
+                </div>
+                <!-- Detail page -->
+                <div data-page="details" class="page cached">
+                    <div id="switchMode" class="page-content" data-speed="400" data-space-between="40">
+                        <div class="swiper-container" >
+                          <div class="swiper-wrapper">
+                            <div class="swiper-slide"><span>Slide 1</span></div>
+                            <div class="swiper-slide"><span>Slide 2</span></div>
+                            <div class="swiper-slide"><span>Slide 3</span></div>
+                            <div class="swiper-slide"><span>Slide 4</span></div>
+                          </div>
+                          <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                    
+                    <%- include('../partials/tabbar'); %>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- Popover (Saved page) -->
+    <%- include('../partials/popover'); %>
+        <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+        <script src="https://hammerjs.github.io/dist/hammer.js"></script>
+        
+        
+        <script src="/vendor/js-cookie/js-cookie.js"></script>
+        <script src="/vendor/lodash.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <!--     <script type="text/javascript">
+     window.addEventListener("focus", function(evt){
+        socket.emit('chat message', "connected");
+      }, false);
+      window.addEventListener("blur", function(evt){
+        socket.emit('chat message', "disconnected");
+      }, false);
+    </script> -->
+        <script type="text/javascript" src="/framework7/js/framework7.min.js"></script>
+        <script type="text/javascript" src="/template7/template7.min.js"></script>
+        <script type="text/javascript" src="/js/event_list.js"></script>
+        <script type="text/javascript" src="/js/app.js"></script>
+        
+</body>
+
+</html>

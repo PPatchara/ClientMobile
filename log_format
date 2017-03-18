@@ -1,0 +1,26 @@
+Log File Format
+<date>
+<time>
+<userId>
+[
+
+//Navbar
+<saved>
+
+//Touchpad
+<gesture><currentEvent>
+<help>
+
+//Tab bar
+<connection>
+<calendar><eventId>
+<share><eventId>
+<save><eventId>
+
+//Saved Page
+<clicked><eventId><category>
+<save><eventId>
+
+//
+
+]

@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#2196f3">
+
+    <link rel="stylesheet" href="public/framework7/css/framework7.ios.min.css">
+    <link rel="stylesheet" href="public/framework7/css/framework7.ios.colors.min.css">
+    <link rel="stylesheet" href="public/framework7/css/framework7-icons.css">
+    <link rel="stylesheet" type="text/css" href="public/css/stylesheet.css">
+    
+    <script src="https://hammerjs.github.io/dist/hammer.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!--     <script src="/socket.io/socket.io.js"></script> -->
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+
+<!--     <script type="text/javascript" src="public/framework7/js/my-app.js"></script> -->
+    <title>Control Mode</title>
+  </head>
+
+  <body>
+    <div class="views">
+      <div class="view view-main">
+        <div class="navbar">
+          <div class="navbar-inner">
+<!--             <div class="left">        
+            </div> -->
+            <div class="center">Control Mode</div>
+            <div class="right">
+              <a href="saved.html" class="link icon-only">
+                <i class="f7-icons icon">bookmark_fill<span class="badge bg-red">4</span></i>                 
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pages navbar-fixed toolbar-fixed">
+          <div data-page="index" class="page">
+            <div class="page-content">
+              <div class="content-block color-black" style="text-align: center;">
+                <div class="empty-layout">
+                  <i class="f7-icons size-40">logout</i>
+                  <h2 class="h2-light">No Connection</h2>
+                  <p style="padding: 0 20px 0 20px;">Please connect to the same Wi-Fi with the display.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="toolbar tabbar tabbar-labels">
+              <div class="toolbar-inner">
+                <a href="#" class="tab-link active"><i class="f7-icons icon">home</i><span class="tabbar-label">Home</span></a>
+                <a href="#" class="tab-link"><i class="f7-icons icon">login</i><span class="tabbar-label">Connect</span></a>
+                <a href="#" class="tab-link"><i class="f7-icons icon">calendar</i><span class="tabbar-label">Calendar</span></a>
+                <a href="#" class="tab-link"><i class="f7-icons icon">share</i><span class="tabbar-label">Share</span></a>
+                <a href="#" class="tab-link"><i class="f7-icons icon">bookmark</i><span class="tabbar-label">Save</span></a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <script type="text/javascript" src="public/framework7/js/framework7.min.js"></script>
+  <script type="text/javascript" src="public/js/app.js"></script>
+  </body>
+
+</html>
