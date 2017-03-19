@@ -5,14 +5,17 @@ var express = require('express'),
     morgan = require('morgan'),
     low = require('lowdb'),
     moment = require('moment'),
-    helpers = require('./helpers');
+    helpers = require('./helpers'),
+    useragent = require('express-useragent');
+
 
 const db = low('logs/db.json');
 db.defaults({ users: [] }).write();
 
 app.set('view engine', 'ejs');
-// app.use(morgan('combined'))
+
 app.use(express.static('public'));
+app.use(useragent.express());
 
 http.listen(3000, () => {
     console.log('listening on *:3000');
@@ -20,7 +23,13 @@ http.listen(3000, () => {
 
 // Routing
 app.get('/', (req, res) => {
-    res.render('pages/index');
+    log('user-agent', req.useragent.platform);
+    if(['iPad, iPhone'].indexOf(req.useragent.platform)) {
+        res.render('pages/index');
+    } else {
+        res.render('pages/index');
+    }
+    
 });
 app.get('/saved', (req, res) => {
     res.render('pages/saved');
@@ -85,6 +94,7 @@ io.on('connection', (socket) => {
         socket.uid = data.uid;
         alreadyJoined = true;
 
+        // Record joined timestamp
         var time = moment().utc(420);
         db.get('users')
           .find({ id: data.uid })
