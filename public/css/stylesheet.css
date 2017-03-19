@@ -63,10 +63,6 @@ i.touchpad-icon {
 .swiper-slide {
   background:#fff;
 }
-.swiper-slide span {
-  display:block;
-  margin:20px;
-}
 
 .tabbar-labels a.tab-link {
 	padding-top: 12px;

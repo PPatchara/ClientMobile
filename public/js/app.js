@@ -4,7 +4,10 @@
     };
     var myApp = new Framework7({
         precompileTemplates: true,
-        fastClicks:false
+        fastClicks:false,
+        modalCloseByOutside: true,
+        actionsCloseByOutside: true,
+        modalActionsCloseByOutside: true
     });
 
 
@@ -20,7 +23,7 @@
     var touchPad = document.getElementById('touchPad');
     var switchMode = document.getElementById('switchMode');
     var mc = new Hammer(touchPad);
-    // var mc_switch = new Hammer(switchMode);
+    var mc_switch = new Hammer(switchMode);
 
     // Socket
     var socket = io();
@@ -42,18 +45,18 @@
     });
 
     // Details page (Switch Mode)
-    // mc_switch.get('swipe').set({
-    //     direction: Hammer.DIRECTION_ALL
-    // });
+    mc_switch.get('swipe').set({
+        direction: Hammer.DIRECTION_ALL
+    });
 
-    // mc_switch.on('swipeup', (ev) => {
-    //     console.log("[Gesture]: " + ev.type);
-    //     socket.emit('gesture ' + ev.type, ev.type);
+    mc_switch.on('swipeup', (ev) => {
+        console.log("[Gesture]: " + ev.type);
+        socket.emit('gesture ' + ev.type, ev.type);
         
-    //     mainView.router.load({
-    //         pageName: 'index'
-    //     });
-    // });
+        mainView.router.load({
+            pageName: 'index'
+        });
+    });
 
     // Tab bar
     $$('.confirm-disconnect').on('click', () => {
@@ -111,6 +114,39 @@
         socket.emit('bookmark', 'test');
     });
 
+    //Saved page
+    $$('.category').on('click', function (e) {
+        var target = this;
+        var buttons = [
+            {
+                text: 'All'
+            },
+            {
+                text: 'Competition'
+            },
+            {
+                text: 'Intership/Job Application'
+            },
+            {
+                text: 'Keynote Lectures'
+            },
+            {
+                text: 'Scholarship'
+            },
+            {
+                text: 'Recreation'
+            },
+            {
+                text: 'Workshop/Camp'
+            },
+            {
+                text: 'Cancel',
+                color: 'red'
+            }
+        ];
+        myApp.actions(target, buttons);
+    });
+
     $$('#bookmark-card').on('click', () => {
         $$('#bookmark-card').toggleClass('active');
         socket.emit('bookmark-card', 'test'); 
@@ -153,32 +189,32 @@
 
     function initDetailsPage(page) {
         console.log("Navigated to details page.");
-        // var detailsHTML = Template7.templates.detailsTemplate({
-        //     title: "Test1 Title",
-        //     category: "Competition",
-        //     description: 
-        //         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
-        //     schedule: [
-        //         {
-        //             topic: "Register",
-        //             date: "12/02/2017"
-        //         },
-        //         {
-        //             topic: "Presentation",
-        //             date: "30/04/2017"
-        //         } 
-        //     ],  
-        //     location: "ABC Building",
-        //     contact: [
-        //         {
-        //             website: "http://www.google.com",
-        //             email: "test@test.com",
-        //             tel: "089-7046621"
-        //         }
-        //     ]
-        // });
+        var detailsHTML = Template7.templates.detailsTemplate({
+            title: "Test1 Title",
+            category: "Competition",
+            description: 
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+            schedule: [
+                {
+                    topic: "Register",
+                    date: "12/02/2017"
+                },
+                {
+                    topic: "Presentation",
+                    date: "30/04/2017"
+                } 
+            ],  
+            location: "ABC Building",
+            contact: [
+                {
+                    website: "http://www.google.com",
+                    email: "test@test.com",
+                    tel: "089-7046621"
+                }
+            ]
+        });
 
-        // $$(page.container).find('.page-content').html(detailsHTML);
+        $$(page.container).find('.page-content').html(detailsHTML);
 
         var mySwiper = myApp.swiper('.swiper-container', {
             pagination:'.swiper-pagination'

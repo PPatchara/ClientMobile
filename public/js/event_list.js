@@ -19,36 +19,7 @@ var event_list = [
             {
                   "website": "",
                   "email": "",
-                  "tel": ""
-            }
-      ],
-      "share": [
-            {
-                  "facebook": ""
-            }
-      ]
-      },
-      {
-      "category": "",
-      "id": "#002",
-      "poster": "",
-      "title": "",
-      "description": "",
-      "schedule": [
-            {
-                  "topic":"",
-                  "date":""
-            }
-      ],
-      "time": "",
-      "location": "",
-      "register": "",                                                                                                                                                                                           
-      "calendar": "",
-      "contact": [
-            {
-                  "website": "",
-                  "email": "",
-                  "tel": ""
+                  "tel": [""]
             }
       ],
       "share": [

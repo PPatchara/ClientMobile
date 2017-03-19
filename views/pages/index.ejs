@@ -33,7 +33,7 @@
                 </div>
                 <!-- Details navbar -->
                 <div data-page="details" class="navbar-inner cached">
-                <div class="left sliding"><a href="#index" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>
+                <div class="left sliding"><a href="#index" class="back link"><i class="icon icon-back"></i><span>Control Mode</span></a></div>
                     <div class="center sliding">Details</div>
                 </div>
             </div>
@@ -49,7 +49,7 @@
                 </div>
                 <!-- Saved page -->
                 <div data-page="saved" class="page cached">
-                    <div class="page-content" style="margin-top: 25px;">
+                    <div class="page-content" style="margin-top: 20px;">
                         <%- include('./saved'); %>
                     </div>
                 </div>
@@ -61,18 +61,8 @@
                 </div>
                 <!-- Detail page -->
                 <div data-page="details" class="page cached">
-                    <div id="switchMode" class="page-content" data-speed="400" data-space-between="40">
-                        <div class="swiper-container" >
-                          <div class="swiper-wrapper">
-                            <div class="swiper-slide"><span>Slide 1</span></div>
-                            <div class="swiper-slide"><span>Slide 2</span></div>
-                            <div class="swiper-slide"><span>Slide 3</span></div>
-                            <div class="swiper-slide"><span>Slide 4</span></div>
-                          </div>
-                          <div class="swiper-pagination"></div>
-                        </div>
-                    </div>
-                    
+                    <div id="switchMode" class="page-content"></div>
+                    <%- include('./detailsTemplate'); %>
                     <%- include('../partials/tabbar'); %>
                 </div>
                 
