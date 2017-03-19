@@ -150,8 +150,9 @@
     //     socket.emit('bookmark-card', 'test'); 
     // });
 
-    $$(document).on('click','a', () => {
-        $(this).toggleClass('active');
+    $('.bookmark-card').on('click', (e) => {
+        let target = $(e.target).parent();
+        $(target).toggleClass('active');
         socket.emit('bookmark-card', 'test'); 
     });
 
