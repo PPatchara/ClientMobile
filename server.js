@@ -24,18 +24,18 @@ http.listen(3000, () => {
 // Routing
 app.get('/', (req, res) => {
     log('user-agent', req.useragent.platform);
-    if(['iPad, iPhone'].indexOf(req.useragent.platform)) {
-        res.render('pages/index');
+    if(['iPad', 'iPhone'].findIndex(platform => platform === req.useragent.platform) > -1) {
+        res.render('pages/ios/index');
     } else {
-        res.render('pages/index');
+        res.render('pages/android/index');
     }
     
 });
 app.get('/saved', (req, res) => {
-    res.render('pages/saved');
+    res.render('pages/ios/saved');
 });
 app.get('/help', (req, res) => {
-    res.render('pages/help');
+    res.render('pages/ios/help');
 });
 
 function log(topic, message) {
@@ -78,7 +78,6 @@ io.on('connection', (socket) => {
                 'status': 'new user'
             };
             log('Connection', 'New user has joined.');
-            log('OS', data.os);
             // Add a user
             db.get('users').push({ id: uid, connections: [] }).write();
         } 
@@ -88,7 +87,6 @@ io.on('connection', (socket) => {
                 'status': 'ok'
             };
             log('Connection', 'Exist user has joined. (' + data.uid + ')');
-            log('OS', data.os);
         }
 
         socket.uid = data.uid;
