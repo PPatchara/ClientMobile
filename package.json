@@ -6,7 +6,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js -i logs/"
+    "start": "nodemon --watch . -e js,ejs,json server.js -i logs/"
   },
   "author": "",
   "dependencies": {

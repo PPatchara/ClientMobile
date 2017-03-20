@@ -56,6 +56,9 @@
         });
     });
 
+    var height = $$('.swiper-container').height();
+    console.log("Swiper: " + height);
+
     // Tab bar
     $$('.confirm-disconnect').on('click', () => {
        myApp.confirm('', 'Are you sure to disconnect?', () => {
@@ -108,8 +111,6 @@
 
     $$('#bookmark').on('click', () => {
         $$('#bookmark').toggleClass('active');
-
-        socket.emit('bookmark', 'test');
     });
 
     //Saved page
@@ -145,11 +146,6 @@
         myApp.actions(target, buttons);
     });
 
-    // $$('.bookmark-card').on('click', () => {
-    //     $$('.bookmark-card').toggleClass('active');
-    //     socket.emit('bookmark-card', 'test'); 
-    // });
-
     $('.bookmark-card').on('click', (e) => {
         let target = $(e.target).parent();
         $(target).toggleClass('active');
@@ -158,6 +154,7 @@
 
 
     // Socket begin
+    // Join server
     function sendJoinToServer() {
         var message = { 
             'uid': localStorage.getItem('uid')
@@ -172,17 +169,26 @@
             localStorage.setItem('uid', data.uid);
 
         }
-
-        // $('#testtest').text(data.uid);
     });
 
     sendJoinToServer();
 
-    // Details page
-    socket.on('detailed mode', (currentId) => {
-
+    // Control mode
+    socket.on('currentstate', (currentId, loopState) => {
+        console.log('CurrentId: ' + currentId + ", " + loopState);
+        socket.emit('currentstate', currentId, loopState);
+    });
+    socket.on('bookmarked', (data) => {
+        $$('#bookmark').addClass('active');
+        console.log('bookmarked');
+    });
+    socket.on('unbookmarked', (data) => {
+        $$('#bookmark').removeClass('active');
+        console.log('unbookmarked');
+        
     });
 
+    // Details page
     $$('body').on('click', '.external-page', (e) => {
         let elem = $(e.srcElement);
         let url = elem.data('url');
