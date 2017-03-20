@@ -77,5 +77,10 @@ i.touchpad-icon {
     color: #007aff;
 }
 
+.item-media img {
+	width: 60px;
+	height: 80px;
+}
+
 
 
