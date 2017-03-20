@@ -57,8 +57,6 @@ io.on('connection', (socket) => {
     socket.on('largescreen state', (currentId, loopState) => {
         log('LargeScreen', currentId + ", " + loopState);
         currentSlide = currentId;
-
-        // socket.broadcast.emit('detailed mode', currentId);
         socket.broadcast.emit('currentstate', currentId, loopState);
     });
     socket.on('detailed mode', (currentId) => {
@@ -137,7 +135,11 @@ io.on('connection', (socket) => {
     });
 
     socket.on('bookmark', (data) => {
-        
+        if(data){
+            addBookmark(uid, currentSlide);
+        }else {
+            deleteBookmark(uid, currentSlide);
+        }
     });
 
     socket.on('share', (channel) => {

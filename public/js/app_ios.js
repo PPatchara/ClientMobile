@@ -59,6 +59,45 @@
     var height = $$('.swiper-container').height();
     console.log("Swiper: " + height);
 
+    //Saved page
+    $$('.category').on('click', function (e) {
+        var target = this;
+        var buttons = [
+            {
+                text: 'All'
+            },
+            {
+                text: 'Competition'
+            },
+            {
+                text: 'Intership/Job Application'
+            },
+            {
+                text: 'Keynote Lectures'
+            },
+            {
+                text: 'Scholarship'
+            },
+            {
+                text: 'Recreation'
+            },
+            {
+                text: 'Workshop/Camp'
+            },
+            {
+                text: 'Cancel',
+                color: 'red'
+            }
+        ];
+        myApp.actions(target, buttons);
+    });
+
+    $('.bookmark-card').on('click', (e) => {
+        let target = $(e.target).parent();
+        $(target).toggleClass('active');
+        socket.emit('bookmark-card', 'test'); 
+    });
+
     // Tab bar
     $$('.confirm-disconnect').on('click', () => {
        myApp.confirm('', 'Are you sure to disconnect?', () => {
@@ -109,50 +148,6 @@
         myApp.actions(buttons);
     });
 
-    $$('#bookmark').on('click', () => {
-        $$('#bookmark').toggleClass('active');
-    });
-
-    //Saved page
-    $$('.category').on('click', function (e) {
-        var target = this;
-        var buttons = [
-            {
-                text: 'All'
-            },
-            {
-                text: 'Competition'
-            },
-            {
-                text: 'Intership/Job Application'
-            },
-            {
-                text: 'Keynote Lectures'
-            },
-            {
-                text: 'Scholarship'
-            },
-            {
-                text: 'Recreation'
-            },
-            {
-                text: 'Workshop/Camp'
-            },
-            {
-                text: 'Cancel',
-                color: 'red'
-            }
-        ];
-        myApp.actions(target, buttons);
-    });
-
-    $('.bookmark-card').on('click', (e) => {
-        let target = $(e.target).parent();
-        $(target).toggleClass('active');
-        socket.emit('bookmark-card', 'test'); 
-    });
-
-
     // Socket begin
     // Join server
     function sendJoinToServer() {
@@ -185,6 +180,18 @@
     socket.on('unbookmarked', (data) => {
         $$('#bookmark').removeClass('active');
         console.log('unbookmarked');
+    });
+
+    $$('#bookmark').on('click', () => {
+        if($$('#bookmark').hasClass('active')) {
+            $$('#bookmark').toggleClass('active');
+            console.log('[click]unbookmarked');
+            socket.emit('bookmark', false);
+        }else {
+            $$('#bookmark').toggleClass('active');
+            console.log('[click]bookmarked');
+            socket.emit('bookmark', true);
+        }
         
     });
 
