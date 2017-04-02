@@ -79,12 +79,12 @@ io.on('connection', (socket) => {
         if (data.uid == undefined) {
             data.uid = helpers.uniqueID();
             message = {
-                'uid': uid,
+                'uid': data.uid,
                 'status': 'new user'
             };
             log('Connection', 'New user has joined.');
             // Add a user
-            db.get('users').push({ id: uid, connections: [], bookmarks: [] }).write();
+            db.get('users').push({ id: data.uid, connections: [], bookmarks: [] }).write();
         } 
         else {
             message = {
