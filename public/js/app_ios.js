@@ -21,7 +21,9 @@
     var touchPad = document.getElementById('touchPad');
     var switchMode = document.getElementById('switchMode');
     var mc = new Hammer(touchPad);
-    var mc_switch = new Hammer(switchMode);
+    var mc_switch = new Hammer(switchMode, {
+        touchAction: "pan-y",
+    });
 
     // Socket
     var socket = io();
@@ -44,7 +46,9 @@
 
     // Details page (Switch Mode)
     mc_switch.get('swipe').set({
-        direction: Hammer.DIRECTION_ALL
+        direction: Hammer.DIRECTION_ALL,
+        threshold:100,
+        velocity:2
     });
 
     mc_switch.on('swipeup', (ev) => {
@@ -55,9 +59,6 @@
             pageName: 'index'
         });
     });
-
-    var height = $$('.swiper-container').height();
-    console.log("Swiper: " + height);
 
     //Saved page
     $$('.category').on('click', function (e) {
@@ -161,6 +162,7 @@
         connected = true;
 
         if (data.status === 'new user') {
+            console.log('[New user] ' + data.uid);
             localStorage.setItem('uid', data.uid);
 
         }
@@ -232,12 +234,37 @@
 
         $$(page.container).find('.page-content').html(detailsHTML);
 
-        var mySwiper = myApp.swiper('.swiper-container', {
-            pagination:'.swiper-pagination'
+        // var mySwiper = myApp.swiper('.swiper-container', {
+        //     pagination:'.swiper-pagination'
+        // });
+
+    }
+
+    function renderSaveList(page) {
+        console.log("Navigated to save list");
+        var saveListHTML = Template7.templates.saveListTemplate({
+            title: "Test1 Title",
+            category: "Competition",
+            schedule: [
+                {
+                    topic: "Register",
+                    date: "12/02/2017"
+                },
+                {
+                    topic: "Presentation",
+                    date: "30/04/2017"
+                } 
+            ],  
+            location: "ABC Building"
         });
+
+        $$(page.container).find('.page-content').html(saveListHTML);
     }
 
     myApp.onPageInit('details', initDetailsPage);
     myApp.onPageReinit('details', initDetailsPage);
+
+    myApp.onPageInit('saved', renderSaveList);
+    myApp.onPageReinit('saved', renderSaveList);
 
 // });
