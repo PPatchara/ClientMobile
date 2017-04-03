@@ -151,6 +151,7 @@ io.on('connection', (socket) => {
     });
 
     function isBookmark(uid, bookmarkId) {
+        if (User === null) return;
         var bookmark = User.get('bookmarks').value();
         if (bookmark === undefined) {
             socket.emit('unbookmarked', 'unbookmarked');
@@ -167,6 +168,7 @@ io.on('connection', (socket) => {
     }
 
     function addBookmark(uid, bookmarkId) {
+        if (User === null) return;
         var bookmark = User.get('bookmarks').value();
         if (bookmark === undefined) {
             User.assign({ bookmarks: [] }).write();
