@@ -1,0 +1,37 @@
+<script type="text/template7" id="saveListTemplate">
+    <div class="content-block" style="padding: 0 5px;">
+        <div class="list-block cards-list">
+            <ul>
+                <li class="card"> 
+                  <div class="card-content">
+                    <div class="list-block media-list">
+                        <div class="item-content">
+                          <div class="item-media">
+                            <img src="">
+                          </div>
+                          <div class="item-inner">
+                            <div class="item-title-row">
+                              <div class="item-title">{{title}}</div>
+                            </div>
+                            <div class="item-subtitle">
+                              {{#schedule}}
+                                <p>{{topic}}: {{date}}</p>
+                              {{/schedule}}
+                            </div>
+                            <div class="item-subtitle"> {{location}}</div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                 
+                  <div class="card-footer">
+                    <div class="chip tag-orange">
+                        <div class="chip-label">{{category}}</div>
+                    </div>
+                    <a href="#" class="link bookmark-card"><i class="f7-icons icon">bookmark_fill</i></a>
+                  </div>
+                </li>      
+            </ul>
+        </div>
+    </div>
+</script>
