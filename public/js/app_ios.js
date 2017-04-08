@@ -60,7 +60,7 @@
         });
     });
 
-    //Saved page
+    //BookmarkList page
     $$('.category').on('click', function (e) {
         var target = this;
         var buttons = [
@@ -100,7 +100,7 @@
     });
 
     // Tab bar
-    $$('.confirm-disconnect').on('click', () => {
+    $$('.disconnect').on('click', () => {
        myApp.confirm('', 'Are you sure to disconnect?', () => {
            myApp.alert('','Disconnected');
        });
@@ -115,7 +115,7 @@
             {
                 text: 'Facebook',
                 onClick: () => {
-                    socket.emit('share', 'facebook');
+                    socket.emit('tabbar share', 'facebook');
                     var url = "https://www.facebook.com/sharer/sharer.php?u=http%3A//framework7.io/docs/cards.html&display=popup";
                     var newTab = window.open(url, '_blank');
                     newTab.focus();
@@ -124,7 +124,7 @@
             {
                 text: 'Email',
                 onClick: () => {
-                    socket.emit('share', 'email');
+                    socket.emit('tabbar share', 'email');
                     $(location).attr('href', 'mailto:?subject='
                              + encodeURIComponent("This is my subject")
                              + "&body=" 
@@ -135,7 +135,7 @@
             {
                 text: 'Save image',
                 onClick: () => {
-                    socket.emit('share', 'save image');
+                    socket.emit('tabbar share', 'save image');
                     var url = "https://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg";
                     var newTab = window.open(url, '_blank');
                     newTab.focus();
@@ -148,6 +148,10 @@
         ];
         myApp.actions(buttons);
     });
+
+    $$('.addCalendar').on('click', () => {
+        socket.emit('tabbar calendar', 'addCalendar');
+    })
 
     // Socket begin
     // Join server
@@ -188,11 +192,11 @@
         if($$('#bookmark').hasClass('active')) {
             $$('#bookmark').toggleClass('active');
             console.log('[click]unbookmarked');
-            socket.emit('bookmark', false);
+            socket.emit('tabbar bookmark', false);
         }else {
             $$('#bookmark').toggleClass('active');
             console.log('[click]bookmarked');
-            socket.emit('bookmark', true);
+            socket.emit('tabbar bookmark', true);
         }
         
     });
@@ -240,9 +244,9 @@
 
     }
 
-    function renderSaveList(page) {
-        console.log("Navigated to save list");
-        var saveListHTML = Template7.templates.saveListTemplate({
+    function renderBookmarkList(page) {
+        console.log("Navigated to bookmark list");
+        var bookmarkListHTML = Template7.templates.bookmarkListTemplate({
             title: "Test1 Title",
             category: "Competition",
             schedule: [
@@ -258,13 +262,13 @@
             location: "ABC Building"
         });
 
-        $$(page.container).find('.page-content').html(saveListHTML);
+        $$(page.container).find('.page-content').html(bookmarkListHTML);
     }
 
     myApp.onPageInit('details', initDetailsPage);
     myApp.onPageReinit('details', initDetailsPage);
 
-    myApp.onPageInit('saved', renderSaveList);
-    myApp.onPageReinit('saved', renderSaveList);
+    myApp.onPageInit('bookmarkList', renderBookmarkList);
+    myApp.onPageReinit('bookmarkList', renderBookmarkList);
 
 // });

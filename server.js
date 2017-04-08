@@ -31,8 +31,8 @@ app.get('/', (req, res) => {
     // }
     
 });
-app.get('/saved', (req, res) => {
-    res.render('pages/ios/saved');
+app.get('/bookmarkList', (req, res) => {
+    res.render('pages/ios/bookmarkList');
 });
 app.get('/help', (req, res) => {
     res.render('pages/ios/help');
@@ -107,6 +107,7 @@ io.on('connection', (socket) => {
         isBookmark(uid, currentSlide);
     });
 
+    //Touchpad
     socket.on('gesture swipeleft', (gesture) => {
         log('Gesture', gesture);
         socket.broadcast.emit('gesture swipeleft', gesture);
@@ -134,19 +135,28 @@ io.on('connection', (socket) => {
         isBookmark(uid, currentId);
     });
 
-    socket.on('bookmark', (data) => {
+    //Tab bar
+    socket.on('tabbar bookmark', (data) => {
         if(data){
             addBookmark(uid, currentSlide);
+            socket.broadcast.emit('bookmarked', 'bookmarked');
         }else {
             deleteBookmark(uid, currentSlide);
+            socket.broadcast.emit('unbookmarked', 'unbookmarked');
         }
     });
 
-    socket.on('share', (channel) => {
-        log('share', channel);
+    socket.on('tabbar share', (channel) => {
+        log('tabbar share', channel);
+        socket.broadcast.emit('share', 'shared');
     });
 
-    socket.on('disconnect', () => {
+    socket.on('tabbar calendar', (state) => {
+        log('tabbar calendar', data);
+        socket.broadcast.emit('calendar', 'addCalendar');
+    });
+
+    socket.on('tabbar disconnect', () => {
         log('Socket', 'user has disconnected.');
     });
 
@@ -160,10 +170,10 @@ io.on('connection', (socket) => {
 
         if (User.get('bookmarks').find({id: bookmarkId}).value() == undefined) {
             socket.emit('unbookmarked', 'unbookmarked');
-            return true;
+            return false;
         }else if(User.get('bookmarks').find({id: bookmarkId}).value() !== undefined) {
             socket.emit('bookmarked', 'bookmarked');
-            return false;
+            return true;
         }
     }
 
@@ -173,8 +183,9 @@ io.on('connection', (socket) => {
         if (bookmark === undefined) {
             User.assign({ bookmarks: [] }).write();
         }
-        if (User.get('bookmarks').find({id: bookmarkId}).value() !== undefined) {
-            log('bookmark', `Cannot bookmark ` + bookmarkId + ` is already in bookmark list`);
+        // if (User.get('bookmarks').find({id: bookmarkId}).value() !== undefined) {
+        if (isBookmark(uid, bookmarkId)) {
+            log('bookmark', bookmarkId + ` is already in bookmark list`);
             socket.emit('bookmarked', 'bookmarked');
             log('send');
             return;
