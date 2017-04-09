@@ -160,6 +160,7 @@
             'uid': localStorage.getItem('uid')
         };
         socket.emit('join', message);
+        console.log(localStorage.getItem('uid'));
     }
 
     socket.on('joined', (data) => {
@@ -175,9 +176,10 @@
     sendJoinToServer();
 
     // Control mode
-    socket.on('currentstate', (currentId, loopState) => {
-        console.log('CurrentId: ' + currentId + ", " + loopState);
-        socket.emit('currentstate', currentId, loopState);
+    socket.on('currentstate', (_slideId, loopState) => {
+        console.log('SlideId: ' + _slideId + ", " + loopState);
+        socket.emit('currentstate', _slideId, loopState);
+        slideId = _slideId;
     });
     socket.on('bookmarked', (data) => {
         $$('#bookmark').addClass('active');
@@ -202,6 +204,8 @@
     });
 
     // Details page
+    var slideId="#001";
+
     $$('body').on('click', '.external-page', (e) => {
         let elem = $(e.srcElement);
         let url = elem.data('url');
@@ -211,30 +215,36 @@
 
     function initDetailsPage(page) {
         console.log("Navigated to details page.");
-        var detailsHTML = Template7.templates.detailsTemplate({
-            title: "Test1 Title",
-            category: "Competition",
-            description: 
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
-            schedule: [
-                {
-                    topic: "Register",
-                    date: "12/02/2017"
-                },
-                {
-                    topic: "Presentation",
-                    date: "30/04/2017"
-                } 
-            ],  
-            location: "ABC Building",
-            contact: [
-                {
-                    website: "http://www.google.com",
-                    email: "test@test.com",
-                    tel: "089-7046621"
-                }
-            ]
-        });
+        console.log("slideId: " + slideId);
+        var eventObj = _.find(event_list,{ 'id': slideId});
+        console.log(eventObj);
+
+        var detailsHTML = Template7.templates.detailsTemplate(
+            {
+                title: "Test1 Title",
+                category: "Competition",
+                description: 
+                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+                schedule: [
+                    {
+                        topic: "Register",
+                        date: "12/02/2017"
+                    },
+                    {
+                        topic: "Presentation",
+                        date: "30/04/2017"
+                    } 
+                ],  
+                location: "ABC Building",
+                contact: [
+                    {
+                        website: "http://www.google.com",
+                        email: "test@test.com",
+                        tel: "089-7046621"
+                    }
+                ]
+            }
+        );
 
         $$(page.container).find('.page-content').html(detailsHTML);
 
@@ -270,5 +280,7 @@
 
     myApp.onPageInit('bookmarkList', renderBookmarkList);
     myApp.onPageReinit('bookmarkList', renderBookmarkList);
+
+
 
 // });

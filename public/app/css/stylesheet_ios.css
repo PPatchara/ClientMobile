@@ -3,8 +3,9 @@ a.floating-button{
 	top: 65px;
 }
 
-.size-150 {
-	font-size: 150px;
+.size-15 {
+	font-size: 15px;
+	font-weight: 500;
 }
 .size-30 {
 	font-size: 30px;
@@ -14,6 +15,9 @@ a.floating-button{
 }
 .size-50 {
 	font-size: 50px;
+}
+.size-150 {
+	font-size: 150px;
 }
 
 i.touchpad-icon {
@@ -67,6 +71,10 @@ i.touchpad-icon {
 .tabbar-labels a.tab-link {
 	padding-top: 12px;
 /*	padding-bottom: 8px;*/
+}
+.item-inner .item-subtitle{
+	font-size: 10px;
+    font-weight: 500;
 }
 
 .card-footer a {

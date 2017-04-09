@@ -1,14 +1,15 @@
 <!doctype html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="HandheldFriendly" content="true" />
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#2196f3">
     <link rel="stylesheet" href="/framework7/css/framework7.ios.min.css">
     <link rel="stylesheet" href="/framework7/css/framework7.ios.colors.min.css">
+    <link rel="stylesheet" href="/material/fonts/material-icons.css">
     <link rel="stylesheet" href="/framework7/css/framework7-icons.css">
-    <link rel="stylesheet" type="text/css" href="/css/stylesheet_ios.css">
+    <link rel="stylesheet" type="text/css" href="/app/css/stylesheet_ios.css">
     <title>Honey Spot</title>
 </head>
 
@@ -21,9 +22,9 @@
                 <div data-page="index" class="navbar-inner">
                     <%- include('./partials/nav_control'); %>
                 </div>
-                <!-- Saved navbar-->
-                <div data-page="saved" class="navbar-inner cached">
-                    <%- include('./partials/nav_saved'); %>
+                <!-- BookmarkList navbar-->
+                <div data-page="bookmarkList" class="navbar-inner cached">
+                    <%- include('./partials/nav_bookmarkList'); %>
                 </div>
                 <!-- Help navbar -->
                 <div data-page="help" class="navbar-inner cached">
@@ -46,11 +47,10 @@
 <!--                         <p id="testtest"></p> -->
                     <%- include('./partials/tabbar'); %>
                 </div>
-                <!-- Saved page -->
-                <div data-page="saved" class="page cached">
-                    <div class="page-content" style="margin-top: 20px;">
-                        <%- include('./saved'); %>
-                    </div>
+                <!-- BookmarkList page -->
+                <div data-page="bookmarkList" class="page cached">
+                    <div class="page-content" style="margin-top: 20px;"></div>
+                    <%- include('./bookmarkListTemplate'); %>
                 </div>
                 <!-- Help page -->
                 <div data-page="help" class="page cached">
@@ -60,15 +60,14 @@
                 </div>
                 <!-- Detail page -->
                 <div data-page="details" class="page cached">
-                    <div id="switchMode" class="page-content"></div>
+                    <div id="switchMode" class="page-content" style="background-color: #fff"></div>
                     <%- include('./detailsTemplate'); %>
-                    <%- include('./partials/tabbar'); %>
                 </div>
                 
             </div>
         </div>
     </div>
-    <!-- Popover (Saved page) -->
+    <!-- Popover (BookmarkList page) -->
     <%- include('./partials/popover'); %>
         <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
         <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
@@ -88,8 +87,8 @@
     </script> -->
         <script type="text/javascript" src="/framework7/js/framework7.min.js"></script>
         <script type="text/javascript" src="/template7/template7.min.js"></script>
-        <script type="text/javascript" src="/js/event_list.js"></script>
-        <script type="text/javascript" src="/js/app_ios.js"></script>
+        <script type="text/javascript" src="/app/js/event_list.js"></script>
+        <script type="text/javascript" src="/app/js/app_ios.js"></script>
         
 </body>
 
