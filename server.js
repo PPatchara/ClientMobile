@@ -50,18 +50,14 @@ var unpacked = {
 };
 
 // Socket below
-var currentSlide = "";
+var slideId = "#001";
 
 // Large Display
 io.on('connection', (socket) => {
-    socket.on('largescreen state', (currentId, loopState) => {
-        log('LargeScreen', currentId + ", " + loopState);
-        currentSlide = currentId;
-        socket.broadcast.emit('currentstate', currentId, loopState);
-    });
-    socket.on('detailed mode', (currentId) => {
-        log('Detailed Mode', currentId);
-        socket.broadcast.emit('detailed mode', currentId);
+    socket.on('largescreen state', (_slideId, _loopState) => {
+        log('LargeScreen', _slideId + ", " + _loopState);
+        slideId = _slideId;
+        socket.broadcast.emit('currentstate', _slideId, _loopState);
     });
 
 });
@@ -104,7 +100,8 @@ io.on('connection', (socket) => {
             .push({ timestamp: time })
             .write();
         socket.emit('joined', message);
-        isBookmark(uid, currentSlide);
+        socket.emit('currentstate', slideId, 'enable');
+        isBookmark(uid, slideId);
     });
 
     //Touchpad
@@ -127,21 +124,21 @@ io.on('connection', (socket) => {
     socket.on('gesture doubletap', (gesture) => {
         log('Gesture', gesture);
         socket.broadcast.emit('gesture doubletap', gesture);
-        addBookmark(uid,currentSlide);
+        addBookmark(uid,slideId);
     });
 
-    socket.on('currentstate', (currentId, loopState) => {
-        console.log('CurrentId: ' + currentId + ", " + loopState);
-        isBookmark(uid, currentId);
+    socket.on('currentstate', (_slideId, loopState) => {
+        console.log('SlideId: ' + _slideId + ", " + loopState);
+        isBookmark(uid, _slideId);
     });
 
     //Tab bar
     socket.on('tabbar bookmark', (data) => {
         if(data){
-            addBookmark(uid, currentSlide);
+            addBookmark(uid, slideId);
             socket.broadcast.emit('bookmarked', 'bookmarked');
         }else {
-            deleteBookmark(uid, currentSlide);
+            deleteBookmark(uid, slideId);
             socket.broadcast.emit('unbookmarked', 'unbookmarked');
         }
     });
@@ -151,10 +148,10 @@ io.on('connection', (socket) => {
         socket.broadcast.emit('share', 'shared');
     });
 
-    socket.on('tabbar calendar', (state) => {
-        log('tabbar calendar', data);
-        socket.broadcast.emit('calendar', 'addCalendar');
-    });
+    // socket.on('tabbar calendar', (state) => {
+    //     log('tabbar calendar', data);
+    //     socket.broadcast.emit('calendar', 'addCalendar');
+    // });
 
     socket.on('tabbar disconnect', () => {
         log('Socket', 'user has disconnected.');
