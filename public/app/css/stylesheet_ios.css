@@ -3,9 +3,11 @@ a.floating-button{
 	top: 65px;
 }
 
+.size-10 {
+	font-size: 10px;
+}
 .size-15 {
 	font-size: 15px;
-	font-weight: 500;
 }
 .size-30 {
 	font-size: 30px;
@@ -38,26 +40,26 @@ i.touchpad-icon {
 	font-weight: 400;
 }
 
-/* Tag color */
-.tag-lightblue {
+/* Color */
+.color-lightblue {
 	background: #5ac8fa;
 }
-.tag-yellow {
+.color-yellow {
 	background: #ffcc00;
 }
-.tag-orange {
+.color-orange {
 	background: #ff9500;
 }
-.tag-pink {
+.color-pink {
 	background: #ff2d55;
 }
-.tag-blue {
+.color-blue {
 	background: #007aff;
 }
-.tag-green {
+.color-green {
 	background: #4cd964;
 }
-.tag-red {
+.color-red {
 	background: #ff3b30;
 }
 
@@ -73,7 +75,7 @@ i.touchpad-icon {
 /*	padding-bottom: 8px;*/
 }
 .item-inner .item-subtitle{
-	font-size: 10px;
+	font-size: 14px;
     font-weight: 500;
 }
 
