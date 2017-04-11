@@ -14,6 +14,7 @@
 </head>
 
 <body>
+    <div class="statusbar-overlay"></div>
     <div class="views">
         <div class="view view-main">
             <!-- Navbar -->
@@ -31,12 +32,18 @@
                     <div class="left sliding"><a href="#index" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>
                     <div class="center sliding">Help</div>
                 </div>
+                <!-- Acquiring mode navbar -->
+                <div data-page="acquire" class="navbar-inner cached">
+                    <div class="left sliding"><a href="#index" class="back link"><i class="icon icon-back"></i><span>Control Mode</span></a></div>
+                    <div class="center sliding">Details</div>
+                </div>
                 <!-- Details navbar -->
                 <div data-page="details" class="navbar-inner cached">
-                <div class="left sliding"><a href="#index" class="back link"><i class="icon icon-back"></i><span>Control Mode</span></a></div>
+                    <div class="left sliding"><a href="#bookmarkList" class="back link"><i class="icon icon-back"></i><span>Saved List</span></a></div>
                     <div class="center sliding">Details</div>
                 </div>
             </div>
+
             <!-- Pages -->
             <div class="pages navbar-fixed toolbar-fixed">
                 <!-- Control page -->
@@ -44,7 +51,6 @@
                     <div id="touchPad" class="page-content">
                         <%- include('./control_mode'); %>
                     </div>
-<!--                         <p id="testtest"></p> -->
                     <%- include('./partials/tabbar'); %>
                 </div>
                 <!-- BookmarkList page -->
@@ -58,12 +64,16 @@
                         <p>Under Instruction</p>
                     </div>
                 </div>
-                <!-- Detail page -->
+                <!-- Acquiring mode page -->
+                <div data-page="acquire" class="page cached">
+                    <div id="switchMode" class="page-content" style="background-color: #fff"></div>
+                    <%- include('./acquiringTemplate'); %>
+                </div>
+                <!-- Details page -->
                 <div data-page="details" class="page cached">
                     <div id="switchMode" class="page-content" style="background-color: #fff"></div>
                     <%- include('./detailsTemplate'); %>
                 </div>
-                
             </div>
         </div>
     </div>
