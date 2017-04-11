@@ -1,38 +1,42 @@
 <script type="text/template7" id="bookmarkListTemplate">
     <div class="content-block" style="padding: 0 5px;">
         <div class="list-block cards-list">
-            <ul>
-                <li class="card"> 
-                  <div class="card-content">
-                    <div class="list-block media-list">
-                        <div class="item-content">
-                          <div class="item-media">
-                            <img src="">
-                          </div>
-                          <div class="item-inner">
-                            <div class="item-title-row">
-                              <!-- <div class="item-title">{{title}}</div> -->
-                              <div class="item-title">ฟาหก่ฟสห่กวฟสหกาวฟหกาวฟหklsdhfdklsfj;asfkldjfkdhflejfdopwejfdlewfjlewfjio</div>
+            <ul> 
+                {{#each event_list}}
+                  <li class="card"> 
+                    <div class="card-content">
+                      <div class="list-block media-list">
+                          <div class="item-content">
+                            <div class="item-media">
+                              {{#if this.image}}
+                                <img src="/app/img/{{this.image}}" width="100" height="120">
+                              {{else}}
+                                <img src="" width="100" height="120">
+                              {{/if}}
                             </div>
-                            <div class="item-subtitle">
-                              {{#schedule}}
-                                <p>{{topic}}: {{date}}</p>
-                              {{/schedule}}
+                            <div class="item-inner">
+                              <div class="item-title-row">
+                                <div class="item-title">{{this.title}}</div>
+                              </div>
+                              <div class="item-subtitle">
+                                {{#this.schedule}}
+                                  <p>{{this.topic}}: {{this.date}}</p>
+                                {{/this.schedule}}
+                              </div>
+                              <div class="item-subtitle"> {{this.location}}</div>
                             </div>
-                            <div class="item-subtitle"> {{location}}</div>
                           </div>
-                        </div>
+                      </div>
                     </div>
-                  </div>
-                 
-                  <div class="card-footer">
-                    <div class="chip tag-orange">
-                        <div class="chip-label">{{category}}</div>
+                   
+                    <div class="card-footer">
+                      {{#this.category}}
+                        <div class="chip chip chip-label" style="margin-bottom: 10px; background-color: {{this.color}}">{{this.type}}</div>
+                      {{/this.category}}
+                      <a href="#" class="link bookmark-card"><i class="f7-icons icon">bookmark_fill</i></a>
                     </div>
-                    <a href="#" class="link bookmark-card"><i class="f7-icons icon">bookmark_fill</i></a>
-                    <i class="material-icons">face</i>
-                  </div>
-                </li>      
+                  </li>  
+                {{/each}}
             </ul>
         </div>
     </div>

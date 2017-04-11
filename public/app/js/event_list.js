@@ -1,7 +1,12 @@
 var event_list = [
       {
       "id": "#001",
-      "category": "Competition",
+      "category": [
+            {
+                  "type": "Competition",
+                  "color": "#ff9500"
+            }
+      ],
       "image": "1.jpg",
       "title": "Test1",
       "description": "Description1",
@@ -13,13 +18,22 @@ var event_list = [
             }
       ],
       "location": "A1 Building",
-      "register": "www.google.com",                                                                                                                                                                                           
+      "register": "",                                                                                                                                                                                           
       "calendar": "event001.ics",
       "contact": [
             {
-                  "website": "www.google.com",
+                  "website": "http://www.google.com",
                   "email": "test1@gmail.com",
-                  "tel": ["089-7046621,(Wyne)","0826588017,(Non)"]
+                  "tel": [
+                        {
+                              "name": "Wyne",
+                              "number": "0897046621"
+                        },
+                        {
+                              "name": "Non",
+                              "number": "0826588017"
+                        }
+                  ]
             }
       ],
       "share": [
@@ -36,7 +50,12 @@ var event_list = [
       },
       {
       "id": "#002",
-      "category": "Camp",
+      "category": [
+            {
+                  "type": "Camp",
+                  "color": "#ff2d55"
+            }
+      ],
       "image": "2.jpg",
       "title": "Test2",
       "description": "Description2",
@@ -48,13 +67,22 @@ var event_list = [
             }
       ],
       "location": "A2 Building",
-      "register": "www.google.com",                                                                                                                                                                                           
+      "register": "",                                                                                                                                                                                           
       "calendar": "event002.ics",
       "contact": [
             {
-                  "website": "www.google.com",
+                  "website": "http://www.google.com",
                   "email": "test2@gmail.com",
-                  "tel": ["089-7046621,(Wyne)","0826588017,(Non)"]
+                  "tel": [
+                        {
+                              "name": "Wyne",
+                              "number": "0897046621"
+                        },
+                        {
+                              "name": "Non",
+                              "number": "0826588017"
+                        }
+                  ]
             }
       ],
       "share": [
@@ -71,7 +99,12 @@ var event_list = [
       },
       {
       "id": "#003",
-      "category": "Keynote",
+      "category": [
+            {
+                  "type": "Keynote",
+                  "color": "#007aff"
+            }
+      ],
       "image": "3.jpg",
       "title": "Test3",
       "description": "Description3",
@@ -89,7 +122,16 @@ var event_list = [
             {
                   "website": "www.google.com",
                   "email": "test3@gmail.com",
-                  "tel": ["089-7046621,(Wyne)","0826588017,(Non)"]
+                  "tel": [
+                        {
+                              "name": "Wyne",
+                              "number": "+66897046621"
+                        },
+                        {
+                              "name": "Non",
+                              "number": "+66826588017"
+                        }
+                  ]
             }
       ],
       "share": [

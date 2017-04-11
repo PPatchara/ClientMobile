@@ -1,4 +1,5 @@
 // $(() => {
+    var serverAddress = 'http://10.50.8.13:3000/api';
     var option = {
         swipeBackPage:false,
     };
@@ -25,6 +26,8 @@
         touchAction: "pan-y",
     });
 
+
+
     // Socket
     var socket = io();
     var connected = false;
@@ -48,7 +51,7 @@
     mc_switch.get('swipe').set({
         direction: Hammer.DIRECTION_ALL,
         threshold:100,
-        velocity:2
+        velocity:2.5
     });
 
     mc_switch.on('swipeup', (ev) => {
@@ -61,29 +64,57 @@
     });
 
     //BookmarkList page
+    var category = 'All';
     $$('.category').on('click', function (e) {
         var target = this;
         var buttons = [
             {
-                text: 'All'
+                text: 'All',
+                onClick: () => {
+                    category = 'All';
+                    mainView.router.reloadPage({
+                        pageName: 'bookmarkList',
+                    });
+                }
             },
             {
-                text: 'Competition'
+                text: 'Competition',
+                onClick: () => {
+                    category = 'Competition';
+                    mainView.router.load({
+                        pageName: 'bookmarkList',
+                    });
+                }
             },
             {
-                text: 'Intership/Job Application'
+                text: 'Intership/Job Application',
+                onClick: () => {
+                    category = 'Intership/Job Application';
+                }
             },
             {
-                text: 'Keynote Lectures'
+                text: 'Keynote',
+                onClick: () => {
+                    category = 'Keynote';
+                }
             },
             {
-                text: 'Scholarship'
+                text: 'Scholarship',
+                onClick: () => {
+                    category = 'Scholarship';
+                }
             },
             {
-                text: 'Recreation'
+                text: 'Recreation',
+                onClick: () => {
+                    category = 'Recreation';
+                }
             },
             {
-                text: 'Workshop/Camp'
+                text: 'Workshop/Camp',
+                onClick: () => {
+                    category = 'Workshop/Camp';
+                }
             },
             {
                 text: 'Cancel',
@@ -176,10 +207,22 @@
     sendJoinToServer();
 
     // Control mode
+    $$('#badge').hide();
+
     socket.on('currentstate', (_slideId, loopState) => {
         console.log('SlideId: ' + _slideId + ", " + loopState);
         socket.emit('currentstate', _slideId, loopState);
         slideId = _slideId;
+    });
+    socket.on('count bookmarkList', (amount) => {
+        if(amount == 0) {
+            $$('#badge').hide();
+        }else {
+            $$('#badge').show();
+            $$('#badge').text(amount);
+        }
+        
+        console.log('Count: ' + amount);
     });
     socket.on('bookmarked', (data) => {
         $$('#bookmark').addClass('active');
@@ -204,7 +247,7 @@
     });
 
     // Details page
-    var slideId="#001";
+    var slideId="#001",bookmark_list=[];
 
     $$('body').on('click', '.external-page', (e) => {
         let elem = $(e.srcElement);
@@ -213,36 +256,30 @@
         newTab.focus();        
     });
 
+    socket.on('bookmarkList', (_bookmarkList) => {
+        _.forEach(_bookmarkList, function(value,key) {
+            bookmark_list.push(_.get(value, 'id'));
+            // for (var i = 0; i < bookmarkList.length; i++) {
+            //     console.log(bookmarkList[i]);
+            // }
+        });
+    });
+
     function initDetailsPage(page) {
         console.log("Navigated to details page.");
         console.log("slideId: " + slideId);
         var eventObj = _.find(event_list,{ 'id': slideId});
-        console.log(eventObj);
 
         var detailsHTML = Template7.templates.detailsTemplate(
             {
-                title: "Test1 Title",
-                category: "Competition",
-                description: 
-                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
-                schedule: [
-                    {
-                        topic: "Register",
-                        date: "12/02/2017"
-                    },
-                    {
-                        topic: "Presentation",
-                        date: "30/04/2017"
-                    } 
-                ],  
-                location: "ABC Building",
-                contact: [
-                    {
-                        website: "http://www.google.com",
-                        email: "test@test.com",
-                        tel: "089-7046621"
-                    }
-                ]
+                title: _.get(eventObj, 'title'),
+                category: _.get(eventObj, 'category'),
+                image: _.get(eventObj, 'image'),
+                description: _.get(eventObj, 'description'),
+                schedule: _.get(eventObj, 'schedule'),  
+                location: _.get(eventObj, 'location'),  
+                register: _.get(eventObj, 'register'),
+                contact: _.get(eventObj, 'contact')
             }
         );
 
@@ -254,25 +291,26 @@
 
     }
 
-    function renderBookmarkList(page) {
-        console.log("Navigated to bookmark list");
-        var bookmarkListHTML = Template7.templates.bookmarkListTemplate({
-            title: "Test1 Title",
-            category: "Competition",
-            schedule: [
-                {
-                    topic: "Register",
-                    date: "12/02/2017"
-                },
-                {
-                    topic: "Presentation",
-                    date: "30/04/2017"
-                } 
-            ],  
-            location: "ABC Building"
+    // BookmarkList page
+    var eventJSON = [];
+     $$('#bookmarkList-icon').on('click', () => {
+        mainView.router.load({
+            ignoreCache: true,
+            pageName: 'bookmarkList'
         });
+        
+    });
 
-        $$(page.container).find('.page-content').html(bookmarkListHTML);
+    function renderBookmarkList(page) {
+        page.view.router.refreshPage();
+        console.log("Navigated to bookmark list");
+
+        getBookmarkList(getUid())
+            .then( data => _.filter(event_list, event => data.filter(d => d.id == event.id).length === 1))
+            .then( responseEventList => {
+                let bookmarkListHTML = Template7.templates.bookmarkListTemplate({ event_list: responseEventList});
+                $$(page.container).find('.page-content').html(bookmarkListHTML);
+            });
     }
 
     myApp.onPageInit('details', initDetailsPage);
@@ -280,6 +318,42 @@
 
     myApp.onPageInit('bookmarkList', renderBookmarkList);
     myApp.onPageReinit('bookmarkList', renderBookmarkList);
+
+    function getUid() {
+        return localStorage.getItem('uid');
+    }
+
+    function getBookmarkList(uid) {
+        return  $.ajax({
+                    method: 'GET',
+                    url: serverAddress + '/bookmarks',
+                    data: {
+                        uid: uid
+                    }
+                });
+    }
+
+    function addBookmark(uid, bookmarkId) {
+        return  $.ajax({
+                    method: 'POST',
+                    url: serverAddress + '/bookmarks',
+                    data: {
+                        uid: uid,
+                        bookmarkId: bookmarkId
+                    }
+                });
+    }
+
+    function deleteBookmark(uid, bookmarkId) {
+        return  $.ajax({
+                    method: 'DELETE',
+                    url: serverAddress + '/bookmarks',
+                    data: {
+                        uid: uid,
+                        bookmarkId: bookmarkId
+                    }
+                });
+    }
 
 
 
