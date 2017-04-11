@@ -5,48 +5,92 @@
           <div class="content-block color-black" style="margin: 20px 0;">
             <div class="row">
               <div class="col-33">
-                <img src="" width="100" height="120">
+                {{#if image}}
+                  <img src="/app/img/{{image}}" width="100" height="120">
+                {{else}}
+                  <img src="" width="100" height="120">
+                {{/if}}
+                
               </div>
               <div class="col-66">
                 <p>{{title}}</p>
-                <p class="chip tag-orange chip-label" style="margin-bottom: 10px;">{{category}}</p>
-                <a href="#" id="register" class="button">Register</a>
+
+                {{#category}}
+                  <p class="chip chip-label" style="margin-bottom: 10px; background-color: {{color}}">{{type}}</p>
+                {{/category}}
+
+                {{#if register}}
+                  <a href="#" id="register" class="button">Register</a>
+                {{else}}
+                {{/if}}
               </div>
             </div>
             <div class="row">
               <div>
-                <h3>Description</h3>
-                <p>{{description}}</p>
+                {{#if description}}
+                  <h3>Description</h3>
+                  <p>{{description}}</p>
+                {{else}}
+                {{/if}}
               </div>
             </div>
             <div class="row">
               <div>
-                <h3>Important Date</h3>
-                {{#schedule}}
-                  <p>{{topic}}: {{date}}</p>
-                {{/schedule}}
+                {{#if #schedule}}
+                  <h3>Important Date</h3>
+                  {{#schedule}}
+                    <p>{{topic}}: {{date}}</p>
+                  {{/schedule}}
+                {{else}}
+                {{/if}}
               </div>
             </div>
             <div class="row">
               <div>
-                <h3>Location</h3>
-                <p>{{location}}</p>
+                {{#if location}}
+                  <h3>Location</h3>
+                  <p>{{location}}</p>
+                {{else}}
+                {{/if}}
               </div>
             </div>
-            <div class="row">
+<!--             <div class="row">
               <div>
-                <h3>Register</h3>
-                <p>{{register}}</p>
+                {{#if register}}
+                  <h3>Register</h3>
+                  <p>{{register}}</p>
+                {{else}}
+                {{/if}}
               </div>
-            </div>
+            </div> -->
             <div class="row">
               <div>
-                <h3>Contact</h3>
-                {{#contact}}
-                <p>Website: <a href="javascript:void(0);" class="external-page" data-url="{{website}}">{{website}}</a></p>
-                <p>Email: {{email}}</p>
-                <p>Tel: {{tel}}</p>
-                {{/contact}}
+                {{#if #contact}}
+                  <h3>Contact</h3>
+                  {{#contact}}
+
+                  {{#if website}}
+                    <p>Website: <a href="javascript:void(0);" class="external-page" data-url="{{website}}">{{website}}</a></p>
+                  {{else}}
+                  {{/if}}
+
+                  {{#if email}}
+                    <p>Email: <a href="mailto:{{email}}">{{email}}</a></p>
+                  {{else}}
+                  {{/if}}
+
+                  {{#if #tel}}
+                    <p>Tel: 
+                      {{#tel}}
+                        <a href="tel:{{number}}">{{number}}</a><span>{{name}}</span>
+                      {{#tel}}
+                    </p>
+                  {{else}}
+                  {{/if}}
+
+                  {{/contact}}
+                {{else}}
+                {{/if}}
               </div>
             </div>
           </div>
