@@ -102,7 +102,7 @@ var event_list = [
       "category": [
             {
                   "type": "Keynote",
-                  "color": "#007aff"
+                  "color": "#4cd964"
             }
       ],
       "image": "3.jpg",
@@ -110,7 +110,7 @@ var event_list = [
       "description": "Description3",
       "schedule": [
             {
-                  "topic":"Register",
+                  "topic":"Register1",
                   "date":"03/03/2017",
                   "time":"9:00-12:00"
             }
