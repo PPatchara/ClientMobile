@@ -53,7 +53,7 @@ app.post('/api/bookmarks', (req, res) => {
 });
 
 app.delete('/api/bookmarks', (req, res) => {
-    let response = bookmarkService.deleteBookmark(req.query.uid, req.body.bookmarkId);
+    let response = bookmarkService.deleteBookmark(req.body.uid, req.body.bookmarkId);
     res.json(response);
 });
 
@@ -104,6 +104,7 @@ var bookmarkService = {
         }
     },
     deleteBookmark: function(uid, bookmarkId) {
+        log('deleteBookmark', `uid=${uid}, bookmarkId=${bookmarkId}`);
         db.get('users').find({ id: uid }).get('bookmarks').remove({id: bookmarkId}).write();
         let bookmarkList = this.getBookmarkListByUid(uid);
         return {
@@ -222,6 +223,12 @@ io.on('connection', (socket) => {
     socket.on('tabbar disconnect', () => {
         log('Socket', 'user has disconnected.');
     });
+
+    //Bookmarklist
+    // socket.on('bookmark-card unbookmarked', (bookmarkId) => {
+    //     bookmarkService.deleteBookmark(uid,bookmarkId);
+    //     console.log("delete: " + bookmarkId);
+    // });
 
     function countBookmarkList(uid) {
         if (User === null) return;
