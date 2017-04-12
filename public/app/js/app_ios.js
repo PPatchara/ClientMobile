@@ -1,32 +1,12 @@
 // $(() => {
-    var serverAddress = 'http://10.50.8.13:3000/api';
-    var option = {
-        swipeBackPage:false,
-    };
-    var myApp = new Framework7({
-        precompileTemplates: true,
-        fastClicks:false,
-        modalCloseByOutside: true,
-        actionsCloseByOutside: true,
-        modalActionsCloseByOutside: true
-    });
-
-    var $$ = Dom7;
-
-    var mainView = myApp.addView('.view-main', {
-        dynamicNavbar: true,
-        domCache: true
-    });
-
+    
     // Control page
     var touchPad = document.getElementById('touchPad');
-    var switchMode = document.getElementById('switchMode');
+    // var switchMode = document.getElementById('switchMode');
     var mc = new Hammer(touchPad);
-    var mc_switch = new Hammer(switchMode, {
-        touchAction: "pan-y",
-    });
-
-
+    // var mc_switch = new Hammer(switchMode, {
+    //     touchAction: "pan-y",
+    // });
 
     // Socket
     var socket = io();
@@ -42,26 +22,26 @@
         socket.emit('gesture ' + ev.type, ev.type);
         if (ev.type == 'swipedown') {
             mainView.router.load({
-                pageName: 'details',
+                pageName: 'acquire',
             });
         }
     });
 
-    // Details page (Switch Mode)
-    mc_switch.get('swipe').set({
-        direction: Hammer.DIRECTION_ALL,
-        threshold:100,
-        velocity:2.5
-    });
+    // Acquiring mode page (Switch Mode)
+    // mc_switch.get('swipe').set({
+    //     direction: Hammer.DIRECTION_ALL,
+    //     threshold:100,
+    //     velocity:2.5
+    // });
 
-    mc_switch.on('swipeup', (ev) => {
-        console.log("[Gesture]: " + ev.type);
-        socket.emit('gesture ' + ev.type, ev.type);
+    // mc_switch.on('swipeup', (ev) => {
+    //     console.log("[Gesture]: " + ev.type);
+    //     socket.emit('gesture ' + ev.type, ev.type);
         
-        mainView.router.load({
-            pageName: 'index'
-        });
-    });
+    //     mainView.router.load({
+    //         pageName: 'index'
+    //     });
+    // });
 
     //BookmarkList page
     var category = 'All';
@@ -72,7 +52,7 @@
                 text: 'All',
                 onClick: () => {
                     category = 'All';
-                    mainView.router.reloadPage({
+                    mainView.router.reload({
                         pageName: 'bookmarkList',
                     });
                 }
@@ -122,12 +102,6 @@
             }
         ];
         myApp.actions(target, buttons);
-    });
-
-    $('.bookmark-card').on('click', (e) => {
-        let target = $(e.target).parent();
-        $(target).toggleClass('active');
-        socket.emit('bookmark-card', 'test'); 
     });
 
     // Tab bar
@@ -207,46 +181,15 @@
     sendJoinToServer();
 
     // Control mode
-    $$('#badge').hide();
 
     socket.on('currentstate', (_slideId, loopState) => {
         console.log('SlideId: ' + _slideId + ", " + loopState);
         socket.emit('currentstate', _slideId, loopState);
         slideId = _slideId;
     });
-    socket.on('count bookmarkList', (amount) => {
-        if(amount == 0) {
-            $$('#badge').hide();
-        }else {
-            $$('#badge').show();
-            $$('#badge').text(amount);
-        }
-        
-        console.log('Count: ' + amount);
-    });
-    socket.on('bookmarked', (data) => {
-        $$('#bookmark').addClass('active');
-        console.log('bookmarked');
-    });
-    socket.on('unbookmarked', (data) => {
-        $$('#bookmark').removeClass('active');
-        console.log('unbookmarked');
-    });
+    
 
-    $$('#bookmark').on('click', () => {
-        if($$('#bookmark').hasClass('active')) {
-            $$('#bookmark').toggleClass('active');
-            console.log('[click]unbookmarked');
-            socket.emit('tabbar bookmark', false);
-        }else {
-            $$('#bookmark').toggleClass('active');
-            console.log('[click]bookmarked');
-            socket.emit('tabbar bookmark', true);
-        }
-        
-    });
-
-    // Details page
+    // Acquiring mode page
     var slideId="#001",bookmark_list=[];
 
     $$('body').on('click', '.external-page', (e) => {
@@ -256,21 +199,14 @@
         newTab.focus();        
     });
 
-    socket.on('bookmarkList', (_bookmarkList) => {
-        _.forEach(_bookmarkList, function(value,key) {
-            bookmark_list.push(_.get(value, 'id'));
-            // for (var i = 0; i < bookmarkList.length; i++) {
-            //     console.log(bookmarkList[i]);
-            // }
-        });
-    });
 
-    function initDetailsPage(page) {
-        console.log("Navigated to details page.");
+
+    function renderAcquiringPage(page) {
+        console.log("Navigated to acquiring mode.");
         console.log("slideId: " + slideId);
         var eventObj = _.find(event_list,{ 'id': slideId});
 
-        var detailsHTML = Template7.templates.detailsTemplate(
+        var acquiringHTML = Template7.templates.acquiringTemplate(
             {
                 title: _.get(eventObj, 'title'),
                 category: _.get(eventObj, 'category'),
@@ -283,7 +219,7 @@
             }
         );
 
-        $$(page.container).find('.page-content').html(detailsHTML);
+        $$(page.container).find('.page-content').html(acquiringHTML);
 
         // var mySwiper = myApp.swiper('.swiper-container', {
         //     pagination:'.swiper-pagination'
@@ -291,70 +227,11 @@
 
     }
 
-    // BookmarkList page
-    var eventJSON = [];
-     $$('#bookmarkList-icon').on('click', () => {
-        mainView.router.load({
-            ignoreCache: true,
-            pageName: 'bookmarkList'
-        });
-        
-    });
-
-    function renderBookmarkList(page) {
-        page.view.router.refreshPage();
-        console.log("Navigated to bookmark list");
-
-        getBookmarkList(getUid())
-            .then( data => _.filter(event_list, event => data.filter(d => d.id == event.id).length === 1))
-            .then( responseEventList => {
-                let bookmarkListHTML = Template7.templates.bookmarkListTemplate({ event_list: responseEventList});
-                $$(page.container).find('.page-content').html(bookmarkListHTML);
-            });
-    }
-
-    myApp.onPageInit('details', initDetailsPage);
-    myApp.onPageReinit('details', initDetailsPage);
-
-    myApp.onPageInit('bookmarkList', renderBookmarkList);
-    myApp.onPageReinit('bookmarkList', renderBookmarkList);
+    myApp.onPageInit('acquire', renderAcquiringPage);
+    myApp.onPageReinit('acquire', renderAcquiringPage);
 
     function getUid() {
         return localStorage.getItem('uid');
     }
-
-    function getBookmarkList(uid) {
-        return  $.ajax({
-                    method: 'GET',
-                    url: serverAddress + '/bookmarks',
-                    data: {
-                        uid: uid
-                    }
-                });
-    }
-
-    function addBookmark(uid, bookmarkId) {
-        return  $.ajax({
-                    method: 'POST',
-                    url: serverAddress + '/bookmarks',
-                    data: {
-                        uid: uid,
-                        bookmarkId: bookmarkId
-                    }
-                });
-    }
-
-    function deleteBookmark(uid, bookmarkId) {
-        return  $.ajax({
-                    method: 'DELETE',
-                    url: serverAddress + '/bookmarks',
-                    data: {
-                        uid: uid,
-                        bookmarkId: bookmarkId
-                    }
-                });
-    }
-
-
 
 // });
