@@ -34,9 +34,11 @@ app.get('/', (req, res) => {
     // }
     
 });
+
 app.get('/bookmarkList', (req, res) => {
     res.render('pages/ios/bookmarkList');
 });
+
 app.get('/help', (req, res) => {
     res.render('pages/ios/help');
 });
@@ -44,7 +46,11 @@ app.get('/help', (req, res) => {
 app.get('/api/bookmarks', (req, res) => {
     console.log('bookmarks');
     let bookmarkList = bookmarkService.getBookmarkListByUid(req.query.uid);
-    res.json(bookmarkList);
+    res.json({
+        status: "ok",
+        content: bookmarkList,
+        count: bookmarkList.length
+    });
 });
 
 app.post('/api/bookmarks', (req, res) => {
@@ -55,6 +61,22 @@ app.post('/api/bookmarks', (req, res) => {
 app.delete('/api/bookmarks', (req, res) => {
     let response = bookmarkService.deleteBookmark(req.body.uid, req.body.bookmarkId);
     res.json(response);
+});
+
+app.post('/api/slide/toleft', (req, res) => {
+    let result = bookmarkService.getBookmarkById(req.body.uid, slideId);
+    res.json({
+        status: "ok",
+        isBookmark: result
+    });
+});
+
+app.post('/api/slide/toright', (req, res) => {
+    let result = bookmarkService.getBookmarkById(req.body.uid, slideId);
+    res.json({
+        status: "ok",
+        isBookmark: result
+    });
 });
 
 function log(topic, message) {
@@ -73,8 +95,6 @@ var bookmarkService = {
     getBookmarkById: function(uid, bookmarkId) {
         let User = db.get('users').find({ id: uid });
         var bookmark = User.get('bookmarks').find({ id: bookmarkId }).value();
-        console.log(User);
-        console.log(User.get('bookmarks').value());
         return bookmark;
     },
     getBookmarkListByUid: function(uid) {
@@ -97,6 +117,7 @@ var bookmarkService = {
         }
         User.get('bookmarks').push({ id: bookmarkId }).write();
         let bookmarkList = this.getBookmarkListByUid(uid);
+        console.log(bookmarkList);
         return {
             status: "ok",
             content: bookmarkList,
@@ -167,8 +188,6 @@ io.on('connection', (socket) => {
             .write();
         socket.emit('joined', message);
         socket.emit('currentstate', slideId, 'enable');
-        isBookmark(uid, slideId);
-        countBookmarkList(uid);
     });
 
     //Touchpad
@@ -191,24 +210,31 @@ io.on('connection', (socket) => {
     socket.on('gesture doubletap', (gesture) => {
         log('Gesture', gesture);
         socket.broadcast.emit('gesture doubletap', gesture);
-        addBookmark(uid,slideId);
+        bookmarkService.addBookmark(uid,slideId);
     });
 
     socket.on('currentstate', (_slideId, loopState) => {
         console.log('SlideId: ' + _slideId + ", " + loopState);
-        isBookmark(uid, _slideId);
     });
 
-    //Tab bar
-    socket.on('tabbar bookmark', (data) => {
-        if(data){
-            addBookmark(uid, slideId);
+    socket.on('client bookmark', (data) => {
+        if (data === 'add') {
             socket.broadcast.emit('bookmarked', 'bookmarked');
-        }else {
-            deleteBookmark(uid, slideId);
+        } else {
             socket.broadcast.emit('unbookmarked', 'unbookmarked');
         }
     });
+
+    //Tab bar
+    // socket.on('tabbar bookmark', (data) => {
+    //     if(data){
+    //         bookmarkService.addBookmark(uid, slideId);
+    //         socket.broadcast.emit('bookmarked', 'bookmarked');
+    //     }else {
+    //         deleteBookmark(uid, slideId);
+    //         socket.broadcast.emit('unbookmarked', 'unbookmarked');
+    //     }
+    // });
 
     socket.on('tabbar share', (channel) => {
         log('tabbar share', channel);
@@ -228,61 +254,6 @@ io.on('connection', (socket) => {
     // socket.on('bookmark-card unbookmarked', (bookmarkId) => {
     //     bookmarkService.deleteBookmark(uid,bookmarkId);
     //     console.log("delete: " + bookmarkId);
-    // });
-
-    function countBookmarkList(uid) {
-        if (User === null) return;
-        var amount = User.get('bookmarks').size();
-        log('Count', amount);
-        socket.emit('count bookmarkList', amount);
-        getBookmarkList(uid);
-    }
-
-    function getBookmarkList(uid) {
-        if (User === null) return;
-        var bookmarkList = User.get('bookmarks').value();
-        console.log(bookmarkList);
-        socket.emit('bookmarkList', bookmarkList);
-    }
-
-    function isBookmark(uid, bookmarkId) {
-        if (User === null) return;
-        var bookmark = User.get('bookmarks').value();
-        if (bookmark === undefined) {
-            socket.emit('unbookmarked', 'unbookmarked');
-            return false;
-        }
-
-        if (User.get('bookmarks').find({id: bookmarkId}).value() == undefined) {
-            socket.emit('unbookmarked', 'unbookmarked');
-            return false;
-        }else if(User.get('bookmarks').find({id: bookmarkId}).value() !== undefined) {
-            socket.emit('bookmarked', 'bookmarked');
-            return true;
-        }
-    }
-
-    function addBookmark(uid, bookmarkId) {
-        if (User === null) return;
-        var bookmark = User.get('bookmarks').value();
-        if (bookmark === undefined) {
-            User.assign({ bookmarks: [] }).write();
-        }
-        // if (User.get('bookmarks').find({id: bookmarkId}).value() !== undefined) {
-        if (isBookmark(uid, bookmarkId)) {
-            log('bookmark', bookmarkId + ` is already in bookmark list`);
-            socket.emit('bookmarked', 'bookmarked');
-            return;
-        }
-        User.get('bookmarks').push({ id: bookmarkId }).write();
-        socket.emit('bookmarked', 'bookmarked');
-        countBookmarkList(uid);
-    }
-
-    function deleteBookmark(uid, bookmarkId) {
-        db.get('users').find({ id: uid }).get('bookmarks').remove({id: bookmarkId}).write();
-        countBookmarkList(uid);
-    }
-
+    // });\
 });
 

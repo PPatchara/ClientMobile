@@ -19,13 +19,17 @@
 
     mc.on('swipeleft swiperight swipeup swipedown doubletap', (ev) => {
         console.log("[Gesture]: " + ev.type);
+
         socket.emit('gesture ' + ev.type, ev.type);
+
         if (ev.type == 'swipedown') {
             mainView.router.load({
                 pageName: 'acquire',
             });
         }
     });
+
+    var slideId="#001";
 
     // Acquiring mode page (Switch Mode)
     // mc_switch.get('swipe').set({
@@ -183,14 +187,15 @@
     // Control mode
 
     socket.on('currentstate', (_slideId, loopState) => {
-        console.log('SlideId: ' + _slideId + ", " + loopState);
+        console.log(`currentstate <slide=${_slideId}>`);
         socket.emit('currentstate', _slideId, loopState);
+        getBookmarkList(getUid());
         slideId = _slideId;
     });
     
 
     // Acquiring mode page
-    var slideId="#001",bookmark_list=[];
+    
 
     $$('body').on('click', '.external-page', (e) => {
         let elem = $(e.srcElement);
