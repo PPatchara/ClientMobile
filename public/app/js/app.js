@@ -1,4 +1,4 @@
-var serverAddress = 'http://10.50.8.13:3000/api';
+var serverAddress = 'http://localhost:3000/api';
 
 var myApp = new Framework7({
     swipeBackPage:false,
