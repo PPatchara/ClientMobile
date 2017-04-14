@@ -2,11 +2,11 @@
     
     // Control page
     var touchPad = document.getElementById('touchPad');
-    // var switchMode = document.getElementById('switchMode');
+    var switchMode = document.getElementById('switchMode');
     var mc = new Hammer(touchPad);
-    // var mc_switch = new Hammer(switchMode, {
-    //     touchAction: "pan-y",
-    // });
+    var mc_switch = new Hammer(switchMode, {
+        touchAction: "pan-y",
+    });
 
     // Socket
     var socket = io();
@@ -17,7 +17,7 @@
         direction: Hammer.DIRECTION_ALL
     });
 
-    mc.on('swipeleft swiperight swipeup swipedown doubletap', (ev) => {
+    mc.on('swipeleft swiperight swipedown doubletap', (ev) => {
         console.log("[Gesture]: " + ev.type);
 
         socket.emit('gesture ' + ev.type, ev.type);
@@ -32,20 +32,20 @@
     var slideId="#001";
 
     // Acquiring mode page (Switch Mode)
-    // mc_switch.get('swipe').set({
-    //     direction: Hammer.DIRECTION_ALL,
-    //     threshold:100,
-    //     velocity:2.5
-    // });
+    mc_switch.get('swipe').set({
+        direction: Hammer.DIRECTION_ALL,
+        threshold:100,
+        velocity:2.5
+    });
 
-    // mc_switch.on('swipeup', (ev) => {
-    //     console.log("[Gesture]: " + ev.type);
-    //     socket.emit('gesture ' + ev.type, ev.type);
+    mc_switch.on('swipeup', (ev) => {
+        console.log("[Gesture]: " + ev.type);
+        socket.emit('gesture ' + ev.type, ev.type);
         
-    //     mainView.router.load({
-    //         pageName: 'index'
-    //     });
-    // });
+        mainView.router.load({
+            pageName: 'index'
+        });
+    });
 
     //BookmarkList page
     var category = 'All';
@@ -53,22 +53,10 @@
         var target = this;
         var buttons = [
             {
-                text: 'All',
-                onClick: () => {
-                    category = 'All';
-                    mainView.router.reload({
-                        pageName: 'bookmarkList',
-                    });
-                }
+                text: 'All'
             },
             {
-                text: 'Competition',
-                onClick: () => {
-                    category = 'Competition';
-                    mainView.router.load({
-                        pageName: 'bookmarkList',
-                    });
-                }
+                text: 'Competition'
             },
             {
                 text: 'Intership/Job Application',
@@ -116,6 +104,9 @@
     });
 
     $$('.share').on('click', () => {
+        let event = EventListService.get(slideId);
+        console.log(slideId);
+        console.log(event);
         var buttons = [
             {
                 text: 'Share',
@@ -125,7 +116,7 @@
                 text: 'Facebook',
                 onClick: () => {
                     socket.emit('tabbar share', 'facebook');
-                    var url = "https://www.facebook.com/sharer/sharer.php?u=http%3A//framework7.io/docs/cards.html&display=popup";
+                    let url = event.share.facebook;
                     var newTab = window.open(url, '_blank');
                     newTab.focus();
                 }
@@ -135,9 +126,9 @@
                 onClick: () => {
                     socket.emit('tabbar share', 'email');
                     $(location).attr('href', 'mailto:?subject='
-                             + encodeURIComponent("This is my subject")
+                             + encodeURIComponent(event.share.email.subject)
                              + "&body=" 
-                             + encodeURIComponent("This is my body")
+                             + encodeURIComponent(event.share.email.body)
                     );
                 }
             },
@@ -145,7 +136,7 @@
                 text: 'Save image',
                 onClick: () => {
                     socket.emit('tabbar share', 'save image');
-                    var url = "https://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg";
+                    var url = `${imageAddress}/${event.image}`;
                     var newTab = window.open(url, '_blank');
                     newTab.focus();
                 }
@@ -192,6 +183,10 @@
         getBookmarkList(getUid());
         slideId = _slideId;
     });
+
+    function getCalendar(slideId) {
+
+    }
     
 
     // Acquiring mode page
