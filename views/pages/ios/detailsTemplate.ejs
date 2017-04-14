@@ -1,82 +1,83 @@
 <script type="text/template7" id="detailsTemplate">
-<!--     <div class="swiper-container">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide"> -->
-          <div class="content-block color-black" style="margin: 20px 0;">
-            <div class="row">
-              <div class="col-33">
-                {{#if image}}
-                  <img src="/app/img/{{image}}" width="100" height="120">
-                {{else}}
-                  <img src="" width="100" height="120">
-                {{/if}}
-                
-              </div>
-              <div class="col-66">
-                <p>{{title}}</p>
-
-                {{#category}}
-                  <p class="chip chip-label" style="margin-bottom: 10px; background-color: {{color}}">{{type}}</p>
-                {{/category}}
-
-                {{#if register}}
-                  <a href="#" id="register" class="button">Register</a>
-                {{/if}}
-              </div>
-            </div>
-            <div class="row">
-              <div>
-                {{#if description}}
-                  <h3>Description</h3>
-                  <p>{{description}}</p>
-                {{/if}}
-              </div>
-            </div>
-            <div class="row">
-              <div>
-                {{#if #schedule}}
-                  <h3>Important Date</h3>
-                  {{#schedule}}
-                    <p>{{topic}}: {{date}}</p>
-                  {{/schedule}}
-                {{/if}}
-              </div>
-            </div>
-            <div class="row">
-              <div>
-                {{#if location}}
-                  <h3>Location</h3>
-                  <p>{{location}}</p>
-                {{/if}}
-              </div>
-            </div>
-            <div class="row">
-              <div>
-                {{#if #contact}}
-                  <h3>Contact</h3>
-                  {{#contact}}
-                    {{#if website}}
-                      <p>Website: <a href="javascript:void(0);" class="external-page" data-url="{{website}}">{{website}}</a></p>
-                    {{/if}}
-
-                    {{#if email}}
-                      <p>Email: <a href="mailto:{{email}}">{{email}}</a></p>
-                    {{/if}}
-
-                    {{#if #tel}}
-                      <p>Tel: 
-                        {{#tel}}
-                          <a href="tel:{{number}}">{{number}} </a><span>{{name}}</span>
-                        {{/tel}}
-                      </p>
-                    {{/if}}
-                  {{/contact}}
-                {{/if}}
-              </div>
-            </div>
+  <div data-page="details" class="navbar-inner cached">
+      <div class="left sliding"><a href="#bookmarkList" class="back link"><i class="icon icon-back"></i><span>Saved list</span></a></div>
+      <div class="center sliding">Details</div>
+  </div>
+  <div data-page="details" class="page cached">
+    <div id="switchMode" class="page-content" style="background-color: #fff">
+      <div class="content-block color-black" style="margin: 20px 0;">
+        <div class="row">
+          <div class="col-33">
+            {{#if image}}
+              <img src="/app/img/{{image}}" width="100" height="120">
+            {{else}}
+              <img src="" width="100" height="120">
+            {{/if}}
+            
           </div>
-<!--         </div>
+          <div class="col-66">
+            <p>{{title}}</p>
+
+            {{#category}}
+              <p class="chip chip-label" style="margin-bottom: 10px; background-color: {{color}}">{{type}}</p>
+            {{/category}}
+
+            {{#if register}}
+              <a href="#" id="register" class="button">Register</a>
+            {{/if}}
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            {{#if description}}
+              <h3>Description</h3>
+              <p>{{description}}</p>
+            {{/if}}
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            {{#if #schedule}}
+              <h3>Important Date</h3>
+              {{#schedule}}
+                <p>{{topic}}: {{date}}</p><br/>
+              {{/schedule}}
+            {{/if}}
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            {{#if location}}
+              <h3>Location</h3>
+              <p>{{location}}</p>
+            {{/if}}
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            {{#if #contact}}
+              <h3>Contact</h3>
+              {{#contact}}
+                {{#if website}}
+                  <p>Website: <a href="javascript:void(0);" class="external-page" data-url="{{website}}">{{website}}</a></p>
+                {{/if}}
+
+                {{#if email}}
+                  <p>Email: <a href="mailto:{{email}}">{{email}}</a></p>
+                {{/if}}
+
+                {{#if #tel}}
+                  <p>Tel:&nbsp;
+                    {{#tel}}
+                      <a href="tel:{{number}}">{{number}} </a><span>{{name}}</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    {{/tel}}
+                  </p>
+                {{/if}}
+              {{/contact}}
+            {{/if}}
+          </div>
+        </div>
       </div>
-      <div class="swiper-pagination"></div>
-    </div> -->
+    </div>
+  </div>
 </script>

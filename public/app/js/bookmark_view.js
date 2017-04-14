@@ -89,8 +89,6 @@ function deleteBookmark(uid, bookmarkId) {
             });
 }
 
-// var bookmark_list=[];
-
 $$('#bookmark').on('click', () => {
     if($$('#bookmark').hasClass('active')) {
         deleteBookmark(getUid(), slideId);
@@ -98,12 +96,6 @@ $$('#bookmark').on('click', () => {
         addBookmark(getUid(), slideId);
     }
 });
-
-// socket.on('bookmarkList', (_bookmarkList) => {
-//     _.forEach(_bookmarkList, function(value,key) {
-//         bookmark_list.push(_.get(value, 'id'));
-//     });
-// });
 
 // BookmarkList page
 
@@ -123,7 +115,16 @@ function renderBookmarkList(page) {
         .then(getEventListFromBookmarkList)
         .then(render);
 
-    $$('.page-content').on('click', '.bookmark-card', (e) => {
+    $$('.page-content').on('click', 'li.card', (e) => {
+        let clickedBookmarkId = $$(e.target).parents('li.card').data('id');
+        console.log(clickedBookmarkId);
+        mainView.router.load({
+            template: Template7.templates.detailsTemplate,
+            context: EventListService.get(clickedBookmarkId)
+        });
+    });
+
+    $$('.page-content').on('click', '.delete-card', (e) => {
         let bookmarkId = $(e.target).parent().data('id');
         deleteBookmark(getUid(), bookmarkId)
             .then(getEventListFromBookmarkList)

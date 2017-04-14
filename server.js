@@ -79,6 +79,7 @@ app.post('/api/slide/toright', (req, res) => {
     });
 });
 
+
 function log(topic, message) {
     console.log('[' + topic + ']: ' + message);
 }
@@ -89,6 +90,7 @@ var unpacked = {
     untils  : [null],
     offsets : [-420]
 };
+
 
 // Bookmark Service
 var bookmarkService = {
@@ -107,7 +109,6 @@ var bookmarkService = {
         if (bookmark === undefined) {
             User.assign({ bookmarks: [] }).write();
         }
-        // if (User.get('bookmarks').find({id: bookmarkId}).value() !== undefined) {
         if (this.getBookmarkById(uid, bookmarkId) !== undefined) {
             log('bookmark', bookmarkId + ` is already in bookmark list`);
             return {

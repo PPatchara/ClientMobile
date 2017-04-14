@@ -1,4 +1,5 @@
 var serverAddress = 'http://localhost:3000/api';
+var imageAddress = 'http://localhost:3000/app/img';
 
 var myApp = new Framework7({
     swipeBackPage:false,
@@ -7,6 +8,7 @@ var myApp = new Framework7({
     modalCloseByOutside: true,
     actionsCloseByOutside: true,
     modalActionsCloseByOutside: true,
+    template7Pages: true,
 });
 
 var $$ = Dom7;

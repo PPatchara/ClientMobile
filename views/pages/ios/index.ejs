@@ -37,11 +37,6 @@
                     <div class="left sliding"><a href="#index" class="back link"><i class="icon icon-back"></i><span>Control Mode</span></a></div>
                     <div class="center sliding">Details</div>
                 </div>
-                <!-- Details navbar -->
-                <div data-page="details" class="navbar-inner cached">
-                    <div class="left sliding"><a href="#bookmarkList" class="back link"><i class="icon icon-back"></i><span>Saved list</span></a></div>
-                    <div class="center sliding">Details</div>
-                </div>
             </div>
 
             <!-- Pages -->
@@ -70,10 +65,7 @@
                     <%- include('./acquiringTemplate'); %>
                 </div>
                 <!-- Details page -->
-                <div data-page="details" class="page cached">
-                    <div id="switchMode" class="page-content" style="background-color: #fff"></div>
-                    <%- include('./detailsTemplate'); %>
-                </div>
+                <%- include('./detailsTemplate'); %>
             </div>
         </div>
     </div>
