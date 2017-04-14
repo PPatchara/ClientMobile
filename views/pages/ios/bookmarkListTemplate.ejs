@@ -3,7 +3,7 @@
         <div class="list-block cards-list">
             <ul> 
                 {{#each event_list}}
-                <a href="#details" style="color: #000000">
+                <a href="#" style="color: #000000">
                   <li class="card" data-id="{{this.id}}"> 
                     <div class="card-content">
                       <div class="list-block media-list">
@@ -37,7 +37,10 @@
                       {{#this.category}}
                         <div class="chip chip chip-label" style="margin-bottom: 10px; background-color: {{this.color}}; font-weight: 500;">{{this.type}}</div>
                       {{/this.category}}
-                      <a href="#" class="link bookmark-card"  data-id="{{this.id}}"><i class="f7-icons icon">bookmark_fill</i></a>
+                      <a href="#" class="link delete-card"  data-id="{{this.id}}">
+                        <i class="material-icons">delete</i>
+                        <span>Unsave</span>
+                      </a>
                     </div>
                   </li>  
                 </a>
