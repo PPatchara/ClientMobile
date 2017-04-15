@@ -1,36 +1,3 @@
-<!doctype html>
-<%- include('./header'); %>
+<div class="page-content" style="margin-top: 20px;"></div>
+<%- include('./bookmarkListTemplate'); %>
 
-<body>
-    <div class="statusbar-overlay"></div>
-    <div class="views">
-        <div class="view view-main">
-
-			<!-- Navbar -->
-			<div class="navbar">
-			    <div data-page="bookmarkList" class="navbar-inner">
-			        <div class="center sliding">Saved</div>
-					<div class="subnavbar sliding">
-				    	<a href="#" class="category button button-round" style="margin: auto;">All 
-				            <i class="f7-icons icon" style="display: inline;">down</i>
-						</a>
-					</div>
-			    </div>
-			</div>
-
-			<!-- Pages -->
-			<div class="pages navbar-fixed toolbar-fixed">
-			    <div data-page="bookmarkList" class="page">
-			        <div class="page-content" style="margin-top: 20px;"></div>
-			        <%- include('./bookmarkListTemplate'); %>
-			    </div>
-			</div>
-        </div>
-    </div>
-    <!-- Popover (BookmarkList page) -->
-    <%- include('./partials/popover'); %>
-	<%- include('./scripttag'); %>
-        
-</body>
-
-</html>

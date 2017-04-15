@@ -1,0 +1,49 @@
+<!doctype html>
+<%- include('./header'); %>
+
+<body>
+    <div class="statusbar-overlay"></div>
+    <div class="views">
+        <div class="view view-main">
+            <!-- Navbar -->
+            <div class="navbar">
+                <!-- BookmarkmarkList navbar -->
+                <div data-page="bookmarkList" class="navbar-inner">
+                    <div class="center sliding">Saved List</div>
+                    <div class="subnavbar sliding">
+                        <a href="#" class="category button button-round" style="margin: auto;">All 
+                            <i class="f7-icons icon" style="display: inline;">down</i>
+                        </a>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- Pages -->
+            <div class="pages navbar-fixed toolbar-fixed">
+                <!-- BookmarkList page -->
+                <div data-page="bookmarkList" class="page">
+                    <%- include('./bookmarkList'); %>
+                </div>
+                <!-- Details page -->
+                <%- include('./detailsTemplate'); %>
+            </div>
+        </div>
+    </div>
+    <!-- Popover (BookmarkList page) -->
+    <%- include('./partials/popover'); %>
+        <!-- <script src="/vendor/jquery-3.2.1.min.js"></script> -->
+    <%- include('./scripttag'); %>
+        <!-- <script type="text/javascript">
+            window.addEventListener("focus", function(evt){
+            socket.emit('chat message', "connected");
+          }, false);
+            window.addEventListener("blur", function(evt){
+            socket.emit('chat message', "disconnected");
+          }, false);
+        </script> -->
+        
+</body>
+
+</html>

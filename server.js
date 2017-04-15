@@ -43,9 +43,9 @@ app.get('/', (req, res) => {
     //     res.render('pages/android/index');
     // }
     if(user === 'true') {
-        res.render('pages/ios/bookmarkList');
+        res.render('pages/ios/index_general');
     } else {
-        res.render('pages/ios/index'); 
+        res.render('pages/ios/index_control'); 
     }
     
 });
