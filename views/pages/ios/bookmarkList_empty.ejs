@@ -1,79 +1,43 @@
 <!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#2196f3">
-    <link rel="stylesheet" href="public/framework7/css/framework7.ios.min.css">
-    <link rel="stylesheet" href="public/framework7/css/framework7.ios.colors.min.css">
-    <link rel="stylesheet" href="public/framework7/css/framework7-icons.css">
-    <link rel="stylesheet" type="text/css" href="public/css/stylesheet.css">
-    <script src="https://hammerjs.github.io/dist/hammer.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!--     <script src="/socket.io/socket.io.js"></script> -->
-    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-    <!--     <script type="text/javascript" src="public/framework7/js/my-app.js"></script> -->
-    <title>Saved</title>
-  </head>
+<%- include('./header'); %>
 
-  <body>
-
+<body>
+    <div class="statusbar-overlay"></div>
     <div class="views">
-      <div class="view view-main">
-        <div class="navbar">
-          <div class="navbar-inner">
-            <div class="left">
-              <a href="#" class="link">
-                <i class="icon icon-back"></i>
-                <span>Back</span>
-              </a>
-            </div>
-            <div class="center">Saved</div>
-<!--             <div class="right">
-            </div> -->
-            <div class="subnavbar">
-              <a href="#" data-popover=".popover-links" class="open-popover button button-round disabled" style="margin: auto;">All 
-                <i class="f7-icons icon" style="display: inline;">down</i>
-              </a>
-            </div>
+        <div class="view view-main">
+
+      <!-- Navbar -->
+      <div class="navbar">
+          <div data-page="bookmarkList" class="navbar-inner">
+              <div class="center sliding">Saved</div>
+          <div class="subnavbar sliding">
+              <a href="#" class="category button button-round" style="margin: auto;">All 
+                    <i class="f7-icons icon" style="display: inline;">down</i>
+            </a>
           </div>
-        </div>
-        <div class="pages navbar-fixed toolbar-fixed">
-          <div data-page="index" class="page">
-            <div class="page-content" style="margin-top: 35px;">
-              <div class="content-block color-black" style="text-align: center;">
-                <div class="empty-layout">
-                  <i class="f7-icons size-40">bookmark_fill</i>
-                  <h2 class="h2-light">Nothing Here</h2>
-                  <p style="padding: 0 20px 0 20px;">Save events you want to see again.</p>
+          </div>
+      </div>
+
+      <!-- Pages -->
+      <div class="pages navbar-fixed toolbar-fixed">
+          <div data-page="bookmarkList" class="page">
+              <div class="page-content" style="margin-top: 20px;">
+                <div class="content-block color-black" style="text-align: center;">
+                  <div class="empty-layout">
+                    <i class="f7-icons size-40">bookmark_fill</i>
+                    <h2 class="h2-light">Nothing Here</h2>
+                    <p style="padding: 0 20px 0 20px;">Save events you want to see again.</p>
+                  </div>
                 </div>
               </div>
-            </div>
           </div>
-        </div>
       </div>
-    </div>
-
-    <div class="popover popover-links">
-      <div class="popover-angle"></div>
-        <div class="popover-inner">
-          <div class="list-block">
-            <ul>
-              <li><a href="#" class="list-button item-link">All</a></li>
-              <li><a href="#" class="list-button item-link">Competition</a></li>
-              <li><a href="#" class="list-button item-link">Intership/Job Application</a></li>
-              <li><a href="#" class="list-button item-link">Keynote Lectures</a></li>
-              <li><a href="#" class="list-button item-link">Scholarship</a></li>
-              <li><a href="#" class="list-button item-link">Recreation</a></li>
-              <li><a href="#" class="list-button item-link">Workshop/Camp</a></li>
-            </ul>
         </div>
-      </div>
     </div>
-  
-    <script type="text/javascript" src="public/framework7/js/framework7.min.js"></script>
-    <script type="text/javascript" src="public/js/app.js"></script>
-  </body>
+    <!-- Popover (BookmarkList page) -->
+    <%- include('./partials/popover'); %>
+  <%- include('./scripttag'); %>
+        
+</body>
 
 </html>
