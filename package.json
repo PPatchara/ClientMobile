@@ -13,6 +13,7 @@
     "body-parser": "^1.17.1",
     "ejs": "^2.5.5",
     "express": "^4.10.2",
+    "express-session": "^1.15.2",
     "express-useragent": "^1.0.7",
     "ics": "^1.2.0",
     "lowdb": "^0.15.4",

@@ -7,7 +7,8 @@ var express = require('express'),
     moment = require('moment'),
     helpers = require('./helpers'),
     bodyParser = require('body-parser'),
-    useragent = require('express-useragent')
+    useragent = require('express-useragent'),
+    session = require('express-session'),
     url = require('url');
 
 const db = low('logs/db.json');
@@ -19,6 +20,12 @@ app.use(express.static('public'));
 app.use(useragent.express());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(session({
+    secret: '#spicy shrimp sup',
+    genid: function(req) {
+        return helpers.uniqueID();
+    }
+}));
 
 http.listen(3000, () => {
     console.log('listening on *:3000');
@@ -29,6 +36,7 @@ app.get('/', (req, res) => {
     var user = req.query.user;
     log('user', user);
     log('user-agent', req.useragent.platform);
+    log('session.id', req.session.id);
     // if(['iPad', 'iPhone'].findIndex(platform => platform === req.useragent.platform) > -1) {
     //    res.render('pages/ios/index');
     // } else {
@@ -97,7 +105,6 @@ var unpacked = {
     untils  : [null],
     offsets : [-420]
 };
-
 
 // Bookmark Service
 var bookmarkService = {
