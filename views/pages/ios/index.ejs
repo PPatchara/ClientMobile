@@ -12,9 +12,9 @@
                     <%- include('./partials/nav_control'); %>
                 </div>
                 <!-- BookmarkList navbar-->
-                <div data-page="bookmarkList" class="navbar-inner cached">
-                    <%- include('./partials/nav_bookmarkList'); %>
-                </div>
+<!--                 <div data-page="bookmarkList" class="navbar-inner cached">
+
+                </div> -->
                 <!-- Help navbar -->
                 <div data-page="help" class="navbar-inner cached">
                     <div class="left sliding"><a href="#index" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>
@@ -37,10 +37,10 @@
                     <%- include('./partials/tabbar'); %>
                 </div>
                 <!-- BookmarkList page -->
-                <div data-page="bookmarkList" class="page cached">
+<!--                 <div data-page="bookmarkList" class="page cached">
                     <div class="page-content" style="margin-top: 20px;"></div>
                     <%- include('./bookmarkListTemplate'); %>
-                </div>
+                </div> -->
                 <!-- Help page -->
                 <div data-page="help" class="page cached">
                     <div class="page-content">
@@ -61,6 +61,14 @@
     <%- include('./partials/popover'); %>
         <!-- <script src="/vendor/jquery-3.2.1.min.js"></script> -->
         <%- include('./scripttag'); %>
+        <!-- <script type="text/javascript">
+            window.addEventListener("focus", function(evt){
+            socket.emit('chat message', "connected");
+          }, false);
+            window.addEventListener("blur", function(evt){
+            socket.emit('chat message', "disconnected");
+          }, false);
+        </script> -->
         
 </body>
 
