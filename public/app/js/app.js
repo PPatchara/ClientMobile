@@ -1,5 +1,5 @@
-var serverAddress = 'http://localhost:3000/api';
-var imageAddress = 'http://localhost:3000/app/img';
+var serverAddress = 'http://192.168.1.118:3000/api';
+var imageAddress = 'http://192.168.1.118:3000/app/img';
 
 var myApp = new Framework7({
     swipeBackPage:false,

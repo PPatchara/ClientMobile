@@ -116,11 +116,11 @@ var event_list = [
                   "tel": [
                         {
                               "name": "Wyne",
-                              "number": "+66897046621"
+                              "number": "0897046621"
                         },
                         {
                               "name": "Non",
-                              "number": "+66826588017"
+                              "number": "0826588017"
                         }
                   ]
             },

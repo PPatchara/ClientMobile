@@ -7,8 +7,8 @@ var express = require('express'),
     moment = require('moment'),
     helpers = require('./helpers'),
     bodyParser = require('body-parser'),
-    useragent = require('express-useragent');
-
+    useragent = require('express-useragent')
+    url = require('url');
 
 const db = low('logs/db.json');
 db.defaults({ users: [] }).write();
@@ -26,12 +26,19 @@ http.listen(3000, () => {
 
 // Routing
 app.get('/', (req, res) => {
+    var user = req.query.user;
+    log('user', user);
     log('user-agent', req.useragent.platform);
     // if(['iPad', 'iPhone'].findIndex(platform => platform === req.useragent.platform) > -1) {
-        res.render('pages/ios/index');
+    //    res.render('pages/ios/index');
     // } else {
     //     res.render('pages/android/index');
     // }
+    if(user === 'true') {
+        res.render('pages/ios/bookmarkList');
+    } else {
+        res.render('pages/ios/index'); 
+    }
     
 });
 
