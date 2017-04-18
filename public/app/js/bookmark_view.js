@@ -1,10 +1,7 @@
-function getBookmarkList(uid) {
+function getBookmarkList() {
     return  $.ajax({
                 method: 'GET',
-                url: serverAddress + '/bookmarks',
-                data: {
-                    uid: uid
-                }
+                url: serverAddress + '/bookmarks'
             })
             .then(reInitVariable)
             .then(rerender);
@@ -51,13 +48,12 @@ function rerender(data) {
     return data;
 }
 
-function addBookmark(uid, bookmarkId) {
+function addBookmark(bookmarkId) {
     console.log(`Adding bookmark=${bookmarkId}`)
     return  $.ajax({
                 method: 'POST',
                 url: serverAddress + '/bookmarks',
                 data: {
-                    uid: uid,
                     bookmarkId: bookmarkId
                 }
             })
@@ -70,13 +66,12 @@ function addBookmark(uid, bookmarkId) {
             .then(rerender)
 }
 
-function deleteBookmark(uid, bookmarkId) {
+function deleteBookmark(bookmarkId) {
     console.log(`Deleting bookmark=${bookmarkId}`)
     return  $.ajax({
                 method: 'DELETE',
                 url: serverAddress + '/bookmarks',
                 data: {
-                    uid: uid,
                     bookmarkId: bookmarkId
                 }
             })
@@ -91,9 +86,9 @@ function deleteBookmark(uid, bookmarkId) {
 
 $$('#bookmark').on('click', () => {
     if($$('#bookmark').hasClass('active')) {
-        deleteBookmark(getUid(), slideId);
+        deleteBookmark(slideId);
     }else {
-        addBookmark(getUid(), slideId);
+        addBookmark(slideId);
     }
 });
 
@@ -111,7 +106,7 @@ function renderBookmarkList(page) {
     }
     console.log("Navigated to bookmark list");
 
-    getBookmarkList(getUid())
+    getBookmarkList()
         .then(getEventListFromBookmarkList)
         .then(render);
 
@@ -126,7 +121,7 @@ function renderBookmarkList(page) {
 
     $$('.page-content').on('click', '.delete-card', (e) => {
         let bookmarkId = $(e.target).parent().data('id');
-        deleteBookmark(getUid(), bookmarkId)
+        deleteBookmark(bookmarkId)
             .then(getEventListFromBookmarkList)
             .then(render);
     });
@@ -134,5 +129,3 @@ function renderBookmarkList(page) {
 
 myApp.onPageInit('bookmarkList', renderBookmarkList);
 myApp.onPageReinit('bookmarkList', renderBookmarkList);
-
-getBookmarkList(getUid());

@@ -163,16 +163,6 @@
         console.log(`connect.sid = ${Cookies.get('connect.sid')}`);
     }
 
-    // socket.on('joined', (data) => {
-    //     connected = true;
-
-    //     if (data.status === 'new user') {
-    //         console.log('[New user] ' + data.uid);
-    //         localStorage.setItem('uid', data.uid);
-
-    //     }
-    // });
-
     sendJoinToServer();
 
     // Control mode
@@ -180,7 +170,7 @@
     socket.on('currentstate', (_slideId, loopState) => {
         console.log(`currentstate <slide=${_slideId}>`);
         socket.emit('currentstate', _slideId, loopState);
-        getBookmarkList(getUid());
+        getBookmarkList();
         slideId = _slideId;
     });
 
@@ -231,7 +221,7 @@
     myApp.onPageReinit('acquire', renderAcquiringPage);
 
     function getUid() {
-        return localStorage.getItem('uid');
+        return Cookies.get('connect.sid');
     }
 
 // });

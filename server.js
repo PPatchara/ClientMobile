@@ -59,8 +59,7 @@ app.get('/help', (req, res) => {
 });
 
 app.get('/api/bookmarks', (req, res) => {
-    console.log('bookmarks');
-    let bookmarkList = bookmarkService.getBookmarkListByUid(req.query.uid);
+    let bookmarkList = bookmarkService.getBookmarkListByUid(req.session.id);
     res.json({
         status: "ok",
         content: bookmarkList,
@@ -69,17 +68,17 @@ app.get('/api/bookmarks', (req, res) => {
 });
 
 app.post('/api/bookmarks', (req, res) => {
-    let response = bookmarkService.addBookmark(req.body.uid, req.body.bookmarkId);
+    let response = bookmarkService.addBookmark(req.session.id, req.body.bookmarkId);
     res.json(response);
 });
 
 app.delete('/api/bookmarks', (req, res) => {
-    let response = bookmarkService.deleteBookmark(req.body.uid, req.body.bookmarkId);
+    let response = bookmarkService.deleteBookmark(req.session.id, req.body.bookmarkId);
     res.json(response);
 });
 
 app.post('/api/slide/toleft', (req, res) => {
-    let result = bookmarkService.getBookmarkById(req.body.uid, slideId);
+    let result = bookmarkService.getBookmarkById(req.session.id, slideId);
     res.json({
         status: "ok",
         isBookmark: result
@@ -87,7 +86,7 @@ app.post('/api/slide/toleft', (req, res) => {
 });
 
 app.post('/api/slide/toright', (req, res) => {
-    let result = bookmarkService.getBookmarkById(req.body.uid, slideId);
+    let result = bookmarkService.getBookmarkById(req.session.id, slideId);
     res.json({
         status: "ok",
         isBookmark: result
@@ -114,7 +113,8 @@ var bookmarkService = {
         return bookmark;
     },
     getBookmarkListByUid: function(uid) {
-        let bookmarkList = db.get('users').find({ id: uid }).get('bookmarks').value();
+        let User = db.get('users').find({ id: uid });
+        let bookmarkList = User.get('bookmarks').value();
         return bookmarkList;
     },
     addBookmark: function(uid, bookmarkId) {
@@ -132,7 +132,6 @@ var bookmarkService = {
         }
         User.get('bookmarks').push({ id: bookmarkId }).write();
         let bookmarkList = this.getBookmarkListByUid(uid);
-        console.log(bookmarkList);
         return {
             status: "ok",
             content: bookmarkList,
