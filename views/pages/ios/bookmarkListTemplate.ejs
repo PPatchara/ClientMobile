@@ -3,8 +3,8 @@
         <div class="list-block cards-list">
             <ul> 
                 {{#each event_list}}
-                <a href="#" style="color: #000000">
                   <li class="card" data-id="{{this.id}}"> 
+                  <a href="#" style="color: #000000">
                     <div class="card-content">
                       <div class="list-block media-list">
                           <div class="item-content">
@@ -23,7 +23,6 @@
                                 <p><i class="material-icons size-15 color-blue">schedule</i>
                                   {{#this.schedule}}
                                     <span>{{this.topic}}: {{this.date}}</span>
-<!--                                     <span>{{this.topic}}: {{this.date}}</span><br/>&nbsp;&nbsp;&nbsp;&nbsp; -->
                                   {{/this.schedule}}
                                 </p>
                               </div>
@@ -32,7 +31,7 @@
                           </div>
                       </div>
                     </div>
-                   
+                  </a>
                     <div class="card-footer">
                       {{#this.category}}
                         <div class="chip chip chip-label" style="margin-bottom: 10px; background-color: {{this.color}}; font-weight: 500;">{{this.type}}</div>
@@ -43,7 +42,7 @@
                       </a>
                     </div>
                   </li>  
-                </a>
+
                 {{/each}}
             </ul>
         </div>

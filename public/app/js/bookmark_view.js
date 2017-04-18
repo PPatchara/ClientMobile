@@ -110,7 +110,7 @@ function renderBookmarkList(page) {
         .then(getEventListFromBookmarkList)
         .then(render);
 
-    $$('.page-content').on('click', 'li.card', (e) => {
+    $$('.page-content').on('click', '.card-content', (e) => {
         let clickedBookmarkId = $$(e.target).parents('li.card').data('id');
         console.log(clickedBookmarkId);
         mainView.router.load({
