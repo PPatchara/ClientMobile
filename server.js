@@ -151,6 +151,20 @@ var bookmarkService = {
     }
 }
 
+function parseCookies(cookies) {
+    let arr = cookies.split(';').map( c => {
+        let value = c.split('='), obj = {};
+        obj[value[0].trim()] = value[1].trim();
+        return obj;
+    });
+    let merged = Object.assign(...arr);
+    return merged;
+}
+
+function decodeUid(encodedUid) {
+    return encodedUid.slice(4, 40);
+}
+
 // Socket below
 var slideId = "#001";
 
@@ -173,27 +187,29 @@ io.on('connection', (socket) => {
     socket.on('join', (data) => {
         if (alreadyJoined) return;
 
+        // console.log(socket.request.headers.cookie);
+        let cookies = parseCookies(socket.request.headers.cookie);
+        uid = decodeUid(cookies['connect.sid']);
+
         var message;
-        if (data.uid == undefined) {
-            data.uid = helpers.uniqueID();
+        if (db.get('users').find({ id: uid }).value() == undefined) {
             message = {
-                'uid': data.uid,
+                'uid': uid,
                 'status': 'new user'
             };
             log('Connection', 'New user has joined.');
             // Add a user
-            db.get('users').push({ id: data.uid, connections: [], bookmarks: [] }).write();
+            db.get('users').push({ id: uid, connections: [], bookmarks: [] }).write();
         } 
         else {
             message = {
-                'uid': data.uid,
+                'uid': uid,
                 'status': 'ok'
             };
-            log('Connection', 'Exist user has joined. (' + data.uid + ')');
+            log('Connection', 'Exist user has joined. (' + uid + ')');
         }
 
         alreadyJoined = true;
-        uid = data.uid;
         User = db.get('users').find({ id: uid });
 
         // Record joined timestamp
@@ -201,7 +217,7 @@ io.on('connection', (socket) => {
         User.get('connections')
             .push({ timestamp: time })
             .write();
-        socket.emit('joined', message);
+        // socket.emit('joined', message);
         socket.emit('currentstate', slideId, 'enable');
     });
 

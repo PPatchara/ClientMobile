@@ -157,21 +157,21 @@
     // Join server
     function sendJoinToServer() {
         var message = { 
-            'uid': localStorage.getItem('uid')
+            'uid': Cookies.get('connect.sid')
         };
         socket.emit('join', message);
-        console.log(localStorage.getItem('uid'));
+        console.log(`connect.sid = ${Cookies.get('connect.sid')}`);
     }
 
-    socket.on('joined', (data) => {
-        connected = true;
+    // socket.on('joined', (data) => {
+    //     connected = true;
 
-        if (data.status === 'new user') {
-            console.log('[New user] ' + data.uid);
-            localStorage.setItem('uid', data.uid);
+    //     if (data.status === 'new user') {
+    //         console.log('[New user] ' + data.uid);
+    //         localStorage.setItem('uid', data.uid);
 
-        }
-    });
+    //     }
+    // });
 
     sendJoinToServer();
 
