@@ -9,6 +9,7 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     useragent = require('express-useragent'),
     session = require('express-session'),
+    SQLiteStore = require('connect-sqlite3')(session),
     url = require('url');
 
 const db = low('logs/db.json');
@@ -21,10 +22,11 @@ app.use(useragent.express());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
+    store: new SQLiteStore,
     secret: '#spicy shrimp sup',
     genid: function(req) {
         return helpers.uniqueID();
-    }
+    },
 }));
 
 http.listen(3000, () => {
