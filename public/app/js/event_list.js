@@ -80,12 +80,11 @@ var event_list = [
       "share": 
             {
                   "facebook": "https://www.facebook.com/sharer/sharer.php?u=http%3A//framework7.io/docs/cards.html&display=popup",
-                  "email": [
+                  "email": 
                         {
                               "subject": "Test2",
                               "body": "Description2"
                         }
-                  ]
             }
       
       },
@@ -127,12 +126,11 @@ var event_list = [
       "share": 
             {
                   "facebook": "https://www.facebook.com/sharer/sharer.php?u=http%3A//framework7.io/docs/cards.html&display=popup",
-                  "email": [
+                  "email": 
                         {
                               "subject": "Test3",
                               "body": "Description3"
                         }
-                  ]
             }
       
       }
