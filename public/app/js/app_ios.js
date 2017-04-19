@@ -1,6 +1,7 @@
 // $(() => {
     
     // Control page
+    var slideId="#001";
     var touchPad = document.getElementById('touchPad');
     var switchMode = document.getElementById('switchMode');
     var mc = new Hammer(touchPad);
@@ -29,7 +30,7 @@
         }
     });
 
-    var slideId="#001";
+    
 
     // Acquiring mode page (Switch Mode)
     mc_switch.get('swipe').set({
@@ -48,53 +49,53 @@
     });
 
     //BookmarkList page
-    var category = 'All';
-    $$('.category').on('click', function (e) {
-        var target = this;
-        var buttons = [
-            {
-                text: 'All'
-            },
-            {
-                text: 'Competition'
-            },
-            {
-                text: 'Intership/Job Application',
-                onClick: () => {
-                    category = 'Intership/Job Application';
-                }
-            },
-            {
-                text: 'Keynote',
-                onClick: () => {
-                    category = 'Keynote';
-                }
-            },
-            {
-                text: 'Scholarship',
-                onClick: () => {
-                    category = 'Scholarship';
-                }
-            },
-            {
-                text: 'Recreation',
-                onClick: () => {
-                    category = 'Recreation';
-                }
-            },
-            {
-                text: 'Workshop/Camp',
-                onClick: () => {
-                    category = 'Workshop/Camp';
-                }
-            },
-            {
-                text: 'Cancel',
-                color: 'red'
-            }
-        ];
-        myApp.actions(target, buttons);
-    });
+    // var category = 'All';
+    // $$('.category').on('click', function (e) {
+    //     var target = this;
+    //     var buttons = [
+    //         {
+    //             text: 'All'
+    //         },
+    //         {
+    //             text: 'Competition'
+    //         },
+    //         {
+    //             text: 'Intership/Job Application',
+    //             onClick: () => {
+    //                 category = 'Intership/Job Application';
+    //             }
+    //         },
+    //         {
+    //             text: 'Keynote',
+    //             onClick: () => {
+    //                 category = 'Keynote';
+    //             }
+    //         },
+    //         {
+    //             text: 'Scholarship',
+    //             onClick: () => {
+    //                 category = 'Scholarship';
+    //             }
+    //         },
+    //         {
+    //             text: 'Recreation',
+    //             onClick: () => {
+    //                 category = 'Recreation';
+    //             }
+    //         },
+    //         {
+    //             text: 'Workshop/Camp',
+    //             onClick: () => {
+    //                 category = 'Workshop/Camp';
+    //             }
+    //         },
+    //         {
+    //             text: 'Cancel',
+    //             color: 'red'
+    //         }
+    //     ];
+    //     myApp.actions(target, buttons);
+    // });
 
     // Tab bar
     $$('.disconnect').on('click', () => {
@@ -170,13 +171,9 @@
     socket.on('currentstate', (_slideId, loopState) => {
         console.log(`currentstate <slide=${_slideId}>`);
         socket.emit('currentstate', _slideId, loopState);
-        getBookmarkList();
+        getBookmarkListWithRender();
         slideId = _slideId;
     });
-
-    function getCalendar(slideId) {
-
-    }
     
 
     // Acquiring mode page
@@ -219,9 +216,5 @@
 
     myApp.onPageInit('acquire', renderAcquiringPage);
     myApp.onPageReinit('acquire', renderAcquiringPage);
-
-    function getUid() {
-        return Cookies.get('connect.sid');
-    }
 
 // });

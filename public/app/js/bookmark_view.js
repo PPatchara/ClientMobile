@@ -1,10 +1,7 @@
-function getBookmarkList() {
-    return  $.ajax({
-                method: 'GET',
-                url: serverAddress + '/bookmarks'
-            })
-            .then(reInitVariable)
-            .then(rerender);
+function getBookmarkListWithRender() {
+    return  getBookmarkList()
+                .then(reInitVariable)
+                .then(rerender);
 }
 
 var dataBookmarkList = {
@@ -48,65 +45,59 @@ function rerender(data) {
     return data;
 }
 
-function addBookmark(bookmarkId) {
+function addBookmarkWithRender(bookmarkId) {
     console.log(`Adding bookmark=${bookmarkId}`)
-    return  $.ajax({
-                method: 'POST',
-                url: serverAddress + '/bookmarks',
-                data: {
-                    bookmarkId: bookmarkId
-                }
-            })
-            .then(reInitVariable)
-            .then((data) => {
-                console.log(`Added bookmark=${bookmarkId}`)
-                socket.emit('client bookmark', 'add');
-                return data;
-            })
-            .then(rerender)
+    return  addBookmark(bookmarkId)
+                .then(reInitVariable)
+                .then((data) => {
+                    console.log(`Added bookmark=${bookmarkId}`)
+                    socket.emit('client bookmark', 'add');
+                    return data;
+                })
+                .then(rerender)
 }
 
-function deleteBookmark(bookmarkId) {
+function deleteBookmarkWithRender(bookmarkId) {
     console.log(`Deleting bookmark=${bookmarkId}`)
-    return  $.ajax({
-                method: 'DELETE',
-                url: serverAddress + '/bookmarks',
-                data: {
-                    bookmarkId: bookmarkId
-                }
-            })
-            .then(reInitVariable)
-            .then(rerender)
-            .then((data) => {
-                console.log(`Deleted bookmark=${bookmarkId}`)
-                socket.emit('client bookmark', 'delete');
-                return data;
-            });
+    return  deleteBookmark(bookmarkId)
+                .then(reInitVariable)
+                .then(rerender)
+                .then((data) => {
+                    console.log(`Deleted bookmark=${bookmarkId}`)
+                    socket.emit('client bookmark', 'delete');
+                    return data;
+                });
 }
 
 $$('#bookmark').on('click', () => {
     if($$('#bookmark').hasClass('active')) {
-        deleteBookmark(slideId);
+        deleteBookmarkWithRender(slideId);
     }else {
-        addBookmark(slideId);
+        addBookmarkWithRender(slideId);
     }
 });
 
 // BookmarkList page
 
-function getEventListFromBookmarkList(data) {
-    return _.filter(event_list, event => data.content.filter(d => d.id == event.id).length === 1);
+
+function initBookmarkListPage(page) {
+    renderBookmarkListPage(page);
 }
 
-function renderBookmarkList(page) {
+function renderBookmarkListPage(page) {
+    function getEventListFromBookmarkList(data) {
+        return _.filter(event_list, event => data.content.filter(d => d.id == event.id).length === 1);
+    }
+
     let render = (responseEventList) => {
         let bookmarkListHTML = Template7.templates.bookmarkListTemplate({ event_list: responseEventList});
         $$(page.container).find('.page-content').html(bookmarkListHTML);
         return responseEventList;
     }
+
     console.log("Navigated to bookmark list");
 
-    getBookmarkList()
+    getBookmarkListWithRender()
         .then(getEventListFromBookmarkList)
         .then(render);
 
@@ -121,11 +112,13 @@ function renderBookmarkList(page) {
 
     $$('.page-content').on('click', '.delete-card', (e) => {
         let bookmarkId = $(e.target).parent().data('id');
-        deleteBookmark(bookmarkId)
+        deleteBookmarkWithRender(bookmarkId)
             .then(getEventListFromBookmarkList)
             .then(render);
     });
+
+    console.log("render");
 }
 
-myApp.onPageInit('bookmarkList', renderBookmarkList);
-myApp.onPageReinit('bookmarkList', renderBookmarkList);
+myApp.onPageInit('bookmarkList', initBookmarkListPage);
+myApp.onPageReinit('bookmarkList', initBookmarkListPage);

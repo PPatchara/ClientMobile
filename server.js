@@ -35,8 +35,6 @@ http.listen(3000, () => {
 
 // Routing
 app.get('/', (req, res) => {
-    var user = req.query.user;
-    log('user', user);
     log('user-agent', req.useragent.platform);
     log('session.id', req.session.id);
     // if(['iPad', 'iPhone'].findIndex(platform => platform === req.useragent.platform) > -1) {
@@ -44,10 +42,23 @@ app.get('/', (req, res) => {
     // } else {
     //     res.render('pages/android/index');
     // }
-    if(user === 'true') {
-        res.render('pages/ios/index_general');
+    res.render('pages/ios/index_general');
+    
+});
+
+app.get('/:key', (req, res) => {
+    var genKey = '1234';
+    log('user-agent', req.useragent.platform);
+    log('session.id', req.session.id);
+    // if(['iPad', 'iPhone'].findIndex(platform => platform === req.useragent.platform) > -1) {
+    //    res.render('pages/ios/index');
+    // } else {
+    //     res.render('pages/android/index');
+    // }
+    if(genKey == req.params.key) {
+        res.render('pages/ios/index_control');
     } else {
-        res.render('pages/ios/index_control'); 
+        res.render('pages/ios/index_general');
     }
     
 });
@@ -132,7 +143,9 @@ var bookmarkService = {
                 "msg": bookmarkId + " is already in bookmark list"
             };
         }
-        User.get('bookmarks').push({ id: bookmarkId }).write();
+        if (bookmarkId !== undefined) {
+            User.get('bookmarks').push({ id: bookmarkId }).write();
+        };
         let bookmarkList = this.getBookmarkListByUid(uid);
         return {
             status: "ok",

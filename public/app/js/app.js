@@ -18,3 +18,7 @@ var mainView = myApp.addView('.view-main', {
     domCache: true
 
 });
+
+function getUid() {
+    return Cookies.get('connect.sid');
+}
