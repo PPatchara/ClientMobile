@@ -50,12 +50,11 @@ app.get('/:key', (req, res) => {
     var genKey = '1234';
     log('user-agent', req.useragent.platform);
     log('session.id', req.session.id);
-    // if(['iPad', 'iPhone'].findIndex(platform => platform === req.useragent.platform) > -1) {
-    //    res.render('pages/ios/index');
-    // } else {
-    //     res.render('pages/android/index');
-    // }
     if(genKey == req.params.key) {
+        
+        io.on('connection', (socket) => {
+            socket.broadcast.emit('key verify', 'verified');
+        });
         res.render('pages/ios/index_control');
     } else {
         res.render('pages/ios/index_general');
