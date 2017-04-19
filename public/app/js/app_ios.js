@@ -27,6 +27,8 @@
             mainView.router.load({
                 pageName: 'acquire',
             });
+        } else if (ev.type == 'doubletap') {
+
         }
     });
 
@@ -150,7 +152,11 @@
         myApp.actions(buttons);
     });
 
-    $$('.addCalendar').on('click', () => {
+    $$('.addCalendar').on('click', (e) => {
+        let event = EventListService.get(slideId);
+        let url = event.calendar;
+        $('.addCalendar').attr('href', `${calendarAddress}/${event.calendar}`);
+        // $(e.target).href=`${calendarAddress}/${event.calendar}`;
         socket.emit('tabbar calendar', 'addCalendar');
     })
 

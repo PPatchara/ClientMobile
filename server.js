@@ -27,6 +27,8 @@ app.use(session({
     genid: function(req) {
         return helpers.uniqueID();
     },
+    resave: false,
+    saveUninitialized: true
 }));
 
 http.listen(3000, () => {
@@ -48,10 +50,9 @@ app.get('/', (req, res) => {
 
 app.get('/:key', (req, res) => {
     var genKey = '1234';
-    log('user-agent', req.useragent.platform);
-    log('session.id', req.session.id);
+    log('API:user-agent', req.useragent.platform);
+    log('API:session.id', req.session.id);
     if(genKey == req.params.key) {
-        
         io.on('connection', (socket) => {
             socket.broadcast.emit('key verify', 'verified');
         });
@@ -72,6 +73,7 @@ app.get('/help', (req, res) => {
 
 app.get('/api/bookmarks', (req, res) => {
     let bookmarkList = bookmarkService.getBookmarkListByUid(req.session.id);
+    console.log('api bookmark: ' + JSON.stringify(req.session.id));
     res.json({
         status: "ok",
         content: bookmarkList,
