@@ -28,7 +28,7 @@
                 pageName: 'acquire',
             });
         } else if (ev.type == 'doubletap') {
-
+            addBookmarkWithRender(slideId);
         }
     });
 
@@ -156,7 +156,6 @@
         let event = EventListService.get(slideId);
         let url = event.calendar;
         $('.addCalendar').attr('href', `${calendarAddress}/${event.calendar}`);
-        // $(e.target).href=`${calendarAddress}/${event.calendar}`;
         socket.emit('tabbar calendar', 'addCalendar');
     })
 
