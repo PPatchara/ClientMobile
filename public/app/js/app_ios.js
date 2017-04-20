@@ -155,7 +155,7 @@
     $$('.addCalendar').on('click', (e) => {
         let event = EventListService.get(slideId);
         let url = event.calendar;
-        $('.addCalendar').attr('href', `${calendarAddress}/${event.calendar}`);
+        window.open(`${calendarAddress}/${event.calendar}`, '_blank');
         socket.emit('tabbar calendar', 'addCalendar');
     })
 

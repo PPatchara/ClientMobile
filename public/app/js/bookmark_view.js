@@ -92,6 +92,7 @@ function renderBookmarkListPage(page) {
     let render = (responseEventList) => {
         let bookmarkListHTML = Template7.templates.bookmarkListTemplate({ event_list: responseEventList});
         $$(page.container).find('.page-content').html(bookmarkListHTML);
+
         return responseEventList;
     }
 
