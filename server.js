@@ -137,6 +137,7 @@ var bookmarkService = {
         if (bookmark === undefined) {
             User.assign({ bookmarks: [] }).write();
         }
+        log('addBookmark', this.getBookmarkById(uid, bookmarkId));
         if (this.getBookmarkById(uid, bookmarkId) !== undefined) {
             log('bookmark', bookmarkId + ` is already in bookmark list`);
             return {
@@ -178,6 +179,21 @@ function parseCookies(cookies) {
 
 function decodeUid(encodedUid) {
     return encodedUid.slice(4, 40);
+}
+
+var aliveTime;
+
+function setAliveTime() {
+    clearAlive();
+    aliveTime = setTimeout(aliveStatus, 30000);
+}
+
+function aliveStatus() {
+  console.log("[Alive status]: Inactive!!!!!");
+}
+
+function clearAlive() {
+    clearTimeout(aliveTime);
 }
 
 // Socket below
@@ -227,6 +243,8 @@ io.on('connection', (socket) => {
         alreadyJoined = true;
         User = db.get('users').find({ id: uid });
 
+        setAliveTime();
+
         // Record joined timestamp
         var time = moment().utc(420);
         User.get('connections')
@@ -238,25 +256,29 @@ io.on('connection', (socket) => {
 
     //Touchpad
     socket.on('gesture swipeleft', (gesture) => {
+        setAliveTime();
         log('Gesture', gesture);
         socket.broadcast.emit('gesture swipeleft', gesture);
     });
     socket.on('gesture swiperight', (gesture) => {
+        setAliveTime();
         log('Gesture', gesture);
         socket.broadcast.emit('gesture swiperight', gesture);
     });
     socket.on('gesture swipeup', (gesture) => {
+        setAliveTime();
         log('Gesture', gesture);
         socket.broadcast.emit('gesture swipeup', gesture);
     });
     socket.on('gesture swipedown', (gesture) => {
+        setAliveTime();
         log('Gesture', gesture);
         socket.broadcast.emit('gesture swipedown', gesture);
     });
     socket.on('gesture doubletap', (gesture) => {
+        setAliveTime();
         log('Gesture', gesture);
         socket.broadcast.emit('gesture doubletap', gesture);
-        bookmarkService.addBookmark(uid,slideId);
     });
 
     socket.on('currentstate', (_slideId, loopState) => {
@@ -272,28 +294,24 @@ io.on('connection', (socket) => {
     });
 
     //Tab bar
-    // socket.on('tabbar bookmark', (data) => {
-    //     if(data){
-    //         bookmarkService.addBookmark(uid, slideId);
-    //         socket.broadcast.emit('bookmarked', 'bookmarked');
-    //     }else {
-    //         deleteBookmark(uid, slideId);
-    //         socket.broadcast.emit('unbookmarked', 'unbookmarked');
-    //     }
-    // });
-
-    socket.on('tabbar share', (channel) => {
-        log('tabbar share', channel);
-        socket.broadcast.emit('share', 'shared');
+    socket.on('tabbar bookmark', (data) => {
+        setAliveTime();
+        log('tabbar bookmark', data);
     });
 
-    // socket.on('tabbar calendar', (state) => {
-    //     log('tabbar calendar', data);
-    //     socket.broadcast.emit('calendar', 'addCalendar');
-    // });
+    socket.on('tabbar share', (channel) => {
+        setAliveTime();
+        log('tabbar share', channel);
+    });
+
+    socket.on('tabbar calendar', (state) => {
+        setAliveTime();
+        log('tabbar calendar', state);
+    });
 
     socket.on('tabbar disconnect', () => {
-        log('Socket', 'user has disconnected.');
+        setAliveTime();
+        log('tabbar disconnect', 'disconnect');
     });
 
     //Bookmarklist

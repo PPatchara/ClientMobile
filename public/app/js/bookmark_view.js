@@ -10,15 +10,19 @@ var dataBookmarkList = {
 };
 
 function reInitVariable(data) {
-    dataBookmarkList.count = data.count;
-    dataBookmarkList.content = data.content;
-    console.log(`data changed: dataBookmarkList= ${JSON.stringify(dataBookmarkList)}`);
-    return data;
+    if (data.status === 'ok') {
+        dataBookmarkList.count = data.count;
+        dataBookmarkList.content = data.content;
+        console.log(`data changed: dataBookmarkList= ${JSON.stringify(dataBookmarkList)}`);    
+    }
+    
+    return dataBookmarkList;
 }
 
 function rerender(data) {
+    console.log("Rerendering...");
     function badge() {
-        if(data.count === 0) {
+        if(dataBookmarkList.count === 0) {
             $$('#badge').hide();
         }else {
             $$('#badge').show();
@@ -28,7 +32,6 @@ function rerender(data) {
 
     function isBookmark() {
         let result = dataBookmarkList.content.filter(d => d.id === slideId);
-        console.log(result);
         if (result.length !== 0) {
             console.log('added class active');
             $('#bookmark').addClass('active');
@@ -46,7 +49,7 @@ function rerender(data) {
 }
 
 function addBookmarkWithRender(bookmarkId) {
-    console.log(`Adding bookmark=${bookmarkId}`)
+    console.log(`AddingWithRender bookmark=${bookmarkId}`)
     return  addBookmark(bookmarkId)
                 .then(reInitVariable)
                 .then((data) => {
@@ -72,8 +75,10 @@ function deleteBookmarkWithRender(bookmarkId) {
 $$('#bookmark').on('click', () => {
     if($$('#bookmark').hasClass('active')) {
         deleteBookmarkWithRender(slideId);
+        socket.emit('tabbar bookmark', 'delete');
     }else {
         addBookmarkWithRender(slideId);
+        socket.emit('tabbar bookmark', 'add');
     }
 });
 
