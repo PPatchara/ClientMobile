@@ -95,8 +95,23 @@ function renderBookmarkListPage(page) {
     }
 
     let render = (responseEventList) => {
-        let bookmarkListHTML = Template7.templates.bookmarkListTemplate({ event_list: responseEventList});
-        $$(page.container).find('.page-content').html(bookmarkListHTML);
+        // let bookmarkListHTML = Template7.templates.bookmarkListTemplate({ event_list: responseEventList});
+        // $$(page.container).find('.page-content').html(bookmarkListHTML);
+
+        if (dataBookmarkList.count != 0) {
+            let bookmarkListHTML = Template7.templates.bookmarkListTemplate({ event_list: responseEventList});
+            $$(page.container).find('.page-content').html(bookmarkListHTML);
+        }else {
+            $$(page.container).find('.page-content').html(`
+                <div class="content-block color-black" style="margin-top: 20px; text-align: center;">
+                    <div class="empty-layout">
+                        <i class="f7-icons size-40">bookmark_fill</i>
+                        <h2 class="h2-light">Nothing Here</h2>
+                        <p style="padding: 0 20px 0 20px;">Save events you want to see again.</p>
+                    </div>
+                </div>
+            `);
+        }
 
         return responseEventList;
     }

@@ -1,6 +1,6 @@
-var serverAddress = 'http://10.50.8.13:3000/api';
-var imageAddress = 'http://10.50.8.13:3000/app/img';
-var calendarAddress = 'http://10.50.8.13:3000/calendars';
+var serverAddress = 'http://10.0.100.163:3000/api';
+var imageAddress = 'http://10.0.100.163:3000/app/img';
+var calendarAddress = 'http://10.0.100.163:3000/calendars';
 
 var myApp = new Framework7({
     swipeBackPage:false,
