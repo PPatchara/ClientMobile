@@ -275,10 +275,10 @@ io.on('connection', (socket) => {
         log('Gesture', gesture);
         socket.broadcast.emit('gesture swipedown', gesture);
     });
-    socket.on('gesture doubletap', (gesture) => {
+    socket.on('gesture press', (gesture) => {
         setAliveTime();
         log('Gesture', gesture);
-        socket.broadcast.emit('gesture doubletap', gesture);
+        socket.broadcast.emit('gesture press', gesture);
     });
 
     socket.on('currentstate', (_slideId, loopState) => {
@@ -294,6 +294,10 @@ io.on('connection', (socket) => {
     });
 
     //Tab bar
+    socket.on('tabbar help', (data) => {
+        setAliveTime();
+        log('tabbar help', data);
+    });
     socket.on('tabbar bookmark', (data) => {
         setAliveTime();
         log('tabbar bookmark', data);

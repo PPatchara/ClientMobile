@@ -18,7 +18,7 @@
         direction: Hammer.DIRECTION_ALL
     });
 
-    mc.on('swipeleft swiperight swipedown doubletap', (ev) => {
+    mc.on('swipeleft swiperight swipedown tap press', (ev) => {
         console.log("[Gesture]: " + ev.type);
 
         socket.emit('gesture ' + ev.type, ev.type);
@@ -27,7 +27,7 @@
             mainView.router.load({
                 pageName: 'acquire',
             });
-        } else if (ev.type == 'doubletap') {
+        } else if (ev.type == 'press') {
             addBookmarkWithRender(slideId);
         }
     });
@@ -100,14 +100,14 @@
     // });
 
     // Tab bar
-    $$('.disconnect').on('click', () => {
+    $$('#disconnect').on('click', () => {
        myApp.confirm('', 'Are you sure to disconnect?', () => {
            myApp.alert('','Disconnected');
        });
        socket.emit('tabbar disconnect', 'disconnect');
     });
 
-    $$('.share').on('click', () => {
+    $$('#share').on('click', () => {
         let event = EventListService.get(slideId);
         console.log(slideId);
         console.log(event);
@@ -172,11 +172,18 @@
         myApp.actions(buttonGroups);
     });
 
-    $$('.addCalendar').on('click', (e) => {
+    $$('#addCalendar').on('click', (e) => {
         let event = EventListService.get(slideId);
         let url = event.calendar;
         window.open(`${calendarAddress}/${event.calendar}`, '_blank');
         socket.emit('tabbar calendar', 'addCalendar');
+    })
+
+    $$('#help').on('click', (e) => {
+        mainView.router.load({
+            pageName: 'help',
+        });
+        socket.emit('tabbar help', 'help');
     })
 
     // Socket begin

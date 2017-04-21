@@ -15,12 +15,18 @@
                 <!-- BookmarkmarkList navbar -->
                 <div data-page="bookmarkList" class="navbar-inner cached">
                     <div class="left sliding"><a href="#index" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>
-                    <div class="center sliding">Saved List</div>
+                    <div class="center sliding">Bookmarked List</div>
 <!--                     <div class="subnavbar sliding">
                         <a href="#" class="category button button-round" style="margin: auto;">All 
                             <i class="f7-icons icon" style="display: inline;">down</i>
                         </a>
                     </div> -->
+                </div>
+
+                <!-- Help page -->
+                <div data-page="help" class="navbar-inner cached">
+                    <div class="left sliding"><a href="#index" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>
+                    <div class="center sliding">Help</div>
                 </div>
 
             </div>
@@ -39,7 +45,9 @@
                     <%- include('./bookmarkList'); %>
                 </div>
                 <!-- Help page -->
-                <%- include('./help'); %>
+                <div data-page="help" class="page cached">
+                    <%- include('./help'); %>
+                </div>
                 <!-- Acquiring mode page -->
                 <%- include('./acquire'); %>
                 <!-- Details page -->
