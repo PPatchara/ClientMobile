@@ -104,25 +104,17 @@
        myApp.confirm('', 'Are you sure to disconnect?', () => {
            myApp.alert('','Disconnected');
        });
+       socket.emit('tabbar disconnect', 'disconnect');
     });
 
     $$('.share').on('click', () => {
         let event = EventListService.get(slideId);
         console.log(slideId);
         console.log(event);
-        var buttons = [
+        var buttonShare = [
             {
                 text: 'Share',
                 label: true
-            },
-            {
-                text: 'Facebook',
-                onClick: () => {
-                    socket.emit('tabbar share', 'facebook');
-                    let url = event.share.facebook;
-                    var newTab = window.open(url, '_blank');
-                    newTab.focus();
-                }
             },
             {
                 text: 'Email',
@@ -143,13 +135,41 @@
                     var newTab = window.open(url, '_blank');
                     newTab.focus();
                 }
+            }
+        ];
+        var buttonSocialShare = [
+            {
+                text: 'SocialShare',
+                label: true
             },
+            {
+                text: 'Facebook',
+                onClick: () => {
+                    socket.emit('tabbar share', 'facebook');
+                    let url = event.share.facebook;
+                    var newTab = window.open(url, '_blank');
+                    newTab.focus();
+                }
+            },
+            {
+                text: 'Line',
+                onClick: () => {
+                    socket.emit('tabbar share', 'line');
+                    let url = event.share.line;
+                    var newTab = window.open(url, '_blank');
+                    newTab.focus();
+                }
+            }
+        ];
+        var buttonsCancel = [
             {
                 text: 'Cancel',
                 color: 'red'
-            },
+            }
         ];
-        myApp.actions(buttons);
+
+        var buttonGroups = [buttonShare, buttonSocialShare, buttonsCancel];
+        myApp.actions(buttonGroups);
     });
 
     $$('.addCalendar').on('click', (e) => {
