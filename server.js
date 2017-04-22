@@ -222,16 +222,19 @@ io.on('connection', (socket) => {
         if (db.get('users').find({ id: uid }).value() == undefined) {
             message = {
                 'uid': uid,
-                'status': 'new user'
+                'status': 'new user',
+                'isNewUser': true
             };
             log('Connection', 'New user has joined.');
             // Add a user
             db.get('users').push({ id: uid, connections: [], bookmarks: [] }).write();
+
         } 
         else {
             message = {
                 'uid': uid,
-                'status': 'ok'
+                'status': 'ok',
+                'isNewUser': false
             };
             log('Connection', 'Exist user has joined. (' + uid + ')');
         }
@@ -246,7 +249,7 @@ io.on('connection', (socket) => {
         User.get('connections')
             .push({ timestamp: time })
             .write();
-        socket.broadcast.emit('joined');
+        socket.broadcast.emit('joined', message);
         socket.emit('currentstate', slideId);
     });
 

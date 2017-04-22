@@ -12,6 +12,7 @@
     // Socket
     var socket = io();
     var connected = false;
+    var slideState = 'pause';
 
     // TouchPad
     mc.get('swipe').set({
@@ -29,6 +30,14 @@
             });
         } else if (ev.type == 'press') {
             addBookmarkWithRender(slideId);
+        } else if (ev.type == 'tap') {
+            if (slideState == 'pause') {
+                socket.emit('slide pause', slideState);
+                slideState = 'play';
+            }else {
+                socket.emit('slide play', slideState);
+                slideState = 'pause';
+            }
         }
     });
 
@@ -195,6 +204,12 @@
         socket.emit('join', message);
         console.log(`connect.sid = ${Cookies.get('connect.sid')}`);
     }
+
+    socket.on('joined', (message) => {
+        if (message.isNewUser) {
+            
+        }
+    });
 
     sendJoinToServer();
 
