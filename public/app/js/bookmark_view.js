@@ -107,7 +107,7 @@ function renderBookmarkListPage(page) {
                     <div class="empty-layout">
                         <i class="f7-icons size-40">bookmark_fill</i>
                         <h2 class="h2-light">Nothing Here</h2>
-                        <p style="padding: 0 20px 0 20px;">Save events you want to see again.</p>
+                        <p style="padding: 0 20px 0 20px;">Bookmark events you want to see again.</p>
                     </div>
                 </div>
             `);
