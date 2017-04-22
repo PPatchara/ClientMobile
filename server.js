@@ -53,9 +53,6 @@ app.get('/:key', (req, res) => {
     log('API:user-agent', req.useragent.platform);
     log('API:session.id', req.session.id);
     if(genKey == req.params.key) {
-        io.on('connection', (socket) => {
-            socket.broadcast.emit('key verify', 'verified');
-        });
         res.render('pages/ios/index_control');
     } else {
         res.render('pages/ios/index_general');
@@ -137,7 +134,6 @@ var bookmarkService = {
         if (bookmark === undefined) {
             User.assign({ bookmarks: [] }).write();
         }
-        log('addBookmark', this.getBookmarkById(uid, bookmarkId));
         if (this.getBookmarkById(uid, bookmarkId) !== undefined) {
             log('bookmark', bookmarkId + ` is already in bookmark list`);
             return {
@@ -197,14 +193,15 @@ function clearAlive() {
 }
 
 // Socket below
-var slideId = "#001";
-
+var slideId="#001",loopState='play';
+var uid = null;
 // Large Display
 io.on('connection', (socket) => {
     socket.on('largescreen state', (_slideId, _loopState) => {
         log('LargeScreen', _slideId + ", " + _loopState);
         slideId = _slideId;
-        socket.broadcast.emit('currentstate', _slideId, _loopState);
+        loopState = _loopState;
+        socket.broadcast.emit('currentstate', _slideId);
     });
 
 });
@@ -212,7 +209,6 @@ io.on('connection', (socket) => {
 // Mobile
 io.on('connection', (socket) => {
     var alreadyJoined = false;
-    var uid = null;
     var User = null;
 
     socket.on('join', (data) => {
@@ -250,8 +246,8 @@ io.on('connection', (socket) => {
         User.get('connections')
             .push({ timestamp: time })
             .write();
-        // socket.emit('joined', message);
-        socket.emit('currentstate', slideId, 'enable');
+        socket.broadcast.emit('joined');
+        socket.emit('currentstate', slideId);
     });
 
     //Touchpad
@@ -280,9 +276,8 @@ io.on('connection', (socket) => {
         log('Gesture', gesture);
         socket.broadcast.emit('gesture press', gesture);
     });
-
-    socket.on('currentstate', (_slideId, loopState) => {
-        console.log('SlideId: ' + _slideId + ", " + loopState);
+    socket.on('currentstate', (_slideId, _loopState) => {
+        console.log('SlideId: ' + _slideId + ", " + _loopState);
     });
 
     socket.on('client bookmark', (data) => {
@@ -317,6 +312,8 @@ io.on('connection', (socket) => {
         setAliveTime();
         log('tabbar disconnect', 'disconnect');
     });
+
+
 
     //Bookmarklist
     // socket.on('bookmark-card unbookmarked', (bookmarkId) => {
