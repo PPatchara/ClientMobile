@@ -18,16 +18,39 @@ a.floating-button{
 .size-50 {
 	font-size: 50px;
 }
+.size-65 {
+	font-size: 65px;
+}
+.size-75 {
+	font-size: 75px;
+}
+.size-80 {
+	font-size: 80px;
+}
 .size-150 {
 	font-size: 150px;
 }
 
-i.touchpad-icon {
+i.bookmark-icon {
 	color: #e1e1e1;
 	position: absolute;
-    top: 40%;
+    top: 25%;
     left: 20%;
     right: 20%;
+}
+i.play-icon {
+	color: #e1e1e1;
+	position: absolute;
+    top: 65%;
+    left: 8%;
+    right: 20%;
+}
+i.pause-icon {
+	color: #e1e1e1;
+	position: absolute;
+    top: 65%;
+    left: 20%;
+    right: 8%;
 }
 .empty-layout {
 	position: absolute;

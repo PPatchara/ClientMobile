@@ -250,6 +250,7 @@ io.on('connection', (socket) => {
             .push({ timestamp: time })
             .write();
         socket.broadcast.emit('joined', message);
+        socket.emit('joined', message);
         socket.emit('currentstate', slideId);
     });
 
@@ -282,6 +283,15 @@ io.on('connection', (socket) => {
     socket.on('currentstate', (_slideId, _loopState) => {
         console.log('SlideId: ' + _slideId + ", " + _loopState);
     });
+    socket.on('toggle play', (toggleState) => {
+        log('toggle play',toggleState);
+        socket.broadcast.emit('toggle play', toggleState);
+    });
+    socket.on('toggle pause', (toggleState) => {
+        log('toggle pause',toggleState);
+        socket.broadcast.emit('toggle pause', toggleState);
+    });
+
 
     socket.on('client bookmark', (data) => {
         if (data === 'add') {

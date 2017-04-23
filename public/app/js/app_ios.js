@@ -12,7 +12,35 @@
     // Socket
     var socket = io();
     var connected = false;
-    var slideState = 'pause';
+    var isPlayed = false;
+
+    // Socket begin
+    // Join server
+    function sendJoinToServer() {
+        var message = { 
+            'uid': Cookies.get('connect.sid')
+        };
+        socket.emit('join', message);
+        console.log(`connect.sid = ${Cookies.get('connect.sid')}`);
+    }
+
+    socket.on('joined', (message) => {
+        isPlayed = false;
+        console.log('[joined]: ' + isPlayed);
+        if (message.isNewUser) {
+
+        }
+    });
+    sendJoinToServer();
+
+    // Control mode
+    socket.on('currentstate', (_slideId, loopState) => {
+        console.log(`currentstate <slide=${_slideId}>`);
+        socket.emit('currentstate', _slideId, loopState);
+        getBookmarkListWithRender();
+        slideId = _slideId;
+    });
+
 
     // TouchPad
     mc.get('swipe').set({
@@ -31,17 +59,20 @@
         } else if (ev.type == 'press') {
             addBookmarkWithRender(slideId);
         } else if (ev.type == 'tap') {
-            if (slideState == 'pause') {
-                socket.emit('slide pause', slideState);
-                slideState = 'play';
-            }else {
-                socket.emit('slide play', slideState);
-                slideState = 'pause';
-            }
+            togglePlayPause();
         }
     });
 
-    
+    function togglePlayPause() {
+        if (isPlayed) {
+            socket.emit('toggle pause', 'pause');
+            isPlayed = false;
+        } else {
+            socket.emit('toggle play', 'play');
+            isPlayed = true;
+        }
+        console.log(isPlayed);
+    } 
 
     // Acquiring mode page (Switch Mode)
     mc_switch.get('swipe').set({
@@ -194,33 +225,6 @@
         });
         socket.emit('tabbar help', 'help');
     })
-
-    // Socket begin
-    // Join server
-    function sendJoinToServer() {
-        var message = { 
-            'uid': Cookies.get('connect.sid')
-        };
-        socket.emit('join', message);
-        console.log(`connect.sid = ${Cookies.get('connect.sid')}`);
-    }
-
-    socket.on('joined', (message) => {
-        if (message.isNewUser) {
-            
-        }
-    });
-
-    sendJoinToServer();
-
-    // Control mode
-
-    socket.on('currentstate', (_slideId, loopState) => {
-        console.log(`currentstate <slide=${_slideId}>`);
-        socket.emit('currentstate', _slideId, loopState);
-        getBookmarkListWithRender();
-        slideId = _slideId;
-    });
     
 
     // Acquiring mode page
