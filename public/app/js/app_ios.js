@@ -163,11 +163,7 @@
                 text: 'Email',
                 onClick: () => {
                     socket.emit('tabbar share', 'email');
-                    $(location).attr('href', 'mailto:?subject='
-                             + encodeURIComponent(event.share.email.subject)
-                             + "&body=" 
-                             + encodeURIComponent(event.share.email.body)
-                    );
+                    sendEmail(event.share.email.subject, event.share.email.body);
                 }
             },
             {
@@ -238,8 +234,7 @@
         let url = elem.data('url');
         let newTab = window.open(url, '_system');
         newTab.focus();        
-    });
-
+    });    
 
 
     function renderAcquiringPage(page) {

@@ -1,6 +1,7 @@
 // var serverAddress = 'http://172.20.10.2:3000/api';
 // var imageAddress = 'http://172.20.10.2:3000/app/img';
-// var calendarAddress = 'http://1172.20.10.2:3000/calendars';
+// var calendarAddress = 'http://172.20.10.2:3000/calendars';
+
 var serverAddress = 'http://10.50.8.13:3000/api';
 var imageAddress = 'http://10.50.8.13:3000/app/img';
 var calendarAddress = 'http://10.50.8.13:3000/calendars';
@@ -29,4 +30,12 @@ var mySwiper = myApp.swiper('.swiper-container', {
 
 function getUid() {
     return Cookies.get('connect.sid');
+}
+
+function sendEmail(subject, body) {
+    $(location).attr('href', 'mailto:?subject='
+             + encodeURIComponent(event.share.email.subject)
+             + "&body=" 
+             + encodeURIComponent(event.share.email.body)
+    );
 }
