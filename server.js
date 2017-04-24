@@ -249,7 +249,7 @@ io.on('connection', (socket) => {
         User.get('connections')
             .push({ timestamp: time })
             .write();
-        socket.broadcast.emit('joined', message);
+        socket.broadcast.emit('joined display', message);
         socket.emit('joined', message);
         socket.emit('currentstate', slideId);
     });
