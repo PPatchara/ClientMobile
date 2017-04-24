@@ -36,7 +36,8 @@ var event_list = [
                   },
             "share": {
                   "facebook": "https://www.facebook.com/sharer/sharer.php?u=http%3A//framework7.io/docs/cards.html&display=popup",
-                  "line": "http://line.me/R/msg/text/?https://framework7.io",
+                  "googleplus": "https://plus.google.com/share?url=https://framework7.io",
+                  "twitter": "https://twitter.com/intent/tweet?url=https://framework7.io",
                   "email": {
                         "subject": "Test1",
                         "body": "Description1"
@@ -81,7 +82,8 @@ var event_list = [
       "share": 
             {
                   "facebook": "https://www.facebook.com/sharer/sharer.php?u=http%3A//framework7.io/docs/cards.html&display=popup",
-                  "line": "http://line.me/R/msg/text/?https://framework7.io",
+                  "googleplus": "https://plus.google.com/share?url=https://framework7.io",
+                  "twitter": "https://twitter.com/intent/tweet?url=https://framework7.io",
                   "email": 
                         {
                               "subject": "Test2",
@@ -128,7 +130,8 @@ var event_list = [
       "share": 
             {
                   "facebook": "https://www.facebook.com/sharer/sharer.php?u=http%3A//framework7.io/docs/cards.html&display=popup",
-                  "line": "http://line.me/R/msg/text/?https://framework7.io",
+                  "googleplus": "https://plus.google.com/share?url=https://framework7.io",
+                  "twitter": "https://twitter.com/intent/tweet?url=https://framework7.io",
                   "email": 
                         {
                               "subject": "Test3",

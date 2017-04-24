@@ -69,21 +69,28 @@
     </div>
 
     <div class="row">
-      <a href="#" class="tab-link social-footer facebook">
-          <i class="f7-icons icon" >social_facebook_fill</i>
-      </a>
-      <a href="#" class="tab-link social-footer ggplus">
-          <i class="f7-icons icon">social_googleplus</i>
-      </a>
-      <a href="#" class="tab-link social-footer twitter">
-          <i class="f7-icons icon">social_twitter_fill</i>
-      </a>
-      <a href="#" class="tab-link social-footer email">
-          <i class="f7-icons icon">email_fill</i>
-      </a>
-      <a href="#" class="tab-link social-footer bookmark">
-          <i class="f7-icons icon">bookmark_fill</i>
-      </a>
+    {{#if #share}}
+      {{#share}}
+        <a href="{{facebook}}" class="tab-link social-footer external" target="_blank">
+            <i class="f7-icons icon" >social_facebook_fill</i>
+
+        </a>
+        <a href="{{googleplus}}" class="tab-link social-footer external">
+            <i class="f7-icons icon">social_googleplus</i>
+        </a>
+        <a href="{{twitter}}" class="tab-link social-footer external" target="_blank">
+            <i class="f7-icons icon">social_twitter_fill</i>
+        </a>
+        {{#email}}
+        <a href="mailto:?subject={{subject}}&body={{body}}" id="share-email" class="tab-link social-footer external" target="_blank">
+            <i class="f7-icons icon">email_fill</i>
+        </a>
+        {{/email}}
+        <a href="#" id="acquire-bookmark"  class="tab-link social-footer external">
+            <i class="f7-icons icon">bookmark_fill</i>
+        </a>
+      {{/share}}
+    {{/if}}
     </div>
   </div>
 </script>

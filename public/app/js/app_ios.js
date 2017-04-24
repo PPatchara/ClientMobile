@@ -165,20 +165,20 @@
                     socket.emit('tabbar share', 'email');
                     sendEmail(event.share.email.subject, event.share.email.body);
                 }
-            },
-            {
-                text: 'Save image',
-                onClick: () => {
-                    socket.emit('tabbar share', 'save image');
-                    var url = `${imageAddress}/${event.image}`;
-                    var newTab = window.open(url, '_blank');
-                    newTab.focus();
-                }
             }
+            // {
+            //     text: 'Save image',
+            //     onClick: () => {
+            //         socket.emit('tabbar share', 'save image');
+            //         var url = `${imageAddress}/${event.image}`;
+            //         var newTab = window.open(url, '_blank');
+            //         newTab.focus();
+            //     }
+            // }
         ];
         var buttonSocialShare = [
             {
-                text: 'SocialShare',
+                text: 'Social Share',
                 label: true
             },
             {
@@ -191,10 +191,19 @@
                 }
             },
             {
-                text: 'Line',
+                text: 'Google+',
                 onClick: () => {
-                    socket.emit('tabbar share', 'line');
-                    let url = event.share.line;
+                    socket.emit('tabbar share', 'google+');
+                    let url = event.share.googleplus;
+                    var newTab = window.open(url, '_blank');
+                    newTab.focus();
+                }
+            },
+            {
+                text: 'Twitter',
+                onClick: () => {
+                    socket.emit('tabbar share', 'twitter');
+                    let url = event.share.twitter;
                     var newTab = window.open(url, '_blank');
                     newTab.focus();
                 }
@@ -211,12 +220,12 @@
         myApp.actions(buttonGroups);
     });
 
-    $$('#addCalendar').on('click', (e) => {
-        let event = EventListService.get(slideId);
-        let url = event.calendar;
-        window.open(`${calendarAddress}/${event.calendar}`, '_blank');
-        socket.emit('tabbar calendar', 'addCalendar');
-    })
+    // $$('#addCalendar').on('click', (e) => {
+    //     let event = EventListService.get(slideId);
+    //     let url = event.calendar;
+    //     window.open(`${calendarAddress}/${event.calendar}`, '_blank');
+    //     socket.emit('tabbar calendar', 'addCalendar');
+    // })
 
     $$('#help').on('click', (e) => {
         mainView.router.load({
@@ -232,7 +241,8 @@
     $$('body').on('click', '.external-page', (e) => {
         let elem = $(e.srcElement);
         let url = elem.data('url');
-        let newTab = window.open(url, '_system');
+        console.log("External URL" + url);
+        let newTab = window.open(url, '_blank');
         newTab.focus();        
     });    
 
@@ -251,7 +261,8 @@
                 schedule: _.get(eventObj, 'schedule'),  
                 location: _.get(eventObj, 'location'),  
                 register: _.get(eventObj, 'register'),
-                contact: _.get(eventObj, 'contact')
+                contact: _.get(eventObj, 'contact'),
+                share: _.get(eventObj, 'share')
             }
         );
 

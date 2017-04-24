@@ -34,8 +34,8 @@ function getUid() {
 
 function sendEmail(subject, body) {
     $(location).attr('href', 'mailto:?subject='
-             + encodeURIComponent(event.share.email.subject)
+             + encodeURIComponent(subject)
              + "&body=" 
-             + encodeURIComponent(event.share.email.body)
+             + encodeURIComponent(body)
     );
 }
