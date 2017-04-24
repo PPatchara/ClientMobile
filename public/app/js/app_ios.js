@@ -29,7 +29,7 @@
         console.log('[joined]: ' + isPlayed);
         if (message.isNewUser) {
             // $$('.login-screen').addClass('modal-in');
-            myApp.popup('.popup');
+            myApp.popup('.popup.popup-tutorial');
         }
     });
     sendJoinToServer();
@@ -48,15 +48,16 @@
         direction: Hammer.DIRECTION_ALL
     });
 
-    mc.on('swipeleft swiperight swipedown tap press', (ev) => {
+    mc.on('swipeleft swiperight swipeup tap press', (ev) => {
         console.log("[Gesture]: " + ev.type);
 
         socket.emit('gesture ' + ev.type, ev.type);
 
-        if (ev.type == 'swipedown') {
-            mainView.router.load({
-                pageName: 'acquire',
-            });
+        if (ev.type == 'swipeup') {
+            // mainView.router.load({
+            //     pageName: 'acquire',
+            // });
+            myApp.popup('.popup.popup-details');
         } else if (ev.type == 'press') {
             addBookmarkWithRender(slideId);
         } else if (ev.type == 'tap') {
@@ -78,17 +79,18 @@
     // Acquiring mode page (Switch Mode)
     mc_switch.get('swipe').set({
         direction: Hammer.DIRECTION_ALL,
-        threshold:100,
-        velocity:2.5
+        // threshold:100,
+        // velocity:2.5
     });
 
-    mc_switch.on('swipeup', (ev) => {
+    mc_switch.on('swipedown', (ev) => {
         console.log("[Gesture]: " + ev.type);
         socket.emit('gesture ' + ev.type, ev.type);
         
-        mainView.router.load({
-            pageName: 'index'
-        });
+        // mainView.router.load({
+        //     pageName: 'index'
+        // });
+        myApp.closeModal('.popup.popup-details');
     });
 
     //BookmarkList page
@@ -259,6 +261,7 @@
         );
 
         $$(page.container).find('.page-content').html(acquiringHTML);
+
 
         // var mySwiper = myApp.swiper('.swiper-container', {
         //     pagination:'.swiper-pagination'

@@ -95,10 +95,10 @@ i.pause-icon {
   filter: alpha(opacity=60);
 }
 
-/*.tabbar-labels a.tab-link {
+.tabbar_social a.tab-link {
 	padding-top: 12px;
 	padding-bottom: 8px;
-}*/
+}
 .item-inner .item-subtitle{
 	font-size: 14px;
     font-weight: 500;

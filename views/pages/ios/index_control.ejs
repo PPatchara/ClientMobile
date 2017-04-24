@@ -15,7 +15,7 @@
                 <!-- BookmarkmarkList navbar -->
                 <div data-page="bookmarkList" class="navbar-inner cached">
                     <div class="left sliding"><a href="#index" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>
-                    <div class="center sliding">Bookmark List</div>
+                    <div class="center sliding">Bookmarks</div>
 <!--                     <div class="subnavbar sliding">
                         <a href="#" class="category button button-round" style="margin: auto;">All 
                             <i class="f7-icons icon" style="display: inline;">down</i>
@@ -49,7 +49,6 @@
                     <%- include('./help'); %>
                 </div>
                 <!-- Acquiring mode page -->
-                <%- include('./acquire'); %>
                 <!-- Details page -->
                 <%- include('./detailsTemplate'); %>
             </div>
@@ -57,8 +56,26 @@
     </div>
     <!-- Popover (BookmarkList page) -->
     <%- include('./partials/popover'); %>
-    <!-- Tutorial -->
-    <%- include('./partials/tutorial'); %>
+    <!-- Popup Tutorial -->
+    <%- include('./partials/popup_tutorial'); %>
+    <!-- Popup Details -->
+    <div class="popup popup-details">
+        <div class="view navbar-fixed">
+            <div class="navbar">
+                <div data-page="acquire" class="navbar-inner">
+<!--                     <div class="left sliding"><a href="#index" class="back link"><i class="icon icon-back"></i><span>Control Mode</span></a></div> -->
+                    <div class="center sliding">Details</div>
+                </div>
+                
+            </div>
+            <div class="pages">
+                <div data-page="acquire" class="page">
+                    <div id="switchMode" class="page-content" style="background-color: #fff"></div>
+                    <%- include('./acquiringTemplate'); %>
+                </div>
+            </div>
+        </div>
+    </div>
 
         <!-- <script src="/vendor/jquery-3.2.1.min.js"></script> -->
     <%- include('./scripttag'); %>
