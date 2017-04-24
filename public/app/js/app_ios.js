@@ -28,7 +28,8 @@
         isPlayed = false;
         console.log('[joined]: ' + isPlayed);
         if (message.isNewUser) {
-
+            // $$('.login-screen').addClass('modal-in');
+            myApp.popup('.popup');
         }
     });
     sendJoinToServer();
