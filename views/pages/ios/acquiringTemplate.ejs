@@ -1,35 +1,35 @@
 <script type="text/template7" id="acquiringTemplate">
-  <div class="content-block color-black" style="margin: 20px 0;">
-    <div class="row">
-      <div class="col-33">
-        {{#if image}}
-          <img src="/app/img/{{image}}" width="100" height="120">
-        {{else}}
-          <img src="" width="100" height="120">
-        {{/if}}
-        
-      </div>
-      <div class="col-66">
-        <p>{{title}}</p>
+  <div class="content-block" style="margin: 10px 0;">
+    <div class=" color-black">
+      <div class="row">
+        <div class="col-33">
+          {{#if image}}
+            <img src="/app/img/{{image}}" width="100" height="120">
+          {{else}}
+            <img src="" width="100" height="120">
+          {{/if}}
+          
+        </div>
+        <div class="col-66">
+          <p>{{title}}</p>
 
-        {{#category}}
-          <p class="chip chip-label" style="margin-bottom: 10px; background-color: {{color}}">{{type}}</p>
-        {{/category}}
+          {{#category}}
+            <p class="chip chip-label" style="margin-bottom: 10px; background-color: {{color}}">{{type}}</p>
+          {{/category}}
 
-        {{#if register}}
-          <a href="#" id="register" class="button">Register</a>
-        {{/if}}
+          {{#if register}}
+            <a href="#" id="register" class="button">Register</a>
+          {{/if}}
+        </div>
       </div>
-    </div>
-<!--     <div class="row">
-      <div>
-        {{#if description}}
-          <h3>Description</h3>
-          <p>{{description}}</p>
-        {{/if}}
-      </div>
-    </div> -->
-    <div class="row">
+  <!--     <div class="row">
+        <div>
+          {{#if description}}
+            <h3>Description</h3>
+            <p>{{description}}</p>
+          {{/if}}
+        </div>
+      </div> -->
       <div>
         {{#if #schedule}}
           <h3>Important Date</h3>
@@ -38,16 +38,12 @@
           {{/schedule}}
         {{/if}}
       </div>
-    </div>
-    <div class="row">
       <div>
         {{#if location}}
           <h3>Location</h3>
           <p>{{location}}</p>
         {{/if}}
       </div>
-    </div>
-    <div class="row">
       <div>
         {{#if #contact}}
           <h3>Contact</h3>
@@ -57,19 +53,37 @@
             {{/if}}
 
             {{#if email}}
-              <p>Email: <a href="mailto:{{email}}">{{email}}</a></p>
+              <p>Email: <a href="mailto:{{email}}" class="external">{{email}}</a></p>
             {{/if}}
 
             {{#if #tel}}
               <p>Tel:&nbsp;
                 {{#tel}}
-                  <a href="tel:{{number}}">{{number}} </a><span>{{name}}</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <a href="tel:{{number}}" class="external">{{number}} </a><span>{{name}}</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 {{/tel}}
               </p>
             {{/if}}
           {{/contact}}
         {{/if}}
       </div>
+    </div>
+
+    <div class="row">
+      <a href="#" class="tab-link social-footer facebook">
+          <i class="f7-icons icon" >social_facebook_fill</i>
+      </a>
+      <a href="#" class="tab-link social-footer ggplus">
+          <i class="f7-icons icon">social_googleplus</i>
+      </a>
+      <a href="#" class="tab-link social-footer twitter">
+          <i class="f7-icons icon">social_twitter_fill</i>
+      </a>
+      <a href="#" class="tab-link social-footer email">
+          <i class="f7-icons icon">email_fill</i>
+      </a>
+      <a href="#" class="tab-link social-footer bookmark">
+          <i class="f7-icons icon">bookmark_fill</i>
+      </a>
     </div>
   </div>
 </script>

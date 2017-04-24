@@ -85,6 +85,9 @@ i.pause-icon {
 .color-red {
 	color: #ff3b30;
 }
+.color-gray {
+	color: #929292;
+}
 
 .swiper-container {
   height: 100%;
@@ -104,7 +107,7 @@ i.pause-icon {
     font-weight: 500;
 }
 
-.card-footer a {
+.social-footer i {
     color: #929292;
 }
 
