@@ -21,12 +21,11 @@
             'uid': Cookies.get('connect.sid')
         };
         socket.emit('join', message);
-        console.log(`connect.sid = ${Cookies.get('connect.sid')}`);
     }
 
     socket.on('joined', (message) => {
         isPlayed = false;
-        console.log('[joined]: ' + isPlayed);
+        console.log('[isPlayed]: ' + isPlayed);
         if (message.isNewUser) {
             // $$('.login-screen').addClass('modal-in');
             myApp.popup('.popup.popup-tutorial');
@@ -39,7 +38,6 @@
         console.log(`currentstate <slide=${_slideId}>`);
         socket.emit('currentstate', _slideId, loopState);
         getBookmarkListWithRender();
-        slideId = _slideId;
     });
 
 
@@ -65,16 +63,22 @@
         }
     });
 
+    socket.on('toggle played', () => {
+        isPlayed = true;
+        console.log("Played");
+    });
+    socket.on('toggle paused', () => {
+        isPlayed = false;
+        console.log("Paused");
+    });
+
     function togglePlayPause() {
         if (isPlayed) {
             socket.emit('toggle pause', 'pause');
-            isPlayed = false;
         } else {
             socket.emit('toggle play', 'play');
-            isPlayed = true;
         }
-        console.log(isPlayed);
-    } 
+    }
 
     // Acquiring mode page (Switch Mode)
     mc_switch.get('swipe').set({
@@ -244,8 +248,7 @@
         console.log("External URL" + url);
         let newTab = window.open(url, '_blank');
         newTab.focus();        
-    });    
-
+    });  
 
     function renderAcquiringPage(page) {
         console.log("Navigated to acquiring mode.");

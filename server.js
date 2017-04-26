@@ -284,12 +284,18 @@ io.on('connection', (socket) => {
         console.log('SlideId: ' + _slideId + ", " + _loopState);
     });
     socket.on('toggle play', (toggleState) => {
-        log('toggle play',toggleState);
         socket.broadcast.emit('toggle play', toggleState);
     });
     socket.on('toggle pause', (toggleState) => {
-        log('toggle pause',toggleState);
         socket.broadcast.emit('toggle pause', toggleState);
+    });
+
+    socket.on('toggle played', () => {
+       socket.broadcast.emit('toggle played');
+    });
+
+    socket.on('toggle paused', () => {
+        socket.broadcast.emit('toggle paused');
     });
 
 
