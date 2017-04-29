@@ -1,83 +1,100 @@
 <script type="text/template7" id="detailsTemplate">
-  <div data-page="details" class="navbar-inner cached">
-      <div class="left sliding"><a href="#bookmarkList" class="back link"><i class="icon icon-back"></i><span>Saved list</span></a></div>
-      <div class="center sliding">Details</div>
-  </div>
-  <div data-page="details" class="page cached">
-    <div id="switchMode" class="page-content" style="background-color: #fff">
-      <div class="content-block color-black" style="margin: 20px 0;">
-        <div class="row">
-          <div class="col-33">
-            {{#if image}}
-              <img src="/app/img/{{image}}" width="100" height="120">
-            {{else}}
-              <img src="" width="100" height="120">
-            {{/if}}
-            
-          </div>
-          <div class="col-66">
-            <p>{{title}}</p>
-
-            {{#category}}
-              <p class="chip chip-label" style="margin-bottom: 10px; background-color: {{color}}">{{type}}</p>
-            {{/category}}
-
-            {{#if register}}
-              <a href="#" id="register" class="button">Register</a>
-            {{/if}}
-          </div>
+  <div class="content-block" style="margin: 10px 0;">
+    <div class=" color-black">
+      <div class="row">
+        <div class="col-33">
+          {{#if image}}
+            <img src="/app/img/{{image}}" width="100" height="120">
+          {{else}}
+            <img src="" width="100" height="120">
+          {{/if}}
+          
         </div>
-        <div class="row">
-          <div>
-            {{#if description}}
-              <h3>Description</h3>
-              <p>{{description}}</p>
-            {{/if}}
-          </div>
-        </div>
-        <div class="row">
-          <div>
-            {{#if #schedule}}
-              <h3>Important Date</h3>
-              {{#schedule}}
-                <p>{{topic}}: {{date}}</p>
-              {{/schedule}}
-            {{/if}}
-          </div>
-        </div>
-        <div class="row">
-          <div>
-            {{#if location}}
-              <h3>Location</h3>
-              <p>{{location}}</p>
-            {{/if}}
-          </div>
-        </div>
-        <div class="row">
-          <div>
-            {{#if #contact}}
-              <h3>Contact</h3>
-              {{#contact}}
-                {{#if website}}
-                  <p>Website: <a href="javascript:void(0);" class="external-page" data-url="{{website}}">{{website}}</a></p>
-                {{/if}}
+        <div class="col-66">
+          <p>{{title}}</p>
 
-                {{#if email}}
-                  <p>Email: <a href="mailto:{{email}}">{{email}}</a></p>
-                {{/if}}
+          {{#category}}
+            <p class="chip chip-label" style="margin-bottom: 10px; background-color: {{color}}">{{type}}</p>
+          {{/category}}
 
-                {{#if #tel}}
-                  <p>Tel:&nbsp;
-                    {{#tel}}
-                      <a href="tel:{{number}}">{{number}} </a><span>{{name}}</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    {{/tel}}
-                  </p>
-                {{/if}}
-              {{/contact}}
-            {{/if}}
-          </div>
+          {{#if register}}
+            <a href="#" id="register" class="button">Register</a>
+          {{/if}}
         </div>
       </div>
+      <div class="row">
+        <div>
+          {{#if description}}
+            <h3>Description</h3>
+            <p>{{description}}</p>
+          {{/if}}
+        </div>
+      </div>
+      <div>
+        {{#if schedule}}
+          <h3>Important Date</h3>
+          {{#schedule}}
+            {{#if topic}}
+              <p>{{topic}}: {{date}}</p>
+            {{else}}
+              <p>{{date}}</p>
+            {{/if}}
+          {{/schedule}}
+        {{/if}}
+      </div>
+      <div>
+        {{#if location}}
+          <h3>Location</h3>
+          <p>{{location}}</p>
+        {{/if}}
+      </div>
+      <div>
+        {{#if contact}}
+          <h3>Contact</h3>
+          {{#contact}}
+            {{#if website}}
+              <p>Website: <a href="javascript:void(0);" class="external-page" data-url="{{website}}">{{website}}</a></p>
+            {{/if}}
+
+            {{#if email}}
+              <p>Email: <a href="mailto:{{email}}" class="external">{{email}}</a></p>
+            {{/if}}
+
+            {{#if tel}}
+              <p>Tel:&nbsp;
+                {{#tel}}
+                  <a href="tel:{{number}}" class="external">{{number}} </a><span>{{name}}</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {{/tel}}
+              </p>
+            {{/if}}
+          {{/contact}}
+        {{/if}}
+      </div>
     </div>
+
+<!--     <div class="row">
+      {{#if share}}
+        {{#share}}
+          <a href="{{facebook}}" class="tab-link social-footer external" target="_blank">
+              <i class="f7-icons icon" >social_facebook_fill</i>
+
+          </a>
+          <a href="{{googleplus}}" class="tab-link social-footer external">
+              <i class="f7-icons icon">social_googleplus</i>
+          </a>
+          <a href="{{twitter}}" class="tab-link social-footer external" target="_blank">
+              <i class="f7-icons icon">social_twitter_fill</i>
+          </a>
+          {{#email}}
+          <a href="mailto:?subject={{subject}}&body={{body}}" id="share-email" class="tab-link social-footer external" target="_blank">
+              <i class="f7-icons icon">email_fill</i>
+          </a>
+          {{/email}}
+          <a href="#" id="acquire-bookmark"  class="tab-link social-footer external">
+              <i class="f7-icons icon">bookmark_fill</i>
+          </a>
+        {{/share}}
+      {{/if}}
+    </div> -->
   </div>
 </script>

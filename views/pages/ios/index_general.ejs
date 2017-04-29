@@ -16,6 +16,11 @@
                         </a>
                     </div> -->
                 </div>
+                <!-- Details navbar -->
+                <div data-page="details" class="navbar-inner cached">
+                  <div class="left sliding"><a href="#bookmarkList" class="back link"><i class="icon icon-back"></i><span>Saved list</span></a></div>
+                  <div class="center sliding">Details</div>
+                </div>
             </div>
 
             <!-- Pages -->
@@ -25,7 +30,10 @@
                     <%- include('./bookmarkList'); %>
                 </div>
                 <!-- Details page -->
-                <%- include('./detailsTemplate'); %>
+                <div data-page="details" class="page cached">
+                    <%- include('./detailsTemplate'); %>
+                </div>
+                
             </div>
         </div>
     </div>

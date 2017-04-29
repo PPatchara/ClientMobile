@@ -22,19 +22,23 @@
           {{/if}}
         </div>
       </div>
-  <!--     <div class="row">
+      <div class="row">
         <div>
           {{#if description}}
             <h3>Description</h3>
             <p>{{description}}</p>
           {{/if}}
         </div>
-      </div> -->
+      </div>
       <div>
-        {{#if #schedule}}
+        {{#if schedule}}
           <h3>Important Date</h3>
           {{#schedule}}
-            <p>{{topic}}: {{date}}</p>
+            {{#if topic}}
+              <p>{{topic}}: {{date}}</p>
+            {{else}}
+              <p>{{date}}</p>
+            {{/if}}
           {{/schedule}}
         {{/if}}
       </div>
@@ -45,7 +49,7 @@
         {{/if}}
       </div>
       <div>
-        {{#if #contact}}
+        {{#if contact}}
           <h3>Contact</h3>
           {{#contact}}
             {{#if website}}
@@ -56,7 +60,7 @@
               <p>Email: <a href="mailto:{{email}}" class="external">{{email}}</a></p>
             {{/if}}
 
-            {{#if #tel}}
+            {{#if tel}}
               <p>Tel:&nbsp;
                 {{#tel}}
                   <a href="tel:{{number}}" class="external">{{number}} </a><span>{{name}}</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -68,30 +72,30 @@
       </div>
     </div>
 
-    <div class="row">
-    {{#if #share}}
-      {{#share}}
-        <a href="{{facebook}}" class="tab-link social-footer external" target="_blank">
-            <i class="f7-icons icon" >social_facebook_fill</i>
+<!--     <div class="row">
+      {{#if share}}
+        {{#share}}
+          <a href="{{facebook}}" class="tab-link social-footer external" target="_blank">
+              <i class="f7-icons icon" >social_facebook_fill</i>
 
-        </a>
-        <a href="{{googleplus}}" class="tab-link social-footer external">
-            <i class="f7-icons icon">social_googleplus</i>
-        </a>
-        <a href="{{twitter}}" class="tab-link social-footer external" target="_blank">
-            <i class="f7-icons icon">social_twitter_fill</i>
-        </a>
-        {{#email}}
-        <a href="mailto:?subject={{subject}}&body={{body}}" id="share-email" class="tab-link social-footer external" target="_blank">
-            <i class="f7-icons icon">email_fill</i>
-        </a>
-        {{/email}}
-        <a href="#" id="acquire-bookmark"  class="tab-link social-footer external">
-            <i class="f7-icons icon">bookmark_fill</i>
-        </a>
-      {{/share}}
-    {{/if}}
-    </div>
+          </a>
+          <a href="{{googleplus}}" class="tab-link social-footer external">
+              <i class="f7-icons icon">social_googleplus</i>
+          </a>
+          <a href="{{twitter}}" class="tab-link social-footer external" target="_blank">
+              <i class="f7-icons icon">social_twitter_fill</i>
+          </a>
+          {{#email}}
+          <a href="mailto:?subject={{subject}}&body={{body}}" id="share-email" class="tab-link social-footer external" target="_blank">
+              <i class="f7-icons icon">email_fill</i>
+          </a>
+          {{/email}}
+          <a href="#" id="acquire-bookmark"  class="tab-link social-footer external">
+              <i class="f7-icons icon">bookmark_fill</i>
+          </a>
+        {{/share}}
+      {{/if}}
+    </div> -->
   </div>
 </script>
 

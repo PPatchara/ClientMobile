@@ -126,9 +126,13 @@ function renderBookmarkListPage(page) {
         let clickedBookmarkId = $$(e.target).parents('li.card').data('id');
         console.log(clickedBookmarkId);
         mainView.router.load({
-            template: Template7.templates.detailsTemplate,
+            pageName: 'details',
             context: EventListService.get(clickedBookmarkId)
         });
+        // mainView.router.load({
+        //     template: Template7.templates.detailsTemplate,
+        //     context: EventListService.get(clickedBookmarkId)
+        // });
     });
 
     $$('.page-content').on('click', '.delete-card', (e) => {
