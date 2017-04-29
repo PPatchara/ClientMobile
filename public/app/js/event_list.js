@@ -1,40 +1,40 @@
 var event_list = [
       {
-            "id": "#001",
-            "category":
-                  {
-                        "type": "Competition",
-                        "color": "#ff9500"
-                  },
-            "image": "1.jpg",
-            "title": "Test1",
-            "description": "Description1",
-            "schedule": [
-                  {
-                        "topic":"Register",
-                        "date":"01/01/2017",
-                        "time":"9:00-12:00"
-                  }
-            ],
-            "location": "A1 Building",
-            "register": "",                                                                                                                                                                                           
-            "calendar": "event001.ics",
-            "contact": 
-                  {
-                        "website": "http://www.google.com",
-                        "email": "test1@gmail.com",
-                        "tel": [
-                              {
-                                    "name": "Wyne",
-                                    "number": "0897046621"
-                              },
-                              {
-                                    "name": "Non",
-                                    "number": "0826588017"
-                              }
-                        ]
-                  },
-            "share": {
+      "id": "#001",
+      "category":
+            {
+                  "type": "Competition",
+                  "color": "#ff9500"
+            },
+      "image": "1.jpg",
+      "title": "Test1",
+      "description": "Description1",
+      "schedule": [
+            {
+                  "topic":"Register",
+                  "date":"01/01/2017",
+                  "time":"9:00-12:00"
+            }
+      ],
+      "location": "A1 Building",
+      "register": "",                                                                                                                                                                                           
+      "calendar": "event001.ics",
+      "contact": 
+            {
+                  "website": "http://www.google.com",
+                  "email": "test1@gmail.com",
+                  "tel": [
+                        {
+                              "name": "Wyne",
+                              "number": "0897046621"
+                        },
+                        {
+                              "name": "Non",
+                              "number": "0826588017"
+                        }
+                  ]
+            },
+      "share": {
                   "facebook": "https://www.facebook.com/sharer/sharer.php?u=http%3A//framework7.io/docs/cards.html&display=popup",
                   "googleplus": "https://plus.google.com/share?url=https://framework7.io",
                   "twitter": "https://twitter.com/intent/tweet?url=https://framework7.io",
@@ -79,16 +79,14 @@ var event_list = [
                         }
                   ]
             },
-      "share": 
-            {
+      "share": {
                   "facebook": "https://www.facebook.com/sharer/sharer.php?u=http%3A//framework7.io/docs/cards.html&display=popup",
                   "googleplus": "https://plus.google.com/share?url=https://framework7.io",
                   "twitter": "https://twitter.com/intent/tweet?url=https://framework7.io",
-                  "email": 
-                        {
-                              "subject": "Test2",
-                              "body": "Description2"
-                        }
+                  "email": {
+                        "subject": "Test2",
+                        "body": "Description2"
+                  }
             }
       
       },
@@ -127,16 +125,14 @@ var event_list = [
                         }
                   ]
             },
-      "share": 
-            {
+      "share": {
                   "facebook": "https://www.facebook.com/sharer/sharer.php?u=http%3A//framework7.io/docs/cards.html&display=popup",
                   "googleplus": "https://plus.google.com/share?url=https://framework7.io",
                   "twitter": "https://twitter.com/intent/tweet?url=https://framework7.io",
-                  "email": 
-                        {
-                              "subject": "Test3",
-                              "body": "Description3"
-                        }
+                  "email": {
+                        "subject": "Test3",
+                        "body": "Description3"
+                  }
             }
       
       }

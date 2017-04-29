@@ -22,7 +22,11 @@
                               <div class="item-subtitle" style="margin-bottom: 0px;">
                                 <p><i class="material-icons size-15 color-blue">schedule</i>
                                   {{#this.schedule}}
-                                    <span>{{this.topic}}: {{this.date}}</span>
+                                    {{#if this.topic}}
+                                      <span>{{this.topic}}: {{this.date}}</span>
+                                    {{else}}
+                                      <span>{{this.date}}</span>
+                                    {{/if}}
                                   {{/this.schedule}}
                                 </p>
                               </div>
@@ -42,7 +46,6 @@
                       </a>
                     </div>
                   </li>  
-
                 {{/each}}
             </ul>
         </div>
