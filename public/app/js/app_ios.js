@@ -150,9 +150,20 @@
 
     // Tab bar
     $$('#disconnect').on('click', () => {
-       myApp.confirm('', 'Are you sure to disconnect?', () => {
-           myApp.alert('','Disconnected');
-       });
+       // myApp.confirm('', 'Are you sure to disconnect?', () => {
+       //     myApp.alert('','Disconnected');
+       // });
+       myApp.confirm('Are you sure to disconnect?' , 'Disconnect', 
+            function () {
+                myApp.alert('Please scan QR code to control the display.', function () {
+                    window.location.replace("/");
+                });
+            },
+            function () {
+                window.location.reload();
+            }
+       );
+       // window.location = "10.50.8.13:3000";
        socket.emit('tabbar disconnect', 'disconnect');
     });
 
@@ -234,9 +245,10 @@
     // })
 
     $$('#help').on('click', (e) => {
-        mainView.router.load({
-            pageName: 'help',
-        });
+        // mainView.router.load({
+        //     pageName: 'help',
+        // });
+        myApp.popup('.popup.popup-tutorial');
         socket.emit('tabbar help', 'help');
     });
 
