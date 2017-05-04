@@ -126,7 +126,7 @@ var bookmarkService = {
     getBookmarkListByUid: function(uid) {
         let User = db.get('users').find({ id: uid });
         let bookmarkList = User.get('bookmarks').value();
-        return bookmarkList;
+        return bookmarkList || [];
     },
     addBookmark: function(uid, bookmarkId) {
         let User = db.get('users').find({ id: uid });
@@ -174,6 +174,9 @@ function parseCookies(cookies) {
 }
 
 function decodeUid(encodedUid) {
+    if(encodedUid == 'undefined') {
+        return '';
+    }
     return encodedUid.slice(4, 40);
 }
 
