@@ -147,3 +147,4 @@ function renderBookmarkListPage(page) {
 
 myApp.onPageInit('bookmarkList', initBookmarkListPage);
 myApp.onPageReinit('bookmarkList', initBookmarkListPage);
+

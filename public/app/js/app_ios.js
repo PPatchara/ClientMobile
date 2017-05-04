@@ -148,9 +148,99 @@
     //     myApp.actions(target, buttons);
     // });
 
+    // Tab bar
+    $$('#disconnect').on('click', () => {
+       myApp.confirm('', 'Are you sure to disconnect?', () => {
+           myApp.alert('','Disconnected');
+       });
+       socket.emit('tabbar disconnect', 'disconnect');
+    });
+
+    $$('#share').on('click', () => {
+        let event = EventListService.get(slideId);
+        console.log(slideId);
+        console.log(event);
+        var buttonShare = [
+            {
+                text: 'Share',
+                label: true
+            },
+            {
+                text: 'Email',
+                onClick: () => {
+                    socket.emit('tabbar share', 'email');
+                    sendEmail(event.share.email.subject, event.share.email.body);
+                }
+            }
+            // {
+            //     text: 'Save image',
+            //     onClick: () => {
+            //         socket.emit('tabbar share', 'save image');
+            //         var url = `${imageAddress}/${event.image}`;
+            //         var newTab = window.open(url, '_blank');
+            //         newTab.focus();
+            //     }
+            // }
+        ];
+        var buttonSocialShare = [
+            {
+                text: 'Social Share',
+                label: true
+            },
+            {
+                text: 'Facebook',
+                onClick: () => {
+                    socket.emit('tabbar share', 'facebook');
+                    let url = event.share.facebook;
+                    var newTab = window.open(url, '_blank');
+                    newTab.focus();
+                }
+            },
+            {
+                text: 'Google+',
+                onClick: () => {
+                    socket.emit('tabbar share', 'google+');
+                    let url = event.share.googleplus;
+                    var newTab = window.open(url, '_blank');
+                    newTab.focus();
+                }
+            },
+            {
+                text: 'Twitter',
+                onClick: () => {
+                    socket.emit('tabbar share', 'twitter');
+                    let url = event.share.twitter;
+                    var newTab = window.open(url, '_blank');
+                    newTab.focus();
+                }
+            }
+        ];
+        var buttonsCancel = [
+            {
+                text: 'Cancel',
+                color: 'red'
+            }
+        ];
+
+        var buttonGroups = [buttonShare, buttonSocialShare, buttonsCancel];
+        myApp.actions(buttonGroups);
+    });
+
+    // $$('#addCalendar').on('click', (e) => {
+    //     let event = EventListService.get(slideId);
+    //     let url = event.calendar;
+    //     window.open(`${calendarAddress}/${event.calendar}`, '_blank');
+    //     socket.emit('tabbar calendar', 'addCalendar');
+    // })
+
+    $$('#help').on('click', (e) => {
+        mainView.router.load({
+            pageName: 'help',
+        });
+        socket.emit('tabbar help', 'help');
+    });
 
     // Acquiring mode page
-    
 
     $$('body').on('click', '.external-page', (e) => {
         let elem = $(e.srcElement);
