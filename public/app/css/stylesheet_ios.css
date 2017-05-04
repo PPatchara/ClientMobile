@@ -42,15 +42,15 @@ i.play-icon {
 	color: #e1e1e1;
 	position: absolute;
     top: 65%;
-    left: 8%;
-    right: 20%;
+    left: 0;
+    right: 10%;
 }
 i.pause-icon {
 	color: #e1e1e1;
 	position: absolute;
     top: 65%;
-    left: 20%;
-    right: 8%;
+    left: 10%;
+    right: 0;
 }
 .empty-layout {
 	position: absolute;
