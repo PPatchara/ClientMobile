@@ -4,6 +4,7 @@ function getBookmarkListWithRender() {
                 .then(rerender);
 }
 
+var selectedId;
 var dataBookmarkList = {
     count: 0,
     content: []
@@ -19,6 +20,18 @@ function reInitVariable(data) {
     return dataBookmarkList;
 }
 
+function isBookmark(selectedId) {
+    let result = dataBookmarkList.content.filter(d => d.id === selectedId);
+    let bookmarkButton = $('#bookmark, .bookmark-button');
+    if (result.length !== 0) {
+        console.log('added class active');
+        bookmarkButton.addClass('active');
+    } else {
+        bookmarkButton.removeClass('active');
+        console.log('removed class active');
+    }
+}
+
 function rerender(data) {
     console.log("Rerendering...");
     function badge() {
@@ -28,22 +41,10 @@ function rerender(data) {
             $$('#badge').show();
         }
         $$('#badge').text(dataBookmarkList.count);
-    }
-
-    function isBookmark() {
-        let result = dataBookmarkList.content.filter(d => d.id === slideId);
-        if (result.length !== 0) {
-            console.log('added class active');
-            $('#bookmark').addClass('active');
-        } else {
-            $('#bookmark').removeClass('active');
-            console.log('removed class active');
-        }
-        
-    }
+    }    
 
     badge();
-    isBookmark();
+    isBookmark(slideId);
     
     return data;
 }
@@ -142,6 +143,8 @@ myApp.onPageReinit('bookmarkList', initBookmarkListPage);
 
 function renderDetailsPage(page) {
     var eventObj = _.find(event_list,{ 'id': clickedBookmarkId});
+    selectedId = clickedBookmarkId;
+    isBookmark(selectedId);
     console.log('detail: ' + eventObj);
     var detailsHTML = Template7.templates.detailsTemplate(
         {
@@ -161,6 +164,84 @@ function renderDetailsPage(page) {
     $$(page.container).find('.page-content').html(detailsHTML);
 
 }
+
+$$('.page[data-page=acquire], .page[data-page=details]').on('click', '.bookmark-button', (e) => {
+    console.log(`[Click] .bookmark-button | with id ${selectedId}`);
+    let bookmarkButton = $('.bookmark-button');
+    if (bookmarkButton.hasClass('active')) {
+        deleteBookmarkWithRender(selectedId);
+    } else {
+        addBookmarkWithRender(selectedId);
+    }
+});
+$$('.page[data-page=acquire], .page[data-page=details]').on('click', '.share-button', (e) => {
+    console.log(`[Click] .share-button | with id ${selectedId}`);
+    let event = EventListService.get(selectedId);
+    var buttonShare = [
+        {
+            text: 'Share',
+            label: true
+        },
+        {
+            text: 'Email',
+            onClick: () => {
+                socket.emit('tabbar share', 'email');
+                sendEmail(event.share.email.subject, event.share.email.body);
+            }
+        }
+        // {
+        //     text: 'Save image',
+        //     onClick: () => {
+        //         socket.emit('tabbar share', 'save image');
+        //         var url = `${imageAddress}/${event.image}`;
+        //         var newTab = window.open(url, '_blank');
+        //         newTab.focus();
+        //     }
+        // }
+    ];
+    var buttonSocialShare = [
+        {
+            text: 'Social Share',
+            label: true
+        },
+        {
+            text: 'Facebook',
+            onClick: () => {
+                socket.emit('tabbar share', 'facebook');
+                let url = event.share.facebook;
+                var newTab = window.open(url, '_blank');
+                newTab.focus();
+            }
+        },
+        {
+            text: 'Google+',
+            onClick: () => {
+                socket.emit('tabbar share', 'google+');
+                let url = event.share.googleplus;
+                var newTab = window.open(url, '_blank');
+                newTab.focus();
+            }
+        },
+        {
+            text: 'Twitter',
+            onClick: () => {
+                socket.emit('tabbar share', 'twitter');
+                let url = event.share.twitter;
+                var newTab = window.open(url, '_blank');
+                newTab.focus();
+            }
+        }
+    ];
+    var buttonsCancel = [
+        {
+            text: 'Cancel',
+            color: 'red'
+        }
+    ];
+
+    var buttonGroups = [buttonShare, buttonSocialShare, buttonsCancel];
+    myApp.actions(buttonGroups);
+});
 
 myApp.onPageInit('details', renderDetailsPage);
 myApp.onPageReinit('details', renderDetailsPage);

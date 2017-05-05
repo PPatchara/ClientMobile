@@ -164,14 +164,13 @@
     });
 
     socket.on('connection status', (status) => {
-        if(status == 'inactive') {
-            myApp.alert('If want to to control the display, please scan QR code.' , 'Connection Time Out', 
-                function () {
-                    window.location.replace("/");
-                }
-            );
-        }
-        
+        // if(status == 'inactive') {
+        //     myApp.alert('If want to to control the display again, please scan QR code.' , 'Connection Time Out', 
+        //         function () {
+        //             window.location.replace("/");
+        //         }
+        //     );
+        // }
     });
 
     $$('#share').on('click', () => {
@@ -270,6 +269,8 @@
         console.log("Navigated to acquiring mode.");
         console.log("slideId: " + slideId);
         var eventObj = _.find(event_list,{ 'id': slideId});
+        selectedId = slideId;
+        isBookmark(selectedId);
 
         var acquiringHTML = Template7.templates.acquiringTemplate(
             {
@@ -287,35 +288,10 @@
 
         $$(page.container).find('.page-content').html(acquiringHTML);
 
-
-        // var mySwiper = myApp.swiper('.swiper-container', {
-        //     pagination:'.swiper-pagination'
-        // });
-
     }
 
     myApp.onPageInit('acquire', renderAcquiringPage);
     myApp.onPageReinit('acquire', renderAcquiringPage);
 
-    // function renderAcquisitionPage(slideId) {
-    //     console.log("Navigated to acquiring mode.");
-    //     console.log("slideId: " + slideId);
-    //     var eventObj = _.find(event_list,{ 'id': slideId});
-
-    //     var acquiringHTML = Template7.templates.acquiringTemplate(
-    //         {
-    //             title: _.get(eventObj, 'title'),
-    //             category: _.get(eventObj, 'category'),
-    //             image: _.get(eventObj, 'image'),
-    //             description: _.get(eventObj, 'description'),
-    //             schedule: _.get(eventObj, 'schedule'),  
-    //             location: _.get(eventObj, 'location'),  
-    //             register: _.get(eventObj, 'register'),
-    //             contact: _.get(eventObj, 'contact'),
-    //             share: _.get(eventObj, 'share')
-    //         }
-    //     );
-    //     $$(page.container).find('.page-content').html(acquiringHTML);
-    // }
 
 // });
