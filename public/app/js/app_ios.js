@@ -150,21 +150,28 @@
 
     // Tab bar
     $$('#disconnect').on('click', () => {
-       // myApp.confirm('', 'Are you sure to disconnect?', () => {
-       //     myApp.alert('','Disconnected');
-       // });
-       myApp.confirm('Are you sure to disconnect?' , 'Disconnect', 
+        myApp.confirm('Are you sure to disconnect?' , 'Disconnect', 
             function () {
-                myApp.alert('Please scan QR code to control the display.', function () {
+                myApp.alert('Scan QR code to control the display.', 'Play Again' , function () {
                     window.location.replace("/");
                 });
             },
             function () {
                 window.location.reload();
             }
-       );
-       // window.location = "10.50.8.13:3000";
+        );
        socket.emit('tabbar disconnect', 'disconnect');
+    });
+
+    socket.on('connection status', (status) => {
+        if(status == 'inactive') {
+            myApp.alert('If want to to control the display, please scan QR code.' , 'Connection Time Out', 
+                function () {
+                    window.location.replace("/");
+                }
+            );
+        }
+        
     });
 
     $$('#share').on('click', () => {
@@ -245,9 +252,6 @@
     // })
 
     $$('#help').on('click', (e) => {
-        // mainView.router.load({
-        //     pageName: 'help',
-        // });
         myApp.popup('.popup.popup-tutorial');
         socket.emit('tabbar help', 'help');
     });

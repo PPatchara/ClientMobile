@@ -180,21 +180,6 @@ function decodeUid(encodedUid) {
     return encodedUid.slice(4, 40);
 }
 
-var aliveTime;
-
-function setAliveTime() {
-    clearAlive();
-    aliveTime = setTimeout(aliveStatus, 30000);
-}
-
-function aliveStatus() {
-  console.log("[Alive status]: Inactive!!!!!");
-}
-
-function clearAlive() {
-    clearTimeout(aliveTime);
-}
-
 // Socket below
 var slideId="#001",loopState='play';
 var uid = null;
@@ -335,7 +320,22 @@ io.on('connection', (socket) => {
         log('tabbar disconnect', 'disconnect');
     });
 
+    var aliveTime;
 
+    function setAliveTime() {
+        clearAlive();
+        aliveTime = setTimeout(aliveStatus, 30000);
+    }
+
+    function aliveStatus() {
+      console.log("[Alive status]: Inactive!!!!!");
+      socket.emit('connection status', 'inactive');
+      socket.broadcast.emit('connection status display', 'inactive');
+    }
+
+    function clearAlive() {
+        clearTimeout(aliveTime);
+    }
 
     //Bookmarklist
     // socket.on('bookmark-card unbookmarked', (bookmarkId) => {
