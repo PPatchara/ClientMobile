@@ -174,7 +174,7 @@ function parseCookies(cookies) {
 }
 
 function decodeUid(encodedUid) {
-    if(encodedUid == 'undefined') {
+    if(encodedUid === undefined) {
         return '';
     }
     return encodedUid.slice(4, 40);
