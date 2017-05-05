@@ -31,7 +31,7 @@
                 </div>
                 <!-- Details page -->
                 <div data-page="details" class="page cached">
-                    <%- include('./detailsTemplate'); %>
+                    <%- include('./details'); %>
                 </div>
                 
             </div>
@@ -55,6 +55,7 @@
 
     <script type="text/javascript">
         $(() => {
+            var clickedBookmarkId;
             function renderBookmarkListPage(page) {
                 function getEventListFromBookmarkList(data) {
                     return _.filter(event_list, event => data.content.filter(d => d.id == event.id).length === 1);
@@ -85,11 +86,10 @@
                     .then(render);
 
                 $$('.page-content').on('click', '.card-content', (e) => {
-                    let clickedBookmarkId = $$(e.target).parents('li.card').data('id');
+                    clickedBookmarkId = $$(e.target).parents('li.card').data('id');
                     console.log(clickedBookmarkId);
                     mainView.router.load({
-                        template: Template7.templates.detailsTemplate,
-                        context: EventListService.get(clickedBookmarkId)
+                        pageName: 'details'
                     });
                 });
 
@@ -109,6 +109,39 @@
                 pageName: 'bookmarkList',
                 animatePages: false
             });
+
+            function renderDetailsPage(page) {
+                var eventObj = _.find(event_list,{ 'id': clickedBookmarkId});
+                console.log('detail: ' + eventObj);
+                var detailsHTML = Template7.templates.detailsTemplate(
+                    {
+                        id: _.get(eventObj, 'id'),
+                        title: _.get(eventObj, 'title'),
+                        category: _.get(eventObj, 'category'),
+                        image: _.get(eventObj, 'image'),
+                        description: _.get(eventObj, 'description'),
+                        schedule: _.get(eventObj, 'schedule'),  
+                        location: _.get(eventObj, 'location'),  
+                        register: _.get(eventObj, 'register'),
+                        contact: _.get(eventObj, 'contact'),
+                        share: _.get(eventObj, 'share')
+                    }
+                );
+
+                $('#bookmark-detail').click(() => {
+                console.log('click bookmark-detail')
+                } );
+
+                $('#share-detail').click(() => {
+                console.log('click share-detail')
+                } );
+
+                $$(page.container).find('.page-content').html(detailsHTML);
+
+            }
+
+            myApp.onPageInit('details', renderDetailsPage);
+            myApp.onPageReinit('details', renderDetailsPage);
         })   
 
     </script>
