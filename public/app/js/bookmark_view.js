@@ -83,7 +83,7 @@ $$('#bookmark').on('click', () => {
 });
 
 // BookmarkList page
-
+var clickedBookmarkId;
 
 function initBookmarkListPage(page) {
     renderBookmarkListPage(page);
@@ -95,9 +95,6 @@ function renderBookmarkListPage(page) {
     }
 
     let render = (responseEventList) => {
-        // let bookmarkListHTML = Template7.templates.bookmarkListTemplate({ event_list: responseEventList});
-        // $$(page.container).find('.page-content').html(bookmarkListHTML);
-
         if (dataBookmarkList.count != 0) {
             let bookmarkListHTML = Template7.templates.bookmarkListTemplate({ event_list: responseEventList});
             $$(page.container).find('.page-content').html(bookmarkListHTML);
@@ -123,16 +120,11 @@ function renderBookmarkListPage(page) {
         .then(render);
 
     $$('.page-content').on('click', '.card-content', (e) => {
-        let clickedBookmarkId = $$(e.target).parents('li.card').data('id');
+        clickedBookmarkId = $$(e.target).parents('li.card').data('id');
         console.log(clickedBookmarkId);
         mainView.router.load({
-            pageName: 'details',
-            context: EventListService.get(clickedBookmarkId)
+            pageName: 'details'
         });
-        // mainView.router.load({
-        //     template: Template7.templates.detailsTemplate,
-        //     context: EventListService.get(clickedBookmarkId)
-        // });
     });
 
     $$('.page-content').on('click', '.delete-card', (e) => {
@@ -148,3 +140,27 @@ function renderBookmarkListPage(page) {
 myApp.onPageInit('bookmarkList', initBookmarkListPage);
 myApp.onPageReinit('bookmarkList', initBookmarkListPage);
 
+function renderDetailsPage(page) {
+    var eventObj = _.find(event_list,{ 'id': clickedBookmarkId});
+    console.log('detail: ' + eventObj);
+    var detailsHTML = Template7.templates.detailsTemplate(
+        {
+            id: _.get(eventObj, 'id'),
+            title: _.get(eventObj, 'title'),
+            category: _.get(eventObj, 'category'),
+            image: _.get(eventObj, 'image'),
+            description: _.get(eventObj, 'description'),
+            schedule: _.get(eventObj, 'schedule'),  
+            location: _.get(eventObj, 'location'),  
+            register: _.get(eventObj, 'register'),
+            contact: _.get(eventObj, 'contact'),
+            share: _.get(eventObj, 'share')
+        }
+    );
+
+    $$(page.container).find('.page-content').html(detailsHTML);
+
+}
+
+myApp.onPageInit('details', renderDetailsPage);
+myApp.onPageReinit('details', renderDetailsPage);
