@@ -189,7 +189,7 @@ io.on('connection', (socket) => {
         log('LargeScreen', _slideId + ", " + _loopState);
         slideId = _slideId;
         loopState = _loopState;
-        socket.broadcast.emit('currentstate', _slideId);
+        socket.broadcast.emit('currentstate', _slideId, _loopState);
     });
 
 });
@@ -287,13 +287,13 @@ io.on('connection', (socket) => {
     });
 
 
-    socket.on('client bookmark', (data) => {
-        // if (data === 'add') {
-        //     socket.broadcast.emit('bookmarked', 'bookmarked');
-        // } else {
-        //     socket.broadcast.emit('unbookmarked', 'unbookmarked');
-        // }
-    });
+    // socket.on('client bookmark', (data) => {
+    //     if (data === 'add') {
+    //         socket.broadcast.emit('bookmarked', 'bookmarked');
+    //     } else {
+    //         socket.broadcast.emit('unbookmarked', 'unbookmarked');
+    //     }
+    // });
 
     //Tab bar
     socket.on('tabbar help', (data) => {
