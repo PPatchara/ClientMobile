@@ -288,11 +288,11 @@ io.on('connection', (socket) => {
 
 
     socket.on('client bookmark', (data) => {
-        if (data === 'add') {
-            socket.broadcast.emit('bookmarked', 'bookmarked');
-        } else {
-            socket.broadcast.emit('unbookmarked', 'unbookmarked');
-        }
+        // if (data === 'add') {
+        //     socket.broadcast.emit('bookmarked', 'bookmarked');
+        // } else {
+        //     socket.broadcast.emit('unbookmarked', 'unbookmarked');
+        // }
     });
 
     //Tab bar
@@ -301,6 +301,11 @@ io.on('connection', (socket) => {
         log('tabbar help', data);
     });
     socket.on('tabbar bookmark', (data) => {
+        if (data === 'add') {
+            socket.broadcast.emit('bookmarked', 'bookmarked');
+        } else {
+            socket.broadcast.emit('unbookmarked', 'unbookmarked');
+        }
         setAliveTime();
         log('tabbar bookmark', data);
     });
@@ -342,5 +347,13 @@ io.on('connection', (socket) => {
     //     bookmarkService.deleteBookmark(uid,bookmarkId);
     //     console.log("delete: " + bookmarkId);
     // });\
+});
+
+//
+io.on('connection', (socket) => {
+    socket.on('log gesture', (log) => {
+        
+    });
+
 });
 
