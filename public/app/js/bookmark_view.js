@@ -22,14 +22,15 @@ function reInitVariable(data) {
 
 function isBookmark(selectedId) {
     let result = dataBookmarkList.content.filter(d => d.id === selectedId);
-    let bookmarkButton = $('#bookmark, .bookmark-button');
-    if (result.length !== 0) {
-        console.log('added class active');
-        bookmarkButton.addClass('active');
-    } else {
-        bookmarkButton.removeClass('active');
-        console.log('removed class active');
-    }
+    return result.length !== 0;
+    // let bookmarkButton = $('#bookmark');
+    // if (result.length !== 0) {
+    //     console.log('added class active');
+    //     bookmarkButton.addClass('active');
+    // } else {
+    //     bookmarkButton.removeClass('active');
+    //     console.log('removed class active');
+    // }
 }
 
 function rerender(data) {
@@ -41,10 +42,26 @@ function rerender(data) {
             $$('#badge').show();
         }
         $$('#badge').text(dataBookmarkList.count);
-    }    
+    }
 
     badge();
-    isBookmark(slideId);
+    if ((typeof(slideId)) !== 'undefined') {
+        let bookmarkButton = $('#bookmark');
+        if (isBookmark(slideId)) {
+            bookmarkButton.addClass('active');
+        } else {
+            bookmarkButton.removeClass('active');
+        }
+    } 
+
+        let bookmarkButton = $('.bookmark-button');
+        if (isBookmark(selectedId)) {
+            console.log('Bookmarked');
+            bookmarkButton.addClass('active');
+        } else {
+            console.log('Unbookmarked');
+            bookmarkButton.removeClass('active');
+        }
     
     return data;
 }
@@ -141,10 +158,29 @@ function renderBookmarkListPage(page) {
 myApp.onPageInit('bookmarkList', initBookmarkListPage);
 myApp.onPageReinit('bookmarkList', initBookmarkListPage);
 
+function renderBookmarkButton() {
+    let bookmarkButton = $('.bookmark-button');
+    if (isBookmark(selectedId)) {
+        console.log('Bookmarked');
+        bookmarkButton.addClass('active');
+    } else {
+        console.log('Unbookmarked');
+        bookmarkButton.removeClass('active');
+    }
+}
+
 function renderDetailsPage(page) {
+    function renderBookmarkButton() {
+
+    }
     var eventObj = _.find(event_list,{ 'id': clickedBookmarkId});
     selectedId = clickedBookmarkId;
-    isBookmark(selectedId);
+    let bookmarkButton = $('.bookmark-button');
+    if (isBookmark(selectedId)) {
+        bookmarkButton.addClass('active');
+    } else {
+        bookmarkButton.removeClass('active');
+    }
     console.log('detail: ' + eventObj);
     var detailsHTML = Template7.templates.detailsTemplate(
         {

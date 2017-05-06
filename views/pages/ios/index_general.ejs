@@ -44,17 +44,20 @@
     
     <script src="/vendor/js-cookie/js-cookie.js"></script>
     <script src="/vendor/lodash.js"></script>
-    
+    <script src="/socket.io/socket.io.js"></script>
     <script type="text/javascript" src="/framework7/js/framework7.min.js"></script>
     <script type="text/javascript" src="/template7/template7.min.js"></script>
     <script type="text/javascript" src="/app/js/event_list.js"></script>
     <script type="text/javascript" src="/app/js/app.js"></script>
     <!-- <script type="text/javascript" src="/app/js/app_ios.js"></script> -->
     <script type="text/javascript" src="/app/js/bookmark_function.js"></script>
+    <script type="text/javascript" src="/app/js/bookmark_view.js"></script>
     
 
     <script type="text/javascript">
-        $(() => {
+        //$(() => {
+            var socket = io();
+            /*
             var clickedBookmarkId;
             function renderBookmarkListPage(page) {
                 function getEventListFromBookmarkList(data) {
@@ -102,6 +105,7 @@
 
                 console.log("render");
             }
+            */
             myApp.onPageInit('bookmarkList', renderBookmarkListPage);
             myApp.onPageReinit('bookmarkList', renderBookmarkListPage);
 
@@ -110,7 +114,7 @@
                 animatePages: false
             });
 
-            function renderDetailsPage(page) {
+           /**function renderDetailsPage(page) {
                 var eventObj = _.find(event_list,{ 'id': clickedBookmarkId});
                 console.log('detail: ' + eventObj);
                 var detailsHTML = Template7.templates.detailsTemplate(
@@ -128,31 +132,16 @@
                     }
                 );
 
-                $('#bookmark-detail').click(() => {
-                console.log('click bookmark-detail')
-                } );
-
-                $('#share-detail').click(() => {
-                console.log('click share-detail')
-                } );
-
                 $$(page.container).find('.page-content').html(detailsHTML);
 
             }
 
             myApp.onPageInit('details', renderDetailsPage);
-            myApp.onPageReinit('details', renderDetailsPage);
-        })   
+            myApp.onPageReinit('details', renderDetailsPage);**/
+
+        //});
 
     </script>
-        <!-- <script type="text/javascript">
-            window.addEventListener("focus", function(evt){
-            socket.emit('chat message', "connected");
-          }, false);
-            window.addEventListener("blur", function(evt){
-            socket.emit('chat message', "disconnected");
-          }, false);
-        </script> -->
         
 </body>
 
