@@ -34,10 +34,10 @@
     sendJoinToServer();
 
     // Control mode
-    socket.on('currentstate', (_slideId, loopState) => {
+    socket.on('currentstate', (_slideId, _loopState) => {
         slideId = _slideId;
         console.log(`currentstate <slide=${_slideId}>`);
-        socket.emit('currentstate', _slideId, loopState);
+        socket.emit('currentstate', _slideId, _loopState);
         getBookmarkListWithRender();
     });
 
@@ -52,7 +52,9 @@
 
         socket.emit('gesture ' + ev.type, ev.type);
 
-        if (ev.type == 'swipeup') {
+        if (ev.type == 'swipeleft' || ev.type == 'swiperight') {
+            isPlayed = false;
+        } else if (ev.type == 'swipeup') {
             // mainView.router.load({
             //     pageName: 'acquire',
             // });
@@ -66,11 +68,11 @@
     });
 
     socket.on('toggle played', () => {
-        isPlayed = true;
+       isPlayed = true;
         console.log("Played");
     });
     socket.on('toggle paused', () => {
-        isPlayed = false;
+       isPlayed = false;
         console.log("Paused");
     });
 
