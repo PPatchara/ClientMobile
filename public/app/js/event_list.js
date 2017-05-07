@@ -108,11 +108,11 @@ var event_list = [
             }
       ],
       "location": "A3 Building",
-      "register": "www.google.com",                                                                                                                                                                                           
+      "register": "https://goo.gl/forms/UW89mWUsE1isBObG3",                                                                                                                                                                                           
       "calendar": "event003.ics",
       "contact": 
             {
-                  "website": "www.google.com",
+                  "website": "http://www.google.com",
                   "email": "test3@gmail.com",
                   "tel": [
                         {

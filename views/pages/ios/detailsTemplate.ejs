@@ -18,7 +18,7 @@
           {{/category}}
 
           {{#if register}}
-            <a href="#" id="register" class="button">Register</a>
+            <a href="javascript:void(0);" data-source="register" class="button external-page" data-url="{{register}}">Register</a>
           {{/if}}
         </div>
       </div>
@@ -53,17 +53,17 @@
           <h3>Contact</h3>
           {{#contact}}
             {{#if website}}
-              <p>Website: <a href="javascript:void(0);" class="external-page" data-url="{{website}}">{{website}}</a></p>
+              <p>Website: <a href="javascript:void(0);" data-source="website" class="external-page" data-url="{{website}}">{{website}}</a></p>
             {{/if}}
 
             {{#if email}}
-              <p>Email: <a href="mailto:{{email}}" class="external">{{email}}</a></p>
+              <p>Email: <a href="mailto:{{email}}" data-source="email" lass="external">{{email}}</a></p>
             {{/if}}
 
             {{#if tel}}
               <p>Tel:&nbsp;
                 {{#tel}}
-                  <a href="tel:{{number}}" class="external">{{number}} </a><span>{{name}}</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <a href="tel:{{number}}" data-source="tel" class="external">{{number}} </a><span>{{name}}</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 {{/tel}}
               </p>
             {{/if}}
