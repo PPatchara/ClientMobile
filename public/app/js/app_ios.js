@@ -47,6 +47,10 @@
     });
 
     // TouchPad
+    $$('#bookmarkList-icon').on('click', () => {
+        socket.emit('log bookmarkList', 'clicked');
+    });
+
     mc.get('swipe').set({
         direction: Hammer.DIRECTION_ALL
     });
@@ -58,25 +62,29 @@
 
         if (ev.type == 'swipeleft' || ev.type == 'swiperight') {
             isPlayed = false;
+            socket.emit('log gesture', ev.type + ', ' + slideId);
         } else if (ev.type == 'swipeup') {
             // mainView.router.load({
             //     pageName: 'acquire',
             // });
             myApp.popup('.popup.popup-details');
+            socket.emit('log gesture', ev.type + ', ' + slideId);
 
         } else if (ev.type == 'press') {
             addBookmarkWithRender(slideId);
+            socket.emit('log gesture', ev.type + ', ' + slideId);
         } else if (ev.type == 'tap') {
             togglePlayPause();
+            socket.emit('log gesture', ev.type);
         }
     });
 
     socket.on('toggle played', () => {
-       isPlayed = true;
+        isPlayed = true;
         console.log("Played");
     });
     socket.on('toggle paused', () => {
-       isPlayed = false;
+        isPlayed = false;
         console.log("Paused");
     });
 
@@ -88,7 +96,7 @@
         }
     }
 
-    // Acquiring mode page (Switch Mode)
+    // Acquiring mode page
     mc_switch.get('swipe').set({
         direction: Hammer.DIRECTION_ALL,
         // threshold:100,
@@ -98,6 +106,7 @@
     mc_switch.on('swipedown', (ev) => {
         console.log("[Gesture]: " + ev.type);
         socket.emit('gesture ' + ev.type, ev.type);
+        socket.emit('log gesture', ev.type);
         
         mainView.router.load({
             pageName: 'index'
@@ -167,6 +176,7 @@
             }
         );
        socket.emit('tabbar disconnect', 'disconnect');
+       socket.emit('log tabbar', 'disconnect');
     });
 
     socket.on('connection status', (status) => {
@@ -192,6 +202,7 @@
                 text: 'Email',
                 onClick: () => {
                     socket.emit('tabbar share', 'email');
+                    socket.emit('log tabbar', 'share, ' + slideId + ', email');
                     sendEmail(event.share.email.subject, event.share.email.body);
                 }
             }
@@ -214,6 +225,7 @@
                 text: 'Facebook',
                 onClick: () => {
                     socket.emit('tabbar share', 'facebook');
+                    socket.emit('log tabbar', 'share, ' + slideId + ', facebook');
                     let url = event.share.facebook;
                     var newTab = window.open(url, '_blank');
                     newTab.focus();
@@ -223,6 +235,7 @@
                 text: 'Google+',
                 onClick: () => {
                     socket.emit('tabbar share', 'google+');
+                    socket.emit('log tabbar', 'share, ' + slideId + ', google+');
                     let url = event.share.googleplus;
                     var newTab = window.open(url, '_blank');
                     newTab.focus();
@@ -232,6 +245,7 @@
                 text: 'Twitter',
                 onClick: () => {
                     socket.emit('tabbar share', 'twitter');
+                    socket.emit('log tabbar', 'share, ' + slideId + ', twitter');
                     let url = event.share.twitter;
                     var newTab = window.open(url, '_blank');
                     newTab.focus();
@@ -259,17 +273,26 @@
     $$('#help').on('click', (e) => {
         myApp.popup('.popup.popup-tutorial');
         socket.emit('tabbar help', 'help');
+        socket.emit('log tabbar', 'help');
     });
 
     // Acquiring mode page
-
     $$('body').on('click', '.external-page', (e) => {
         let elem = $(e.srcElement);
         let url = elem.data('url');
-        console.log("External URL" + url);
+        let id = elem.data('id');
+        let source = elem.data('source');
+        socket.emit('log acquire-details', 'External, ' + source);
+        console.log("External URL: " + url);
         let newTab = window.open(url, '_blank');
         newTab.focus();        
-    });  
+    });
+    $$('body').on('click', '.external', (e) => {
+        let elem = $(e.srcElement);
+        let id = elem.data('id');
+        let source = elem.data('source');
+        socket.emit('log acquire-details', 'External, ' + source); 
+    });
 
     function renderAcquiringPage(page) {
         console.log("Navigated to acquiring mode.");
@@ -280,6 +303,7 @@
 
         var acquiringHTML = Template7.templates.acquiringTemplate(
             {
+                id: _.get(eventObj, 'id'),
                 title: _.get(eventObj, 'title'),
                 category: _.get(eventObj, 'category'),
                 image: _.get(eventObj, 'image'),

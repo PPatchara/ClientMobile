@@ -23,14 +23,6 @@ function reInitVariable(data) {
 function isBookmark(selectedId) {
     let result = dataBookmarkList.content.filter(d => d.id === selectedId);
     return result.length !== 0;
-    // let bookmarkButton = $('#bookmark');
-    // if (result.length !== 0) {
-    //     console.log('added class active');
-    //     bookmarkButton.addClass('active');
-    // } else {
-    //     bookmarkButton.removeClass('active');
-    //     console.log('removed class active');
-    // }
 }
 
 function rerender(data) {
@@ -94,9 +86,11 @@ $$('#bookmark').on('click', () => {
     if($$('#bookmark').hasClass('active')) {
         deleteBookmarkWithRender(slideId);
         socket.emit('tabbar bookmark', 'delete');
+        socket.emit('log tabbar', 'unbookmarked, ' + slideId);
     }else {
         addBookmarkWithRender(slideId);
         socket.emit('tabbar bookmark', 'add');
+        socket.emit('log tabbar', 'bookmarked, ' + slideId);
     }
 });
 
@@ -140,6 +134,7 @@ function renderBookmarkListPage(page) {
     $$('.page-content').on('click', '.card-content', (e) => {
         clickedBookmarkId = $$(e.target).parents('li.card').data('id');
         console.log(clickedBookmarkId);
+        socket.emit('log bookmark-card', 'clicked, ' + clickedBookmarkId);
         mainView.router.load({
             pageName: 'details'
         });
@@ -147,6 +142,7 @@ function renderBookmarkListPage(page) {
 
     $$('.page-content').on('click', '.delete-card', (e) => {
         let bookmarkId = $(e.target).parent().data('id');
+        socket.emit('log bookmark-card', 'unbookmarked, ' + bookmarkId);
         deleteBookmarkWithRender(bookmarkId)
             .then(getEventListFromBookmarkList)
             .then(render);
@@ -206,8 +202,10 @@ $$('.page[data-page=acquire], .page[data-page=details]').on('click', '.bookmark-
     let bookmarkButton = $('.bookmark-button');
     if (bookmarkButton.hasClass('active')) {
         deleteBookmarkWithRender(selectedId);
+        socket.emit('log acquire-details', 'unbookmarked, ' + selectedId);
     } else {
         addBookmarkWithRender(selectedId);
+        socket.emit('log acquire-details', 'bookmarked, ' + selectedId);
     }
 });
 $$('.page[data-page=acquire], .page[data-page=details]').on('click', '.share-button', (e) => {
@@ -222,6 +220,7 @@ $$('.page[data-page=acquire], .page[data-page=details]').on('click', '.share-but
             text: 'Email',
             onClick: () => {
                 socket.emit('tabbar share', 'email');
+                socket.emit('log acquire-details', 'share, ' + selectedId + ', email');
                 sendEmail(event.share.email.subject, event.share.email.body);
             }
         }
@@ -244,6 +243,7 @@ $$('.page[data-page=acquire], .page[data-page=details]').on('click', '.share-but
             text: 'Facebook',
             onClick: () => {
                 socket.emit('tabbar share', 'facebook');
+                socket.emit('log acquire-details', 'share, ' + selectedId + ', facebook');
                 let url = event.share.facebook;
                 var newTab = window.open(url, '_blank');
                 newTab.focus();
@@ -253,6 +253,7 @@ $$('.page[data-page=acquire], .page[data-page=details]').on('click', '.share-but
             text: 'Google+',
             onClick: () => {
                 socket.emit('tabbar share', 'google+');
+                socket.emit('log acquire-details', 'share, ' + selectedId + ', google+');
                 let url = event.share.googleplus;
                 var newTab = window.open(url, '_blank');
                 newTab.focus();
@@ -262,6 +263,7 @@ $$('.page[data-page=acquire], .page[data-page=details]').on('click', '.share-but
             text: 'Twitter',
             onClick: () => {
                 socket.emit('tabbar share', 'twitter');
+                socket.emit('log acquire-details', 'share, ' + selectedId + ', twitter');
                 let url = event.share.twitter;
                 var newTab = window.open(url, '_blank');
                 newTab.focus();

@@ -215,7 +215,7 @@ io.on('connection', (socket) => {
             };
             log('Connection', 'New user has joined.');
             // Add a user
-            db.get('users').push({ id: uid, connections: [], bookmarks: [] }).write();
+            db.get('users').push({ id: uid, connections: [], bookmarks: [], logs: [] }).write();
 
         } 
         else {
@@ -244,6 +244,7 @@ io.on('connection', (socket) => {
 
     //Popup Tutorial
     socket.on('popup tutorial', (data) => {
+        setAliveTime();
         socket.broadcast.emit('popup tutorial', data);
     });
 
@@ -301,10 +302,6 @@ io.on('connection', (socket) => {
     // });
 
     //Tab bar
-    socket.on('tabbar help', (data) => {
-        setAliveTime();
-        log('tabbar help', data);
-    });
     socket.on('tabbar bookmark', (data) => {
         if (data === 'add') {
             socket.broadcast.emit('bookmarked', 'bookmarked');
@@ -320,10 +317,15 @@ io.on('connection', (socket) => {
         log('tabbar share', channel);
     });
 
-    socket.on('tabbar calendar', (state) => {
+    socket.on('tabbar help', (data) => {
         setAliveTime();
-        log('tabbar calendar', state);
+        log('tabbar help', data);
     });
+
+    // socket.on('tabbar calendar', (state) => {
+    //     setAliveTime();
+    //     log('tabbar calendar', state);
+    // });
 
     socket.on('tabbar disconnect', () => {
         setAliveTime();
@@ -334,7 +336,7 @@ io.on('connection', (socket) => {
 
     function setAliveTime() {
         clearAlive();
-        aliveTime = setTimeout(aliveStatus, 30000);
+        aliveTime = setTimeout(aliveStatus, 180000);
     }
 
     function aliveStatus() {
@@ -354,10 +356,37 @@ io.on('connection', (socket) => {
     // });\
 });
 
+function event_log(socket, event, data) {
+    let cookies = parseCookies(socket.request.headers.cookie);
+    let uid = decodeUid(cookies['connect.sid']);
+    let User = db.get('users').find({ id: uid });
+    let logs = User.get('logs').value();
+    if (logs === undefined) {
+        console.log(`${uid}: ${event} ${data}`);
+        db.get('users').find({ id: uid }).assign({ logs: [] }).write();
+    }
+    const time = moment().utc(420);
+    User.get('logs')
+        .push({ event: event, data: data, timestamp: time })  
+        .write();
+}
+
 //
 io.on('connection', (socket) => {
     socket.on('log gesture', (log) => {
-        
+        event_log(socket, 'gesture', log);
+    });
+    socket.on('log tabbar', (log) => {
+        event_log(socket, 'tabbar', log); 
+    });
+    socket.on('log bookmarkList', (log) => {
+        event_log(socket, 'bookmarkList', log);
+    });
+    socket.on('log bookmark-card', (log) => {
+        event_log(socket, 'bookmark-card', log);
+    });
+    socket.on('log acquire-details', (log) => {
+        event_log(socket, 'log acquire-details', log);
     });
 
 });
