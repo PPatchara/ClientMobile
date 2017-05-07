@@ -41,6 +41,10 @@
         getBookmarkListWithRender();
     });
 
+    //Tutorial Popup
+    $$('#popupTutorial').on('click', () => {
+        socket.emit('popup tutorial', 'closed');
+    });
 
     // TouchPad
     mc.get('swipe').set({

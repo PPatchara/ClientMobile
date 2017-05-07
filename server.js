@@ -242,6 +242,11 @@ io.on('connection', (socket) => {
         socket.emit('currentstate', slideId);
     });
 
+    //Popup Tutorial
+    socket.on('popup tutorial', (data) => {
+        socket.broadcast.emit('popup tutorial', data);
+    });
+
     //Touchpad
     socket.on('gesture swipeleft', (gesture) => {
         setAliveTime();
