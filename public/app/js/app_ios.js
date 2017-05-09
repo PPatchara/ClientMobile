@@ -175,18 +175,18 @@
                 window.location.reload();
             }
         );
-       socket.emit('tabbar disconnect', 'disconnect');
+       socket.emit('connection status', 'inactive');
        socket.emit('log tabbar', 'disconnect');
     });
 
     socket.on('connection status', (status) => {
-        // if(status == 'inactive') {
-        //     myApp.alert('If want to to control the display again, please scan QR code.' , 'Connection Time Out', 
-        //         function () {
-        //             window.location.replace("/");
-        //         }
-        //     );
-        // }
+        if(status == 'inactive') {
+            myApp.alert('If want to to control the display again, please scan QR code.' , 'Connection Time Out', 
+                function () {
+                    window.location.replace("/");
+                }
+            );
+        }
     });
 
     $$('#share').on('click', () => {

@@ -364,6 +364,7 @@ io.on('connection', (socket) => {
       generateKey();
       socket.emit('connection status', 'inactive'); //mobile
       socket.broadcast.emit('connection status display', 'inactive'); //display
+      socket.broadcast.emit('log disconnect', 'inactive');
     }
 
     function clearAlive() {
@@ -408,6 +409,9 @@ io.on('connection', (socket) => {
     });
     socket.on('log acquire-details', (log) => {
         event_log(socket, 'log acquire-details', log);
+    });
+    socket.on('log disconnect', (log) => {
+        event_log(socket, 'log disconnect', log);
     });
 
 });
