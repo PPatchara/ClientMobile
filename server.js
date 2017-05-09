@@ -12,6 +12,8 @@ var express = require('express'),
     SQLiteStore = require('connect-sqlite3')(session),
     url = require('url');
 
+var key = '', isControlled = false;
+
 const db = low('logs/db.json');
 db.defaults({ users: [] }).write();
 
@@ -49,15 +51,17 @@ app.get('/', (req, res) => {
 });
 
 app.get('/:key', (req, res) => {
-    var genKey = '1234';
     log('API:user-agent', req.useragent.platform);
     log('API:session.id', req.session.id);
-    if(genKey == req.params.key) {
-        res.render('pages/ios/index_control');
+    if (!isControlled){
+        if(key == req.params.key) {
+            res.render('pages/ios/index_control');
+        } else {
+            res.render('pages/ios/index_general');
+        }
     } else {
         res.render('pages/ios/index_general');
-    }
-    
+    }   
 });
 
 app.get('/bookmarkList', (req, res) => {
@@ -164,6 +168,7 @@ var bookmarkService = {
 }
 
 function parseCookies(cookies) {
+    if (typeof(cookies) !== 'string') return
     let arr = cookies.split(';').map( c => {
         let value = c.split('='), obj = {};
         obj[value[0].trim()] = value[1].trim();
@@ -191,7 +196,11 @@ io.on('connection', (socket) => {
         loopState = _loopState;
         socket.broadcast.emit('currentstate', _slideId, _loopState);
     });
-
+    socket.on('join large display', (data) => {
+        key = helpers.generateKey();
+        console.log('Idle: ' + key);
+        socket.emit('Generate Key', key);
+    });
 });
 
 // Mobile
@@ -327,33 +336,45 @@ io.on('connection', (socket) => {
     //     log('tabbar calendar', state);
     // });
 
-    socket.on('tabbar disconnect', () => {
-        setAliveTime();
-        log('tabbar disconnect', 'disconnect');
+    socket.on('connection status', (status) => {
+        if (status == 'inactive') {
+            key = helpers.generateKey();
+            socket.broadcast.emit('Generate Key', key);
+            console.log('After inactive: ' + key);
+            log('connection status', 'inactive');
+        }
+
     });
-
-    var aliveTime;
-
-    function setAliveTime() {
-        clearAlive();
-        aliveTime = setTimeout(aliveStatus, 180000);
-    }
-
-    function aliveStatus() {
-      console.log("[Alive status]: Inactive!!!!!");
-      socket.emit('connection status', 'inactive');
-      socket.broadcast.emit('connection status display', 'inactive');
-    }
-
-    function clearAlive() {
-        clearTimeout(aliveTime);
-    }
 
     //Bookmarklist
     // socket.on('bookmark-card unbookmarked', (bookmarkId) => {
     //     bookmarkService.deleteBookmark(uid,bookmarkId);
     //     console.log("delete: " + bookmarkId);
     // });\
+
+    var aliveTime;
+
+    function setAliveTime() {
+        clearAlive();
+        aliveTime = setTimeout(inactiveStatus, 30000);
+    }
+
+    function inactiveStatus() {
+      console.log("[Alive status]: Inactive!!!!!");
+      generateKey();
+      socket.emit('connection status', 'inactive'); //mobile
+      socket.broadcast.emit('connection status display', 'inactive'); //display
+    }
+
+    function clearAlive() {
+        clearTimeout(aliveTime);
+    }
+
+    function generateKey() {
+        key = helpers.generateKey();
+        socket.broadcast.emit('Generate Key', key);
+        console.log('After inactive: ' + key);
+    }
 });
 
 function event_log(socket, event, data) {
