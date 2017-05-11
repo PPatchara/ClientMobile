@@ -12,7 +12,11 @@ var express = require('express'),
     SQLiteStore = require('connect-sqlite3')(session),
     url = require('url');
 
-var key = '', isControlled = false, aliveTime, renewCode;
+let key = '';
+let isControlled = false;
+let controllerId;
+let aliveTime;
+let renewCode;
 
 const db = low('logs/db.json');
 db.defaults({ users: [] }).write();
@@ -47,15 +51,15 @@ app.get('/', (req, res) => {
     //     res.render('pages/android/index');
     // }
     res.render('pages/ios/index_general');
-    
 });
 
 app.get('/:key', (req, res) => {
     log('API:user-agent', req.useragent.platform);
     log('API:session.id', req.session.id);
-    if (!isControlled && key == req.params.key){
+    if ((!isControlled && key == req.params.key) || (isControlled && req.session.id == controllerId)) {
         res.render('pages/ios/index_control');
         isControlled = true;
+        controllerId = req.session.id;
     } else {
         res.render('pages/ios/index_general');
     }   
