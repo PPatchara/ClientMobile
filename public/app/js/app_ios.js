@@ -167,7 +167,7 @@
     $$('#disconnect').on('click', () => {
         myApp.confirm('Are you sure to disconnect?' , 'Disconnect', 
             function () {
-                myApp.alert('Scan QR code to control the display.', 'Play Again' , function () {
+                myApp.alert('If you want to control the display, please connect again.', 'Play Again' , function () {
                     window.location.replace("/");
                 });
             },
@@ -177,13 +177,23 @@
         );
        socket.emit('connection status', 'inactive');
        socket.emit('log tabbar', 'disconnect');
+       socket.emit('log disconnect', 'disconnect');
     });
 
     socket.on('connection status', (status) => {
-        if(status == 'inactive') {
-            myApp.alert('If want to to control the display again, please scan QR code.' , 'Connection Time Out', 
+        if (status == 'inactive') {
+            myApp.alert('If want to to control the display, please connect again.' , 'Connection Time Out', 
                 function () {
                     window.location.replace("/");
+                }
+            );
+        }else if (status == 'warning') {
+            myApp.prompt('Connection will expire in 30 seconds. Please enter code to renew the connection.', 'Renew Connection', 
+                function (value) {
+                    socket.emit('verify renew code', value);
+                },
+                function () {
+                    socket.emit('verify renew code', 'cancel');
                 }
             );
         }

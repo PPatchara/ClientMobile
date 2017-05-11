@@ -13,8 +13,13 @@ function generateKey() {
   return Math.random().toString(16).slice(-4);
 }
 
+function generateRenewCode() {
+  return Math.floor(1000 + Math.random() * 9000);
+}
+
 module.exports = {
 	uniqueID: uniqueID,
-	generateKey: generateKey
+	generateKey: generateKey,
+  generateRenewCode: generateRenewCode
 }
 

@@ -12,7 +12,7 @@ var express = require('express'),
     SQLiteStore = require('connect-sqlite3')(session),
     url = require('url');
 
-var key = '', isControlled = false;
+var key = '', isControlled = false, aliveTime, renewCode;
 
 const db = low('logs/db.json');
 db.defaults({ users: [] }).write();
@@ -53,12 +53,9 @@ app.get('/', (req, res) => {
 app.get('/:key', (req, res) => {
     log('API:user-agent', req.useragent.platform);
     log('API:session.id', req.session.id);
-    if (!isControlled){
-        if(key == req.params.key) {
-            res.render('pages/ios/index_control');
-        } else {
-            res.render('pages/ios/index_general');
-        }
+    if (!isControlled && key == req.params.key){
+        res.render('pages/ios/index_control');
+        isControlled = true;
     } else {
         res.render('pages/ios/index_general');
     }   
@@ -198,6 +195,7 @@ io.on('connection', (socket) => {
     });
     socket.on('join large display', (data) => {
         key = helpers.generateKey();
+        isControlled = false;
         console.log('Idle: ' + key);
         socket.emit('Generate Key', key);
     });
@@ -239,8 +237,6 @@ io.on('connection', (socket) => {
         alreadyJoined = true;
         User = db.get('users').find({ id: uid });
 
-        setAliveTime();
-
         // Record joined timestamp
         var time = moment().utc(420);
         User.get('connections')
@@ -249,37 +245,40 @@ io.on('connection', (socket) => {
         socket.broadcast.emit('joined display', message);
         socket.emit('joined', message);
         socket.emit('currentstate', slideId);
+
+        //Timer
+        setAliveTime();
     });
 
     //Popup Tutorial
     socket.on('popup tutorial', (data) => {
-        setAliveTime();
+//        setAliveTime();
         socket.broadcast.emit('popup tutorial', data);
     });
 
     //Touchpad
     socket.on('gesture swipeleft', (gesture) => {
-        setAliveTime();
+//        setAliveTime();
         log('Gesture', gesture);
         socket.broadcast.emit('gesture swipeleft', gesture);
     });
     socket.on('gesture swiperight', (gesture) => {
-        setAliveTime();
+    //    setAliveTime();
         log('Gesture', gesture);
         socket.broadcast.emit('gesture swiperight', gesture);
     });
     socket.on('gesture swipeup', (gesture) => {
-        setAliveTime();
+    //    setAliveTime();
         log('Gesture', gesture);
         socket.broadcast.emit('gesture swipeup', gesture);
     });
     socket.on('gesture swipedown', (gesture) => {
-        setAliveTime();
+    //    setAliveTime();
         log('Gesture', gesture);
         socket.broadcast.emit('gesture swipedown', gesture);
     });
     socket.on('gesture press', (gesture) => {
-        setAliveTime();
+    //    setAliveTime();
         log('Gesture', gesture);
         socket.broadcast.emit('gesture press', gesture);
     });
@@ -317,17 +316,17 @@ io.on('connection', (socket) => {
         } else {
             socket.broadcast.emit('unbookmarked', 'unbookmarked');
         }
-        setAliveTime();
+//        setAliveTime();
         log('tabbar bookmark', data);
     });
 
     socket.on('tabbar share', (channel) => {
-        setAliveTime();
+//        setAliveTime();
         log('tabbar share', channel);
     });
 
     socket.on('tabbar help', (data) => {
-        setAliveTime();
+//        setAliveTime();
         log('tabbar help', data);
     });
 
@@ -339,24 +338,36 @@ io.on('connection', (socket) => {
     socket.on('connection status', (status) => {
         if (status == 'inactive') {
             key = helpers.generateKey();
-            socket.broadcast.emit('Generate Key', key);
+            socket.broadcast.emit('Generate Key', key); //display
             console.log('After inactive: ' + key);
             log('connection status', 'inactive');
         }
-
     });
 
-    //Bookmarklist
-    // socket.on('bookmark-card unbookmarked', (bookmarkId) => {
-    //     bookmarkService.deleteBookmark(uid,bookmarkId);
-    //     console.log("delete: " + bookmarkId);
-    // });\
-
-    var aliveTime;
+    socket.on('verify renew code', (code) => {
+        if (renewCode == code) {
+            clearTimeout(warningTime);
+            setAliveTime();
+            socket.broadcast.emit('renew verified', true);
+            console.log('[verify renew code]');
+        }else if (code == 'cancel') {
+            socket.broadcast.emit('renew verified', 'cancel');
+        }
+    });
 
     function setAliveTime() {
         clearAlive();
-        aliveTime = setTimeout(inactiveStatus, 30000);
+        aliveTime = setTimeout(alertWarning, 60000);
+        socket.broadcast.emit('log setAliveTime', 'setAliveTime');
+    }
+
+    function alertWarning() {
+        renewCode = helpers.generateRenewCode();
+        console.log('Renew code: ' + renewCode);
+        socket.emit('connection status', 'warning'); //mobile
+        
+        socket.broadcast.emit('renew code', renewCode); //display
+        warningTime = setTimeout(inactiveStatus, 30000);
     }
 
     function inactiveStatus() {
@@ -365,6 +376,7 @@ io.on('connection', (socket) => {
       socket.emit('connection status', 'inactive'); //mobile
       socket.broadcast.emit('connection status display', 'inactive'); //display
       socket.broadcast.emit('log disconnect', 'inactive');
+      isControlled = false;
     }
 
     function clearAlive() {
@@ -412,6 +424,9 @@ io.on('connection', (socket) => {
     });
     socket.on('log disconnect', (log) => {
         event_log(socket, 'log disconnect', log);
+    });
+    socket.on('log setAliveTime', (log) => {
+        event_log(socket, 'log setAliveTime', log);
     });
 
 });
