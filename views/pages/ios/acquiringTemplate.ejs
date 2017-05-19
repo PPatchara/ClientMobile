@@ -22,17 +22,17 @@
           {{/if}}
         </div>
       </div>
-<!--       <div class="row">
+      <div class="row">
         <div>
           {{#if description}}
-            <h3>Description</h3>
+            <!-- <h3>Description</h3> -->
             <p>{{description}}</p>
           {{/if}}
         </div>
-      </div> -->
+      </div>
       <div>
         {{#if schedule}}
-          <h3>Important Date</h3>
+          <h3>วันและเวลา</h3>
           {{#schedule}}
             {{#if topic}}
               <p>{{topic}}: {{date}}</p>
@@ -44,13 +44,13 @@
       </div>
       <div>
         {{#if location}}
-          <h3>Location</h3>
+          <h3>สถานที่จัดกิจกรรม</h3>
           <p>{{location}}</p>
         {{/if}}
       </div>
       <div>
         {{#if contact}}
-          <h3>Contact</h3>
+          <h3>รายละเอียดเพิ่มเติม</h3>
           {{#contact}}
             {{#if website}}
               <p>Website: <a href="javascript:void(0);" data-source="website" class="external-page" data-url="{{website}}">{{website}}</a></p>
