@@ -234,10 +234,7 @@ var event_list = [
                   "website": "https://goo.gl/qvDMCj",
                   "email": "",
                   "tel": [
-                        {
-                              "name": "",
-                              "number": ""
-                        }
+                        
                   ]
             },
       "share": {
