@@ -345,6 +345,8 @@ io.on('connection', (socket) => {
             socket.broadcast.emit('Generate Key', key); //display
             console.log('After inactive: ' + key);
             log('connection status', 'inactive');
+        }else if (status == 'timeout') {
+            socket.broadcast.emit('connection status display','timeout');
         }
     });
 
