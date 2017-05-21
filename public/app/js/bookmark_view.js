@@ -223,16 +223,16 @@ $$('.page[data-page=acquire], .page[data-page=details]').on('click', '.share-but
                 socket.emit('log acquire-details', 'share, ' + selectedId + ', email');
                 sendEmail(event.share.email.subject, event.share.email.body);
             }
+        },
+        {
+            text: 'Save image',
+            onClick: () => {
+                socket.emit('tabbar share', 'save image');
+                var url = `${imageAddress}/${event.image}`;
+                var newTab = window.open(url, '_blank');
+                newTab.focus();
+            }
         }
-        // {
-        //     text: 'Save image',
-        //     onClick: () => {
-        //         socket.emit('tabbar share', 'save image');
-        //         var url = `${imageAddress}/${event.image}`;
-        //         var newTab = window.open(url, '_blank');
-        //         newTab.focus();
-        //     }
-        // }
     ];
     var buttonSocialShare = [
         {
@@ -255,6 +255,16 @@ $$('.page[data-page=acquire], .page[data-page=details]').on('click', '.share-but
                 socket.emit('tabbar share', 'google+');
                 socket.emit('log acquire-details', 'share, ' + selectedId + ', google+');
                 let url = event.share.googleplus;
+                var newTab = window.open(url, '_blank');
+                newTab.focus();
+            }
+        },
+        {
+            text: 'Line',
+            onClick: () => {
+                socket.emit('tabbar share', 'line');
+                socket.emit('log acquire-details', 'share, ' + slideId + ', line');
+                let url = event.share.line;
                 var newTab = window.open(url, '_blank');
                 newTab.focus();
             }

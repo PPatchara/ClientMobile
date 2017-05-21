@@ -184,6 +184,7 @@
         if (status == 'inactive') {
             myApp.alert('If want to to control the display, please connect again.' , 'Connection Time Out', 
                 function () {
+                    socket.emit('connection status', 'timeout');
                     window.location.replace("/");
                 }
             );
@@ -215,16 +216,16 @@
                     socket.emit('log tabbar', 'share, ' + slideId + ', email');
                     sendEmail(event.share.email.subject, event.share.email.body);
                 }
+            },
+            {
+                text: 'Save image',
+                onClick: () => {
+                    socket.emit('tabbar share', 'save image');
+                    var url = `${imageAddress}/${event.image}`;
+                    var newTab = window.open(url, '_blank');
+                    newTab.focus();
+                }
             }
-            // {
-            //     text: 'Save image',
-            //     onClick: () => {
-            //         socket.emit('tabbar share', 'save image');
-            //         var url = `${imageAddress}/${event.image}`;
-            //         var newTab = window.open(url, '_blank');
-            //         newTab.focus();
-            //     }
-            // }
         ];
         var buttonSocialShare = [
             {
@@ -247,6 +248,16 @@
                     socket.emit('tabbar share', 'google+');
                     socket.emit('log tabbar', 'share, ' + slideId + ', google+');
                     let url = event.share.googleplus;
+                    var newTab = window.open(url, '_blank');
+                    newTab.focus();
+                }
+            },
+            {
+                text: 'Line',
+                onClick: () => {
+                    socket.emit('tabbar share', 'line');
+                    socket.emit('log tabbar', 'share, ' + slideId + ', line');
+                    let url = event.share.line;
                     var newTab = window.open(url, '_blank');
                     newTab.focus();
                 }
