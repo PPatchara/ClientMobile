@@ -34,7 +34,8 @@ app.use(session({
         return helpers.uniqueID();
     },
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: {maxAge: 157784760000}
 }));
 
 http.listen(3000, () => {
