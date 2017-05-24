@@ -17,8 +17,10 @@
             <p class="chip chip-label" style="margin-bottom: 10px; background-color: {{color}}">{{type}}</p>
           {{/category}}
 
+          <p>ความยาว: {{duration}}</p>
+
           {{#if register}}
-            <a href="javascript:void(0);" data-source="register" class="button external-page" data-url="{{register}}">Register</a>
+            <a href="javascript:void(0);" data-source="register" class="button external-page" data-url="{{register}}">Buy Ticket</a>
           {{/if}}
         </div>
       </div>
@@ -32,7 +34,7 @@
       </div>
       <div>
         {{#if schedule}}
-          <h3>วันและเวลา</h3>
+          <h3>วันที่เข้าฉาย</h3>
           {{#schedule}}
             {{#if topic}}
               <p>{{topic}}: {{date}}</p>
@@ -53,7 +55,8 @@
           <h3>รายละเอียดเพิ่มเติม</h3>
           {{#contact}}
             {{#if website}}
-              <p>Website: <a href="javascript:void(0);" data-source="website" class="external-page" data-url="{{website}}">{{website}}</a></p>
+              <a href="javascript:void(0);" data-source="website" class="external-page" data-url="{{website}}"><i class="f7-icons icon">world</i></a>
+
             {{/if}}
 
             {{#if email}}
@@ -62,8 +65,8 @@
 
             {{#if tel}}
                 {{#tel}}
-                  <p>Tel:&nbsp;
-                  <a href="tel:{{number}}" data-source="tel" class="external">{{number}} </a><span>{{name}}</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<!--                   <p>Moive Line:&nbsp; -->
+                  <a href="tel:{{number}}" data-source="tel" class="external"><i class="f7-icons icon">phone_fill</i></a>
                 {{/tel}}
               </p>
             {{/if}}

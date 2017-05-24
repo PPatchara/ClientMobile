@@ -3,41 +3,42 @@ var event_list = [
       "id": "#001",
       "category":
             {
-                  "type": "Competition",
-                  "color": "#ff9500"
+                  "type": "แอ็คชัน",
+                  "color": "#8e8e93"
             },
       "image": "1.jpg",
-      "title": 'FinTech Startup @ KMITL',
-      "description": 'คณะเทคโนโลยีสารสนเทศ ได้ร่วมกับบริษัทหลักทรัพย์ ฟินันเซีย ไซรัส จำกัด (มหาชน) จัดการแข่งขันโครงการ FinTech Startup ชิงเงินรางวัลรวม 50,000 บาท และสามารถเข้าร่วมอบรมฟรี 2 วัน ในหัวข้อ ความรู้ด้านการลงทุนกับหุ้นออนไลน์ และหัวข้อการสร้างนวัตกรรมทางการเงินเพื่อการแข่งขัน',
+      "title": 'Wonder Woman',
+      "description": 'ก่อนที่เธอจะกลายเป็นสาวน้อยมหัศจรรย์นามว่า Wonder Woman เธอคือ ไดอาน่า เจ้าหญิงแห่งอะเมซอนผู้ฝึกตนเป็นนักรบไร้พ่ายบนเกาะสวรรค์ (Paradise Island) ทว่าเมื่อเกิดเหตุเครื่องบินรบของกองทัพสหรัฐตกบริเวณชายฝั่งของเกาะ ทำให้เธอได้รู้เรื่องราวของมหาสงครามอันรุนแรงที่เกิดขึ้นในโลกภายนอก ไดอาน่าจึงตัดสินใจออกจากเกาะ ตั้งใจที่จะหยุดยั้งสงครามเหล่านี้ให้จงได้ มหากาพย์การต่อสู้เพื่อหยุดยั้งทุกสงคราม จะทำให้เธอค้นพบพลังที่แท้จริง และค้นพบเส้นทางชีวิตที่รอคอยเธออยู่เบื้องหน้าในอนาคต',
       "schedule": [
             {
-                  "topic":"เปิดสมัคร",
-                  "date":"ตั้งแต่วันนี้ - 15 ก.พ. 2560",
+                  "topic":"",
+                  "date":"01 มิถุนายน 2017",
                   "time":""
             }
       ],
+      "duration": "142 นาที",
       "location": "",
-      "register": "",                                                                                                                                                                                           
+      "register": "http://www.majorcineplex.com/booking2/search_showtime/movie=71",                                                                                                                                                                                           
       "calendar": "",
       "contact": 
             {
-                  "website": "https://goo.gl/rvNK0y",
+                  "website": "http://www.majorcineplex.com/movie/wonder-woman",
                   "email": "",
                   "tel": [
                         {
                               "name": "",
-                              "number": "02-658-9829"
+                              "number": "02-515-5555"
                         }
                   ]
             },
       "share": {
-                  "facebook": "https://www.facebook.com/sharer/sharer.php?u=https://goo.gl/rvNK0y&display=popup",
-                  "googleplus": "https://plus.google.com/share?url=https://goo.gl/rvNK0y",
-                  "line": "http://line.me/R/msg/text/?https://goo.gl/rvNK0y",
-                  "twitter": "https://twitter.com/intent/tweet?url=https://goo.gl/rvNK0y",
+                  "facebook": "https://www.facebook.com/sharer/sharer.php?u=http://www.majorcineplex.com/movie/wonder-woman&display=popup",
+                  "googleplus": "https://plus.google.com/share?url=http://www.majorcineplex.com/movie/wonder-woman",
+                  "line": "http://line.me/R/msg/text/?http://www.majorcineplex.com/movie/wonder-woman",
+                  "twitter": "https://twitter.com/intent/tweet?url=http://www.majorcineplex.com/movie/wonder-woman",
                   "email": {
-                        "subject": "FinTech Startup @ KMITL",
-                        "body": "https://goo.gl/rvNK0y"
+                        "subject": "Wonder Woman",
+                        "body": "http://www.majorcineplex.com/movie/wonder-woman"
                   }
             }
       },
@@ -45,41 +46,42 @@ var event_list = [
       "id": "#002",
       "category":
             {
-                  "type": "Competition",
-                  "color": "#ff9500"
+                  "type": "ตลก",
+                  "color": "#8e8e93"
             },
       "image": "2.jpg",
-      "title": 'ประกวดออกแบบ Infographic และ Clip VDO ในโครงการ "ทำดีเพื่อพ่อ สานต่อแก้ปัญหายาเสพติด"',
-      "description": 'สำนักงานคณะกรรมการป้องกันและปราบปรามยาเสพติด กระทรวงยุติธรรม ขอเชิญเยาวชนอายุระหว่าง 15-18 ปีและประชาชนทั่วไป อายุ 19 ปีขึ้นไป ส่งผลงานเข้าร่วมการประกวดออกแบบ Infographic และ Clip VDO (ความยาว 1 นาที) ในโครงการ "ทำดีเพื่อพ่อ สานต่อแก้ปัญหายาเสพติด" ภายใต้หัวข้อ "ผู้เสพ คือ ผู้ป่วย" เพื่อรณรงค์เชิญชวนให้ผู้เสพ ผู้ติดยาเสพติดเข้ารับการบำบัดรักษา ชิงเงินรางวัลมูลค่ารวมกว่า 360,000 บาท พร้อมโล่รางวัล และใบประกาศนียบัตร',
+      "title": 'Tschick',
+      "description": 'ช่วงปิดเทอมฤดูร้อนใกล้เข้ามาแล้ว แต่ทว่า ไมค์ คลิงเงนแบร์ก หนุ่มน้อยวัย 14 ปีก็ยังไม่ค่อยมีอะไรให้ทำแก้เซ็ง แม่ของเขาต้องไปเข้าคลินิคบำบัด ส่วนพ่อต้องไปเดินทางไปเจรจา “ธุรกิจ” กับเลขาสุดฮอต ไมค์ตกหลุมรักเพื่อนร่วมชั้นเรียนที่ชื่อ ทาเทียน่า แต่ก็ไม่เคยอยู่ในสายตาของสาวเจ้าเลยและไม่ได้รับเชิญไปปาร์ตี้วันเกิดของเธออีกด้วย กระนั้นชีวิตของเขาก็ยังพอมีเรื่องดีๆ อยู่บ้างเมื่อเขาได้รู้จักกับนักเรียนใหม่ที่ชื่อ อันเดรย์ ชิคคาช็อฟ หรือเรียกสั้นๆ ว่า “ชิค” เขาย้ายมาจากเมืองที่ห่างไกลของรัสเซียและมาอยู่ในตึกสูงระฟ้าในเขตมาร์ซานของเบอร์ลิน วันหนึ่งชิคได้ปรากฏตัวที่หน้าบ้านของไมค์พร้อมกับรถหนึ่งคันที่เขาขโมยมา แล้วความตื่นเต้นก็เริ่มขึ้น ทั้งสองออกไปซิ่งกันทั่วเยอรมันตะวันออกโดยไม่มีแผนที่ เข็มทิศ หรือแม้กระทั่งจุดหมายปลายทาง',
       "schedule": [
             {
-                  "topic":"วันเปิดสมัคร",
-                  "date":"ตั้งแต่วันนี้ - 15 มิ.ย. 2560",
+                  "topic":"",
+                  "date":"28 พฤษภาคม 2017",
                   "time":""
             }
       ],
+      "duration": "93 นาที",
       "location": "",
-      "register": "",                                                                                                                                                                                           
+      "register": "http://www.majorcineplex.com/booking2/search_showtime/movie=69",                                                                                                                                                                                           
       "calendar": "",
       "contact": 
             {
-                  "website": "https://goo.gl/ZT4wJp",
+                  "website": "http://www.majorcineplex.com/movie/tschick",
                   "email": "",
                   "tel": [
                         {
                               "name": "",
-                              "number": "09-5486-0303"
+                              "number": "02-515-5555"
                         }
                   ]
             },
       "share": {
-                  "facebook": "https://goo.gl/ZT4wJp&display=popup",
-                  "googleplus": "https://plus.google.com/share?url=https://goo.gl/ZT4wJp",
-                  "line": "http://line.me/R/msg/text/?https://goo.gl/ZT4wJp",
-                  "twitter": "https://twitter.com/intent/tweet?url=https://goo.gl/ZT4wJp",
+                  "facebook": "https://www.facebook.com/sharer/sharer.php?u=http://www.majorcineplex.com/movie/tschick&display=popup",
+                  "googleplus": "https://plus.google.com/share?url=http://www.majorcineplex.com/movie/tschick",
+                  "line": "http://line.me/R/msg/text/?http://www.majorcineplex.com/movie/tschick",
+                  "twitter": "https://twitter.com/intent/tweet?url=http://www.majorcineplex.com/movie/tschick",
                   "email": {
-                        "subject": 'ประกวดออกแบบ Infographic และ Clip VDO ในโครงการ "ทำดีเพื่อพ่อ สานต่อแก้ปัญหายาเสพติด"',
-                        "body": "https://goo.gl/ZT4wJp"
+                        "subject": 'Tschick',
+                        "body": "http://www.majorcineplex.com/movie/tschick"
                   }
             }
       },
@@ -87,41 +89,42 @@ var event_list = [
       "id": "#003",
       "category":
             {
-                  "type": "Competition",
-                  "color": "#ff9500"
+                  "type": "ตลก",
+                  "color": "#8e8e93"
             },
       "image": "3.jpg",
-      "title": 'ร่วมประลองไอเดีย ประกวดออกแบบ Mascot สัญลักษณ์ สจล.',
-      "description": 'มาแล้ว กับกิจกรรมเด็ดๆ ร่วมประลองไอเดีย เฟ้นหาสุดยอดฝีมือการออกแบบ Mascot สัญลักษณ์ สจล. ชิงเงินรางวัลรวมกว่า 60,000 บาท นักเรียน นักศึกษา ศิษย์เก่า สจล.และประชาชนทั่วไป สามารถส่งผลงานเข้าร่วมประกวดได้ทุกท่าน ไม่จำกัดสถาบันการศึกษา ไม่จำกัดอายุ และไม่จำกัดภูมิลำเนา',
+      "title": 'Baywatch',
+      "description": 'ซัมเมอร์นี้ จะร้อนแรงกว่าเดิม เมื่อ 2 หนุ่มกล้ามโต ดเวย์น จอห์นสัน และแซค เอฟรอน ต้องมาแท็คทีมทำงานร่วมกับสาวๆ อย่าง เคลลี่ รอห์รบัค, อเล็กซานดรา แดดดาริโอ, นีน่า โดเบรฟ ในแอ็คชั่นคอเมดี้สุดมันส์ BAYWATCH ไลฟ์การ์ดฮ็อตพิทักษ์ชายหาด ภาพยนตร์เรื่องนี้เคยเป็นทีวีซีรีย์สุดฮิตในทศวรรษ 1990 เล่าเรื่องราววีรกรรมของไลฟ์การ์ดผู้เสียสละทุ่มเทให้กับงานอย่างเต็มที่ “มิตช์ บูแชนนอน” (จอห์นสัน) ที่ไม่ค่อยลงรอยกับลูกทีมคนใหม่ “แมตต์ โบรดี้” (เอฟรอน) แต่ทั้งคู่ต้องร่วมมือกันเพื่อหยุดยั้งอาชญากรรมท้องถิ่นที่อาจเป็นภัยคุกคามต่อชายหาดแห่งนี้ในอนาคต',
       "schedule": [
             {
-                  "topic":"วันเปิดสมัคร",
-                  "date":"ตั้งแต่วันที่ 15 พฤษภาคม ถึง วันที่ 15 กรกฎาคม 2560",
+                  "topic":"",
+                  "date":"01 มิถุนายน 2017",
                   "time":""
             }
       ],
+      "duration": "116 นาที",
       "location": "",
-      "register": "",                                                                                                                                                                                           
+      "register": "http://www.majorcineplex.com/booking2/search_showtime/movie=81",                                                                                                                                                                                           
       "calendar": "",
       "contact": 
             {
-                  "website": "https://goo.gl/WJy1IG",
-                  "email": "pr.kmitl@kmitl.ac.th",
+                  "website": "http://www.majorcineplex.com/movie/baywatch",
+                  "email": "",
                   "tel": [
                         {
                               "name": "",
-                              "number": "02-329-8111"
+                              "number": "02-515-5555"
                         }
                   ]
             },
       "share": {
-                  "facebook": "https://www.facebook.com/sharer/sharer.php?u=https://goo.gl/WJy1IG&display=popup",
-                  "googleplus": "https://plus.google.com/share?url=https://goo.gl/WJy1IG",
-                  "line": "http://line.me/R/msg/text/?https://goo.gl/WJy1IG",
-                  "twitter": "https://twitter.com/intent/tweet?url=https://goo.gl/WJy1IG",
+                  "facebook": "https://www.facebook.com/sharer/sharer.php?u=http://www.majorcineplex.com/movie/baywatch&display=popup",
+                  "googleplus": "https://plus.google.com/share?url=http://www.majorcineplex.com/movie/baywatch",
+                  "line": "http://line.me/R/msg/text/?http://www.majorcineplex.com/movie/baywatch",
+                  "twitter": "https://twitter.com/intent/tweet?url=http://www.majorcineplex.com/movie/baywatch",
                   "email": {
-                        "subject": 'ร่วมประลองไอเดีย ประกวดออกแบบ Mascot สัญลักษณ์ สจล.',
-                        "body": "https://goo.gl/WJy1IG"
+                        "subject": 'Baywatch',
+                        "body": "http://www.majorcineplex.com/movie/baywatch"
                   }
             }
       },
@@ -129,41 +132,42 @@ var event_list = [
       "id": "#004",
       "category":
             {
-                  "type": "Competition",
-                  "color": "#ff9500"
+                  "type": "ชีวิต",
+                  "color": "#8e8e93"
             },
       "image": "4.jpg",
-      "title": 'HACKATHON @ KMITL',
-      "description": 'HACKATHON เป็นโครงการที่สนับสนุนและผลักดันให้น้องๆนักศึกษารวมกลุ่มกันนำ แนวคิด แรงบันดาลใจหรือสิ่งชอบ มาสร้างสรรค์ให้เกิดเป็นผลงานและแผนธุรกิจ ที่สามารถตอบโจทย์ความต้องการของสังคมในปัจจุบัน และออกขายสู่ตลาดได้จริงภายใต้หัวข้อ Smart Living',
+      "title": 'Fritz Lang',
+      "description": 'ปี 1929 ขณะที่ภาพยนตร์เรื่อง “Woman in the Moon” เปิดตัวฉายครั้งแรก ผู้กำกับ ฟริทซ์ ลัง (Heino Ferch) ต้องคิดหนักเกี่ยวกับภาพยนตร์เรื่องถัดไปที่เขาจะทำ เขาได้อ่านข่าวเกี่ยวกับฆาตรกรต่อเนื่องที่โหดเหี้ยมจนผู้คนต่างขนานนามว่า “ปีศาจแห่งดุสเซลดอร์ฟ” และเกิดความสนใจ จึงได้ใช้เส้นสายของเขาผ่านทางสารวัตรเก็นนาท (Thomas Thieme) เพื่อที่จะตามติดและเข้าไปมีส่วนเกี่ยวข้องกับการสืบสวนคดีนี้ และเมื่อนายเพเท่อร์ เคิร์ทเท็น ฆาตรกรสุดโหดถูกจับได้ ฟริทซ์ ลังก็ได้สิทธิ์พิเศษให้เข้าไปพบกับฆาตรกรในห้องขัง และการพบกันครั้งนี้เองก็เป็นจุดกำเนิดของบทภาพยนตร์เรื่อง “M” ผลงานอันโด่งดังของเขาในเวลาต่อม',
       "schedule": [
             {
-                  "topic":"วันเปิดสมัคร",
-                  "date":"วันที่ 9-11 มีนาคม 2560",
+                  "topic":"",
+                  "date":"25 พฤษภาคม 2017",
                   "time":""
             }
       ],
+      "duration": "104 นาที",
       "location": "",
-      "register": "https://docs.google.com/…/1FAIpQLSeeLFucMxrMolBL5L…/viewform",                                                                                                                                                                                           
+      "register": "http://www.majorcineplex.com/booking2/search_showtime/movie=61",                                                                                                                                                                                           
       "calendar": "",
       "contact": 
             {
-                  "website": "https://goo.gl/WPXP1p",
+                  "website": "http://www.majorcineplex.com/movie/fritz-lang",
                   "email": "",
                   "tel": [
                         {
-                              "name": "P'แตงโม",
-                              "number": "083-883-5622"
+                              "name": "",
+                              "number": "02-515-5555"
                         }
                   ]
             },
       "share": {
-                  "facebook": "https://www.facebook.com/sharer/sharer.php?u=https://goo.gl/WPXP1p&display=popup",
-                  "googleplus": "https://plus.google.com/share?url=https://goo.gl/WPXP1p",
-                  "line": "http://line.me/R/msg/text/?https://goo.gl/WPXP1p",
-                  "twitter": "https://twitter.com/intent/tweet?url=https://goo.gl/WPXP1p",
+                  "facebook": "https://www.facebook.com/sharer/sharer.php?u=http://www.majorcineplex.com/movie/fritz-lang&display=popup",
+                  "googleplus": "https://plus.google.com/share?url=http://www.majorcineplex.com/movie/fritz-lang",
+                  "line": "http://line.me/R/msg/text/?http://www.majorcineplex.com/movie/fritz-lang",
+                  "twitter": "https://twitter.com/intent/tweet?url=http://www.majorcineplex.com/movie/fritz-lang",
                   "email": {
-                        "subject": 'HACKATHON @ KMITL',
-                        "body": "https://goo.gl/WPXP1p"
+                        "subject": 'Fritz Lang',
+                        "body": "http://www.majorcineplex.com/movie/fritz-lang"
                   }
             }
       },
@@ -171,38 +175,42 @@ var event_list = [
       "id": "#005",
       "category":
             {
-                  "type": "Entertainment",
-                  "color": "#007aff"
+                  "type": "ผจญภัย / แฟนตาซี",
+                  "color": "#8e8e93"
             },
       "image": "5.jpg",
-      "title": 'SNAKE SNAKE FISH FISH',
-      "description": 'TALK SHOW จากวิทยากรที่คุณไม่ควรพลาด พี่เอ้ , อดัม แบรดชอว์ , คริสโตเฟอร์ ไรท์ และความสนุกทางภาษากำลังจะเกิดขึ้นไปกับเหล่าศิลปินสุดแสบ สิงโต นำโชค และ ROOM39',
+      "title": 'Pirates 5',
+      "description": 'Pirates of the Caribbean: Salazar\'s Revenge กำกับโดย โยคิม รอนนิง และ เอสเพน แซนด์เบิร์ก มุ่งหน้าเปิดศึกแห่งมหาสมุทรบทใหม่โดยมี “ตรีศูลของโพไซดอน” อาวุธสำคัญของเทพแห่งกรีกเป็นศูนย์กลางของเรื่อง ซึ่งใครที่ได้ครอบครองมันจะมีพลานุภาพเหนือทุกสิ่งทุกอย่างใต้ท้องทะเล กัปตันแจ็ค สแปร์โรว์ต้องเดินทางออกตามหามันเพื่อล้างคำสาปและหนีการตามล่าของกัปตันซาลาซ่า มหาวายร้ายที่หลบหนีจากแดนแห่งความตายกลับมาล้างแค้นและหมายฆ่ากัปตันเดินเรือทุกคนบนโลก โดยเฉพาะ กัปตัน แจ็ค สแปร์โรว์ ที่มีอดีตบาดหมาง ยากที่จะให้อภัยได้นั่นเอง',
       "schedule": [
             {
                   "topic":"",
-                  "date":"วันที่ 25 เมษายน 2560",
-                  "time":"17.00 - 22.00 น."
+                  "date":"24 พฤษภาคม 2017",
+                  "time":""
             }
       ],
-      "location": "หอประชุมใหญ่คณะวิศวกรรมศาสตร์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง (KMITL)",
-      "register": "",                                                                                                                                                                                           
+      "duration": "129 นาที",
+      "location": "",
+      "register": "http://www.majorcineplex.com/booking2/search_showtime/movie=70",                                                                                                                                                                                           
       "calendar": "",
       "contact": 
             {
-                  "website": "https://goo.gl/UJF140",
+                  "website": "http://www.majorcineplex.com/movie/-pirates-5",
                   "email": "",
                   "tel": [
-                        
+                        {
+                              "name": "",
+                              "number": "02-515-5555"
+                        }
                   ]
             },
       "share": {
-                  "facebook": "https://www.facebook.com/sharer/sharer.php?u=https://goo.gl/UJF140&display=popup",
-                  "googleplus": "https://plus.google.com/share?url=https://goo.gl/UJF140",
-                  "line": "http://line.me/R/msg/text/?https://goo.gl/UJF140",
-                  "twitter": "https://twitter.com/intent/tweet?url=https://goo.gl/UJF140",
+                  "facebook": "https://www.facebook.com/sharer/sharer.php?u=http://www.majorcineplex.com/movie/-pirates-5&display=popup",
+                  "googleplus": "https://plus.google.com/share?url=http://www.majorcineplex.com/movie/-pirates-5",
+                  "line": "http://line.me/R/msg/text/?http://www.majorcineplex.com/movie/-pirates-5",
+                  "twitter": "https://twitter.com/intent/tweet?url=http://www.majorcineplex.com/movie/-pirates-5",
                   "email": {
-                        "subject": 'SNAKE SNAKE FISH FISH',
-                        "body": "https://goo.gl/UJF140"
+                        "subject": 'Pirates 5',
+                        "body": "http://www.majorcineplex.com/movie/-pirates-5"
                   }
             }
       },
@@ -210,38 +218,42 @@ var event_list = [
       "id": "#006",
       "category":
             {
-                  "type": "Job / Internship",
-                  "color": "#4cd964"
+                  "type": "แอนิเมชัน",
+                  "color": "#8e8e93"
             },
       "image": "6.jpg",
-      "title": 'CE Smart Career',
-      "description": 'เตรียมพบกับ IT Job Fair ที่ใหญ่ที่สุดใน KMITL ประจำปี 2560 นั่นก็คือ “CE Smart Career ”!! ใครที่กำลังมองหาบริษัทเพื่อสมัครงาน สมัครฝึกงาน หรือสมัครสหกิจ เราได้รวบรวมบริษัทชั้นนำมาไว้ภายในงานนี้',
+      "title": 'The Boss Baby',
+      "description": 'The Boss Baby จากผลงานการกำกับของ ทอม แม็คเกรธ  ที่เคยฝากผลงานการกำกับ Madagascar ที่จะนำคุณไปพบกับเด็กทารกที่ไม่ธรรมดา เขาสวมชุดสูท มีน้ำเสียงและไหวพริบในแบบอเล็ค บอล์ดวิน เป็นเรื่องราวที่สร้างความฮาให้ทั้งโลกได้เกี่ยวกับการมาถึงของเด็กทารกคนหนึ่งจะมีอิทธิพลต่อครอบครัวได้ขนาดไหนโดยเล่าเรื่องราวจากมุมมองของผู้บรรยายที่ยากจะเชื่อถือได้อย่าง ทิม เด็กเพ้อฝันวัย 7 ขวบ พร้อมทั้งข้อคิดที่ซ่อนไว้และสร้างความอิ่มใจเรื่องความสำคัญของครอบครัว ',
       "schedule": [
             {
                   "topic":"",
-                  "date":"วันที่ 1 – 2 กุมภาพันธ์ 2560",
-                  "time":"9.00 – 16.00 น."
+                  "date":"30 มีนาคม 2017",
+                  "time":""
             }
       ],
-      "location": "อาคารปฏิบัติการวิศวกรรม 2 หรือตึก ECC ชั้น 8 ",
-      "register": "",                                                                                                                                                                                           
+      "duration": "97 นาที",
+      "location": "",
+      "register": "http://www.majorcineplex.com/booking2/search_showtime/movie=20",                                                                                                                                                                                           
       "calendar": "",
       "contact": 
             {
-                  "website": "https://goo.gl/qvDMCj",
+                  "website": "http://www.majorcineplex.com/movie/the-boss-baby",
                   "email": "",
                   "tel": [
-                        
+                        {
+                              "name": "",
+                              "number": "02-515-5555"
+                        }
                   ]
             },
       "share": {
-                  "facebook": "https://www.facebook.com/sharer/sharer.php?u=https://goo.gl/qvDMCj&display=popup",
-                  "googleplus": "https://plus.google.com/share?url=https://goo.gl/qvDMCj",
-                  "line": "http://line.me/R/msg/text/?https://goo.gl/qvDMCj",
-                  "twitter": "https://twitter.com/intent/tweet?url=https://goo.gl/qvDMCj",
+                  "facebook": "https://www.facebook.com/sharer/sharer.php?u=http://www.majorcineplex.com/movie/the-boss-baby&display=popup",
+                  "googleplus": "https://plus.google.com/share?url=http://www.majorcineplex.com/movie/the-boss-baby",
+                  "line": "http://line.me/R/msg/text/?http://www.majorcineplex.com/movie/the-boss-baby",
+                  "twitter": "https://twitter.com/intent/tweet?url=http://www.majorcineplex.com/movie/the-boss-baby",
                   "email": {
-                        "subject": 'CE Smart Career',
-                        "body": "https://goo.gl/qvDMCj"
+                        "subject": 'The Boss Baby',
+                        "body": "http://www.majorcineplex.com/movie/the-boss-baby"
                   }
             }
       },
@@ -249,38 +261,42 @@ var event_list = [
       "id": "#007",
       "category":
             {
-                  "type": "Keynote Talk",
-                  "color": "#ff2d55"
+                  "type": "แอ็คชัน",
+                  "color": "#8e8e93"
             },
       "image": "7.jpg",
-      "title": 'TEDxKMITL 2017',
-      "description": 'งาน TEDxKMITL 2017 กับเหล่า Speaker ทั้ง 9 คน ที่มาในธีมหัวข้อ "LIVIN OUT LOUD : LOL" -- live your true potential, and enjoy the moment -- เพื่อระเบิดศักยภาพในตัวของทุกคน ค้นหาและเปิดมุมมองใหม่ๆ พาไอเดียทุกคนให้ก้าวกระโดดออกมา..',
+      "title": 'Fast And Furious 8',
+      "description": 'ดอมและเล็ตตี้อยู่ในช่วงฮันนีมูน ส่วนไบรอันและมีอาก็ตัดสินใจกลับไปใช้ชีวิตครอบครัวของตัวเอง ส่วนคนอื่น ๆ ก็พ้นจากข้อกล่าวหา กลับมาใช้ชีวิตอย่างปกติ แต่เมื่อมีสตรีลึกลับ (เจ้าของรางวัลออสการ์ ชาร์ลิซ เธอรอน) เข้ามาล่อลวงดอมสู่โลกอาชญากรรรม โดยที่เขาไม่มีทางเลือกและกลายเป็นคนทรยศครอบครัว พวกเขาต้องเผชิญกับการทดสอบอย่างที่ไม่เคยพบมาก่อน จากคิวบา มาถึงนิวยอร์ก และสู่พื้นราบน้ำแข็งบนทะเลบาเรนทส์ พวกเขาต้องซิ่งสลับไปมาข้ามโลก เพื่อหยุดยั้งผู้นิยมลัทธิอนาธิปไตยที่ก่อให้เกิดความวุ่นวายในโลก และนำดอมผู้ทำให้พวกเขารวมเป็นครอบครัวกลับมา',
       "schedule": [
             {
                   "topic":"",
-                  "date":"วันที่ 22 เมษายน 2560",
-                  "time":"ตั้งแต่ 11:30 - 22:30 น."
+                  "date":"12 เมษายน 2017",
+                  "time":""
             }
       ],
-      "location": "IT Auditorium คณะเทคโนโลยีสารสนเทศ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง (สจล.)",
-      "register": "",                                                                                                                                                                                           
+      "duration": "136 นาที",
+      "location": "",
+      "register": "http://www.majorcineplex.com/booking2/search_showtime/movie=1",                                                                                                                                                                                           
       "calendar": "",
       "contact": 
             {
-                  "website": "https://goo.gl/fLduv8",
+                  "website": "http://www.majorcineplex.com/movie/fast-8",
                   "email": "",
                   "tel": [
-                        
+                        {
+                              "name": "",
+                              "number": "02-515-5555"
+                        }
                   ]
             },
       "share": {
-                  "facebook": "https://www.facebook.com/sharer/sharer.php?u=https://goo.gl/fLduv8&display=popup",
-                  "googleplus": "https://plus.google.com/share?url=https://goo.gl/fLduv8",
-                  "line": "http://line.me/R/msg/text/?https://goo.gl/fLduv8",
-                  "twitter": "https://twitter.com/intent/tweet?url=https://goo.gl/fLduv8",
+                  "facebook": "https://www.facebook.com/sharer/sharer.php?u=http://www.majorcineplex.com/movie/fast-8&display=popup",
+                  "googleplus": "https://plus.google.com/share?url=http://www.majorcineplex.com/movie/fast-8",
+                  "line": "http://line.me/R/msg/text/?http://www.majorcineplex.com/movie/fast-8",
+                  "twitter": "https://twitter.com/intent/tweet?url=http://www.majorcineplex.com/movie/fast-8",
                   "email": {
-                        "subject": 'TEDxKMITL 2017',
-                        "body": "https://goo.gl/fLduv8"
+                        "subject": 'Fast And Furious 8',
+                        "body": "http://www.majorcineplex.com/movie/fast-8"
                   }
             }
       },
@@ -288,43 +304,42 @@ var event_list = [
       "id": "#008",
       "category":
             {
-                  "type": "Camp",
-                  "color": "#5ac8fa"
+                  "type": "แอ็คชัน / แฟนตาซี",
+                  "color": "#8e8e93"
             },
       "image": "8.jpg",
-      "title": 'โครงการ Young Webmaster Camp ครั้งที่ 14',
-      "description": 'Young Webmaster Camp ค่ายสำหรับเด็กมหาลัย ที่เปลี่ยนชีวิตใครมาแล้วหลายคน น้องๆ นิสิต/นักศึกษาที่มีใจรักในการสร้างสรรค์เว็บไซต์ และอยากเปิดประสบการณ์ใหม่เพื่อต่อยอดการเรียนรู้! โดยน้องๆที่ได้เข้าร่วมในค่ายครั้งนี้จะได้รับทั้งความรู้และประสบการณ์จากผู้เชี่ยวชาญด้านการออกแบบเว็บไซต์ที่มีให้เลือกถึง 4 สาขา ได้แก่ Web Design, Web Content, Web Marketing และ Web Programming ภายใต้หัวข้อ "Digital for All เปิดมิติใหม่ สู่โลกที่ไร้พรมแดน"',
+      "title": 'Guardians Galaxy 2',
+      "description": 'เอาใจสาวกมาเวลด้วยภาพยนตร์ซุปเปอร์ฮีโร่สุดแปลกแหวกแนว Guardian of the Galaxy Vol.2 พบกับการร่วมตัวกันของเหล่าซุปเปอร์ฮีโร่ที่เราคุ้นหน้าคุ้นตากันดี ทั้ง “สตาร์ลอร์ด”, “กาโมร่า”, “แดร็ก”,”ร็อกเก็ต”, และที่ขาดไม่ได้ ฮีโร่สุดน่ารัก“เบบี้กรูท” และตัวละครอื่นๆอีกมากมายพร้อมพาคุณออกเดินทางไปในอวกาศกับภารกิจการกอบกู้จักรวาลครั้งใหม่ รวมถึงการค้นหาถึงชาติกำเนิดที่แท้จริงของ “ปีเตอร์ควิลล์” พระเอกหนุ่มขวัญใจสาวๆอีกด้วย',
       "schedule": [
             {
-                  "topic":"เปิดรับสมัคร",
-                  "date":"ตั้งแต่วันนี้ - 15 พ.ย. 2559",
-                  "time":""
-            },
-            {
-                  "topic":"วันค่าย",
-                  "date":"วันที่ 22 - 25 ธ.ค. 2559",
+                  "topic":"",
+                  "date":"26 เมษายน 2017",
                   "time":""
             }
       ],
-      "location": "มหาวิทยาลัยมหิดล วิทยาเขตศาลายา",
-      "register": "https://ywc14.ywc.in.th",                                                                                                                                                                                           
+      "duration": "135 นาที",
+      "location": "",
+      "register": "http://www.majorcineplex.com/booking2/search_showtime/movie=34",                                                                                                                                                                                           
       "calendar": "",
       "contact": 
             {
-                  "website": "https://ywc14.ywc.in.th",
-                  "email": "ywc@webmaster.or.th",
+                  "website": "http://www.majorcineplex.com/movie/guardians-of-the-galaxy-vol-2",
+                  "email": "",
                   "tel": [
-                        
+                        {
+                              "name": "",
+                              "number": "02-515-5555"
+                        }
                   ]
             },
       "share": {
-                  "facebook": "https://www.facebook.com/sharer/sharer.php?u=https://goo.gl/dsRJjd&display=popup",
-                  "googleplus": "https://plus.google.com/share?url=https://goo.gl/dsRJjd",
-                  "line": "http://line.me/R/msg/text/?https://goo.gl/dsRJjd",
-                  "twitter": "https://twitter.com/intent/tweet?url=https://goo.gl/dsRJjd",
+                  "facebook": "https://www.facebook.com/sharer/sharer.php?u=http://www.majorcineplex.com/movie/guardians-of-the-galaxy-vol-2&display=popup",
+                  "googleplus": "https://plus.google.com/share?url=http://www.majorcineplex.com/movie/guardians-of-the-galaxy-vol-2",
+                  "line": "http://line.me/R/msg/text/?http://www.majorcineplex.com/movie/guardians-of-the-galaxy-vol-2",
+                  "twitter": "https://twitter.com/intent/tweet?url=http://www.majorcineplex.com/movie/guardians-of-the-galaxy-vol-2",
                   "email": {
-                        "subject": 'โครงการ Young Webmaster Camp ครั้งที่ 14',
-                        "body": "https://goo.gl/dsRJjd"
+                        "subject": 'Guardians Galaxy 2',
+                        "body": "http://www.majorcineplex.com/movie/guardians-of-the-galaxy-vol-2"
                   }
             }
       },
@@ -332,12 +347,12 @@ var event_list = [
       "id": "#009",
       "category":
             {
-                  "type": "Entertainment",
-                  "color": "#007aff"
+                  "type": "ชีวิต",
+                  "color": "#8e8e93"
             },
       "image": "9.jpg",
-      "title": 'งาน ART STREET ARTBORIGIN 2016',
-      "description": '"ขอเชิญชวนให้เพื่อนๆ มาร่วมงาน ART STREET ARTBORIGIN 2016 เป็นงานเทศกาลดนตรี ศิลปะ อาหาร และของทำมือ จัดขึ้นในวันที่ 29-30 มกราคม 2559 พบกับศิลปินหลากหลายแนวมากมายทั้ง 2 วัน ไม่ว่าจะเป็น moving and cut , destop eror , ปลานิลเต็มบ้าน , สมเกียรติ อย่าพลาด พลาดแล้วคุณจะคุยกับเค้าไม่รู้เรื่องน้าาาาาาาา มาเถอะอยากเจอ"',
+      "title": 'ฉลาดเกมส์โกง',
+      "description": ' "ฉลาดเกมส์โกง" เรื่องราวของเด็กฉลาด กับภารกิจโกงข้อสอบ เปลี่ยนกระดาษคำตอบให้เป็นเงินล้าน ขอต้อนรับทุกคนเข้าสู่ "ธุรกิจกลางสนามสอบ" ของ ลิน (ออกแบบ-ชุติมณฑน์ จึงเจริญสุขยิ่ง) นักเรียนทุนเจ้าของเกรดเฉลี่ย 4.00 ทุกปีการศึกษา ธุรกิจที่มีจุดเริ่มต้นจากการช่วยเพื่อนสนิทอย่าง เกรซ (อุ้ม อิษยา ฮอสุวรรณ) เด็กกิจกรรมตัวยงแต่ผลการเรียนย่ำแย่ และ พัฒน์ (เจมส์ ธีรดนย์ ศุภพันธุ์ภิญโญ) เด็กบ้านรวยที่คิดว่าเงินซื้อได้ทุกอย่าง ด้วยการแชร์คำตอบกลางห้องสอบ จนกลายเป็นวงการลอกขนาดใหญ่ ที่นักเรียนหลายคนในโรงเรียนยินดีจ่ายค่าตอบแทนแบบสูงลิบ แลกกับการได้รับคำตอบจากอัจฉริยะอย่างลิน',
       "schedule": [
             {
                   "topic":"",
@@ -345,25 +360,29 @@ var event_list = [
                   "time":""
             }
       ],
-      "location": "คณะสถาปัตยกรรมศาสตร์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง (สจล.)",
-      "register": "https://goo.gl/nMVuQj",                                                                                                                                                                                           
+      "duration": "130 นาที",
+      "location": "",
+      "register": "http://www.majorcineplex.com/booking2/search_showtime/movie=46",                                                                                                                                                                                           
       "calendar": "",
       "contact": 
             {
-                  "website": "https://goo.gl/nMVuQj",
+                  "website": "http://www.majorcineplex.com/movie/BadGenius",
                   "email": "",
                   "tel": [
-                        
+                        {
+                              "name": "",
+                              "number": "02-515-5555"
+                        }
                   ]
             },
       "share": {
-                  "facebook": "https://www.facebook.com/sharer/sharer.php?u=https://goo.gl/nMVuQj&display=popup",
-                  "googleplus": "https://plus.google.com/share?url=https://goo.gl/nMVuQj",
-                  "line": "http://line.me/R/msg/text/?https://goo.gl/nMVuQj",
-                  "twitter": "https://twitter.com/intent/tweet?url=https://goo.gl/nMVuQj",
+                  "facebook": "https://www.facebook.com/sharer/sharer.php?u=http://www.majorcineplex.com/movie/BadGenius&display=popup",
+                  "googleplus": "https://plus.google.com/share?url=http://www.majorcineplex.com/movie/BadGenius",
+                  "line": "http://line.me/R/msg/text/?http://www.majorcineplex.com/movie/BadGenius",
+                  "twitter": "https://twitter.com/intent/tweet?url=http://www.majorcineplex.com/movie/BadGenius",
                   "email": {
-                        "subject": 'งาน ART STREET ARTBORIGIN 2016',
-                        "body": "https://goo.gl/nMVuQj"
+                        "subject": 'ฉลาดเกมส์โกง',
+                        "body": "http://www.majorcineplex.com/movie/BadGenius"
                   }
             }
       },
@@ -371,41 +390,42 @@ var event_list = [
       "id": "#010",
       "category":
             {
-                  "type": "Competition",
-                  "color": "#ff9500"
+                  "type": "แอนิเมชัน",
+                  "color": "#8e8e93"
             },
       "image": "10.jpg",
-      "title": 'ประกวดสิ่งประดิษฐ์ ภายใต้แนวคิด "สิ่งประดิษฐ์ ติดครัวเรือน"',
-      "description": 'รายการสมรภูมิไอเดีย ร่วมกับ องค์การพิพิธภัณฑ์วิทยาศาสตร์แห่งชาติ (อพวช.) ขอเชิญผู้สนใจ ส่งผลงานเข้าร่วมการประกวดสิ่งประดิษฐ์ ภายใต้แนวคิด “สิ่งประดิษฐ์ ติดครัวเรือน” ชิงทุนการศึกษามูลค่ารวมกว่า 400,000 บาท พร้อมถ้วยรางวัล และใบประกาศนียบัตร',
+      "title": 'Doraemon The Movie 2015',
+      "description": 'การกลับมาผจญภัยอีกครั้งของโนบิตะกับโดราเอม่อนและผองเพื่อน ซึ่งมาในปีนี้ ใช้ชื่อตอนว่า Doraemon: Nobita\'s Space Heroes  เป็นเรื่องราวของการผจญภัยในอวกาศและพวกโนบิตะต้องสู้กับสัตว์ประหลาดจากต่างดาวเพื่อปกป้องดาวดวงหนึ่งของเพื่อนที่ชื่อว่าอารอน โดยแต่ละคนจะมีพลังวิเศษแตกต่างกัน นอกจากนี้แต่ละคนยังมีเข็มกลัดดาวสำหรับแปลงร่าง คล้ายกับขบวนการห้าสีเลย',
       "schedule": [
             {
-                  "topic":"เปิดรับสมัคร",
-                  "date":"ตั้งแต่วันนี้ - 31 พ.ค. 2559",
+                  "topic":"",
+                  "date":"04 พฤษภาคม 2017",
                   "time":""
             }
       ],
+      "duration": "100 นาที",
       "location": "",
-      "register": "",                                                                                                                                                                                           
+      "register": "http://www.majorcineplex.com/booking2/search_showtime/movie=53",                                                                                                                                                                                           
       "calendar": "",
       "contact": 
             {
-                  "website": "https://goo.gl/XKw2WY",
+                  "website": "http://www.majorcineplex.com/movie/doraemon-space",
                   "email": "",
                   "tel": [
                         {
                               "name": "",
-                              "number": "02-262-3925"
+                              "number": "02-515-5555"
                         }
                   ]
             },
       "share": {
-                  "facebook": "https://www.facebook.com/sharer/sharer.php?u=https://goo.gl/XKw2WY&display=popup",
-                  "googleplus": "https://plus.google.com/share?url=https://goo.gl/XKw2WY",
-                  "line": "http://line.me/R/msg/text/?https://goo.gl/XKw2WY",
-                  "twitter": "https://twitter.com/intent/tweet?url=https://goo.gl/XKw2WY",
+                  "facebook": "https://www.facebook.com/sharer/sharer.php?u=http://www.majorcineplex.com/movie/doraemon-space&display=popup",
+                  "googleplus": "https://plus.google.com/share?url=http://www.majorcineplex.com/movie/doraemon-space",
+                  "line": "http://line.me/R/msg/text/?http://www.majorcineplex.com/movie/doraemon-space",
+                  "twitter": "https://twitter.com/intent/tweet?url=http://www.majorcineplex.com/movie/doraemon-space",
                   "email": {
-                        "subject": 'ประกวดสิ่งประดิษฐ์ ภายใต้แนวคิด "สิ่งประดิษฐ์ ติดครัวเรือน"',
-                        "body": "https://goo.gl/XKw2WY"
+                        "subject": 'Doraemon The Movie 2015',
+                        "body": "http://www.majorcineplex.com/movie/doraemon-space"
                   }
             }
       },
@@ -413,41 +433,42 @@ var event_list = [
       "id": "#011",
       "category":
             {
-                  "type": "Competition",
-                  "color": "#ff9500"
+                  "type": "แอ็คชัน / แฟนตาซี",
+                  "color": "#8e8e93"
             },
       "image": "11.jpg",
-      "title": 'ประกวดเว็บไซต์พาณิชย์อิเล็กทรอนิกส์ดีเด่น : Best e-Commerce Website Award ประจำปี 2560',
-      "description": 'กรมพัฒนาธุรกิจการค้าขอเชิญผู้ประกอบการ e-Commerce สมัครเข้าร่วมการประกวดเว็บไซต์พาณิชย์อิเล็กทรอนิกส์ดีเด่น ประจำปี 2560 : Best e-Commerce Website Award 2017 ชิงโล่ห์ประกาศเกียรติ พร้อมโอกาส และสิทธิพิเศษมากมาย',
+      "title": 'King Arthur',
+      "description": 'King Arthur: Legend of the Sword  ภาพยนตร์แอ็คชั่นผจญภัยแฟนตาซีสุดอลังการแหวกแนวตำนานสุดคลาสสิคของดาบเอกซ์แคลิเบอร์ มีการติดตามชีวิตของอาร์เธอร์ตั้งแต่ชีวิตธรรมดาจนถึงการได้ขึ้นครองบัลลังก์ พ่อของอาร์เธอร์ถูกฆ่าตายตั้งแต่เด็ก วอร์ทิเกิร์น (จู๊ด ลอว์) ลุงของอาร์เธอร์ได้ฉวยโอกาสครองมงกุฎ ชิงสิทธิโดยชอบธรรมของเขาและเขาเองก็ไม่รู้ชะตาชีวิตที่แท้จริงของตนเอง อาร์เธอร์เติบโตด้วยความยากลำบากในตรอกเล็กๆ ของเมือง แต่เมื่อเขาดึงดาบขึ้นมาจากหินได้ ชีวิตเขาเกิดพลิกผันและทำให้พบกับชะตาชีวิตที่แท้จริงของตัวเอง.. แม้ว่าเขาจะยินดีหรือไม่ก็ตาม',
       "schedule": [
             {
-                  "topic":"เปิดรับสมัคร",
-                  "date":"ตั้งแต่วันนี้ - 30 พ.ค. 2560",
+                  "topic":"",
+                  "date":"10 พฤษภาคม 2017",
                   "time":""
             }
       ],
+      "duration": "126 นาที",
       "location": "",
-      "register": "",                                                                                                                                                                                           
+      "register": "http://www.majorcineplex.com/booking2/search_showtime/movie=52",                                                                                                                                                                                           
       "calendar": "",
       "contact": 
             {
-                  "website": "https://goo.gl/XxouKF",
-                  "email": "dbdecommerce2017@gmail.com",
+                  "website": "http://www.majorcineplex.com/movie/king-arthur-legend-of-the-sword",
+                  "email": "",
                   "tel": [
                         {
                               "name": "",
-                              "number": "094-6324823"
+                              "number": "02-515-5555"
                         }
                   ]
             },
       "share": {
-                  "facebook": "https://www.facebook.com/sharer/sharer.php?u=https://goo.gl/XxouKF&display=popup",
-                  "googleplus": "https://plus.google.com/share?url=https://goo.gl/XxouKF",
-                  "line": "http://line.me/R/msg/text/?https://goo.gl/XxouKF",
-                  "twitter": "https://twitter.com/intent/tweet?url=https://goo.gl/XxouKF",
+                  "facebook": "https://www.facebook.com/sharer/sharer.php?u=http://www.majorcineplex.com/movie/king-arthur-legend-of-the-sword&display=popup",
+                  "googleplus": "https://plus.google.com/share?url=http://www.majorcineplex.com/movie/king-arthur-legend-of-the-sword",
+                  "line": "http://line.me/R/msg/text/?http://www.majorcineplex.com/movie/king-arthur-legend-of-the-sword",
+                  "twitter": "https://twitter.com/intent/tweet?url=http://www.majorcineplex.com/movie/king-arthur-legend-of-the-sword",
                   "email": {
-                        "subject": 'ประกวดเว็บไซต์พาณิชย์อิเล็กทรอนิกส์ดีเด่น : Best e-Commerce Website Award ประจำปี 2560',
-                        "body": "https://goo.gl/XxouKF"
+                        "subject": 'King Arthur',
+                        "body": "http://www.majorcineplex.com/movie/king-arthur-legend-of-the-sword"
                   }
             }
       },
@@ -455,41 +476,42 @@ var event_list = [
       "id": "#012",
       "category":
             {
-                  "type": "Competition",
-                  "color": "#ff9500"
+                  "type": "วิทยาศาสตร์",
+                  "color": "#8e8e93"
             },
       "image": "12.jpg",
-      "title": 'ประกวดภาพถ่ายชลประทานกับงานสิ่งแวดล้อม หัวข้อ "ภาพเป็นข่าว เล่าเป็นเรื่อง"',
-      "description": 'กรมชลประทาน ขอเชิญผู้สนใจ ส่งผลงานเข้าร่วมการประกวดภาพถ่ายชลประทานกับงานสิ่งแวดล้อม หัวข้อ “ภาพเป็นข่าว เล่าเป็นเรื่อง” ชิงเงินรางวัลมูลค่ารวมกว่า 100,000 บาท พร้อมโล่รางวัล และเกียรติบัตร',
+      "title": 'Alien Covenant',
+      "description": '"Alien: Covenant"  หนังภาคต่อภาคที่ 2 ของ Prometheus  ซึ่งจะเชื่อมโยงโดยตรงเข้ากับนิยายวิทยาศาสตร์ปี 1979 ของสก็อตต์เอง  โดยเรื่องราวจะดำเนินขึ้นเมื่อการเดินทางสู่ดาวเคราะห์อันไกลโพ้นที่สุดอีกด้านหนึ่งของกาแล็กซี่  ลูกเรือของยานอาณานิคม Covenant ได้ค้นพบสิ่งที่พวกเขาคิดว่าเป็นสวรรค์ซึ่งยังไม่เคยมีใครค้นพบมาก่อน  แต่แท้จริงแล้วมันคือโลกอันตรายและดำมืด เป็นที่อยู่ของสิ่งมีชีวิตสังเคราะห์ที่เจ้าเล่ห์และบ้าคลั่งหนึ่งเดียวนั้นคือ เดวิด (ไมเคิล ฟาสเบนเดอร์)  ผู้รอดชีวิตจากการสำรวจ Prometheus ที่ถูกทำลายไปแล้ว',
       "schedule": [
             {
-                  "topic":"ส่งผลงาน",
-                  "date":"วันที่ 1 พฤษภาคม – 5 มิถุนายน 2560",
+                  "topic":"",
+                  "date":"10 พฤษภาคม 2017",
                   "time":""
             }
       ],
+      "duration": "121 นาที",
       "location": "",
-      "register": "",                                                                                                                                                                                           
+      "register": "http://www.majorcineplex.com/booking2/search_showtime/movie=51",                                                                                                                                                                                           
       "calendar": "",
       "contact": 
             {
-                  "website": "https://goo.gl/7EQBDB",
+                  "website": "http://www.majorcineplex.com/movie/alien-covenant",
                   "email": "",
                   "tel": [
                         {
                               "name": "",
-                              "number": "02-241-0965"
+                              "number": "02-515-5555"
                         }
                   ]
             },
       "share": {
-                  "facebook": "https://www.facebook.com/sharer/sharer.php?u=https://goo.gl/7EQBDB&display=popup",
-                  "googleplus": "https://plus.google.com/share?url=https://goo.gl/7EQBDB",
-                  "line": "http://line.me/R/msg/text/?https://goo.gl/7EQBDB",
-                  "twitter": "https://twitter.com/intent/tweet?url=https://goo.gl/7EQBDB",
+                  "facebook": "https://www.facebook.com/sharer/sharer.php?u=http://www.majorcineplex.com/movie/alien-covenant&display=popup",
+                  "googleplus": "https://plus.google.com/share?url=http://www.majorcineplex.com/movie/alien-covenant",
+                  "line": "http://line.me/R/msg/text/?http://www.majorcineplex.com/movie/alien-covenant",
+                  "twitter": "https://twitter.com/intent/tweet?url=http://www.majorcineplex.com/movie/alien-covenant",
                   "email": {
-                        "subject": 'ประกวดภาพถ่ายชลประทานกับงานสิ่งแวดล้อม หัวข้อ "ภาพเป็นข่าว เล่าเป็นเรื่อง"',
-                        "body": "https://goo.gl/7EQBDB"
+                        "subject": 'Alien Covenant',
+                        "body": "http://www.majorcineplex.com/movie/alien-covenant"
                   }
             }
       },
@@ -497,38 +519,42 @@ var event_list = [
       "id": "#013",
       "category":
             {
-                  "type": "Competition",
-                  "color": "#ff9500"
+                  "type": "แอ็คชัน / ระทึกขวัญ",
+                  "color": "#8e8e93"
             },
       "image": "13.jpg",
-      "title": 'ประกวดคลิปสั้น หัวข้อ "อ้วนไม่อ้วนไม่เกี่ยวกับข้าว"',
-      "description": 'สมาคมผู้ประกอบการข้าวถุงไทย ขอเชิญนักศึกษา และประชาชนทั่วไป ส่งผลงานเข้าร่วมการประกวดคลิปสั้นรณรงค์ให้คนไทยมีความรู้เรื่องโภชนาการเกี่ยวกับการบริโภคข้าวที่ถูกต้อง หัวข้อ "อ้วนไม่อ้วนไม่เกี่ยวกับข้าว" ชิงรางวัลมูลค่ารวมกว่า 230,000 บาท พร้อมโล่รางวัล',
+      "title": 'The Hunter Prayer',
+      "description": 'ผลงานแอ็คชั่นทะลุจุดเดือดที่เป็นการกลับมารับบทแอ็คชั่นอีกครั้งของ แซม เวิร์ทธิงตัน เจ้าของสถิติดารานำชายของภาพยนตร์ที่ทำรายได้สูงเป็นอันดับหนึ่งของโลกอย่าง Avatar เรื่องราวของ ลูคัส นักฆ่ามืออาชีพที่ถูกจ้างให้ไปสังหารสาวน้อย เอลล่า (โอเดย่า รัช) แต่เขากลับห้ามใจไม่ให้เหนี่ยวไก ซึ่งวินาทีนั้นทำให้แผนทุกอย่างพังทลายซึ่งจุดชะนวนการไล่ล่าสุดมัน เมื่อต้องสองกลายเป็นเป้าสังหาร และทางรอดเดียวคือต้องร่วมมือกัน หนีการตามล่าไปทั่วยุโรปและหาคนที่อยู่เบื้องหลังการสังหารหมู่ครอบครัวของ เอลล่า ตอบแทนให้สาสม',
       "schedule": [
             {
-                  "topic":"เปิดรับสมัครและส่งผลงาน",
-                  "date":"ตั้งแต่วันที่ 15 กุมภาพันธ์ 2560",
+                  "topic":"",
+                  "date":"18 พฤษภาคม 2017",
                   "time":""
             }
       ],
+      "duration": "91 นาที",
       "location": "",
-      "register": "",                                                                                                                                                                                           
+      "register": "http://www.majorcineplex.com/booking2/search_showtime/movie=75",                                                                                                                                                                                           
       "calendar": "",
       "contact": 
             {
-                  "website": "https://goo.gl/SK2z7q",
-                  "email": "riceneverfat@gmail.com",
+                  "website": "http://www.majorcineplex.com/movie/hunter-s-prayer",
+                  "email": "",
                   "tel": [
-
+                        {
+                              "name": "",
+                              "number": "02-515-5555"
+                        }
                   ]
             },
       "share": {
-                  "facebook": "https://www.facebook.com/sharer/sharer.php?u=https://goo.gl/SK2z7q&display=popup",
-                  "googleplus": "https://plus.google.com/share?url=https://goo.gl/SK2z7q",
-                  "line": "http://line.me/R/msg/text/?https://goo.gl/SK2z7q",
-                  "twitter": "https://twitter.com/intent/tweet?url=https://goo.gl/SK2z7q",
+                  "facebook": "https://www.facebook.com/sharer/sharer.php?u=http://www.majorcineplex.com/movie/hunter-s-prayer&display=popup",
+                  "googleplus": "https://plus.google.com/share?url=http://www.majorcineplex.com/movie/hunter-s-prayer",
+                  "line": "http://line.me/R/msg/text/?http://www.majorcineplex.com/movie/hunter-s-prayer",
+                  "twitter": "https://twitter.com/intent/tweet?url=http://www.majorcineplex.com/movie/hunter-s-prayer",
                   "email": {
-                        "subject": 'ประกวดคลิปสั้น หัวข้อ "อ้วนไม่อ้วนไม่เกี่ยวกับข้าว"',
-                        "body": "https://goo.gl/SK2z7q"
+                        "subject": 'The Hunter Prayer',
+                        "body": "http://www.majorcineplex.com/movie/hunter-s-prayer"
                   }
             }
       },
@@ -536,41 +562,42 @@ var event_list = [
       "id": "#014",
       "category":
             {
-                  "type": "Competition",
-                  "color": "#ff9500"
+                  "type": "แอนิเมชัน",
+                  "color": "#8e8e93"
             },
       "image": "14.jpg",
-      "title": 'ประกวด Bioplastics Innovation Contest 2017 ภายใต้แนวคิด "การใช้งานในวิถีชีวิตยุคใหม่และสังคมยั่งยืน"',
+      "title": 'Fairy Tail Dragon Cry',
       "description": 'Petromat ขอเชิณนิสิต นักศึกษาปริญญาตรี - ปริญญาเอก หรือเทียบเท่า ส่งผลงานเข้าร่วมการประกวด Bioplastics Innovation Contest 2017 ภายใต้แนวคิด "การใช้งานในวิถีชีวิตยุคใหม่และสังคมยั่งยืน" ชิงเงินรางวัลมูลค่ารวมกว่า 300,000 บาท',
       "schedule": [
             {
-                  "topic":"ส่งแนวคิด",
-                  "date":"ภายในวันที่ 1 มีนาคม 2560",
+                  "topic":"",
+                  "date":"18 พฤษภาคม 2017",
                   "time":""
             }
       ],
+      "duration": "85 นาที",
       "location": "",
-      "register": "",                                                                                                                                                                                           
+      "register": "http://www.majorcineplex.com/booking2/search_showtime/movie=73",                                                                                                                                                                                           
       "calendar": "",
       "contact": 
             {
-                  "website": "https://goo.gl/ZFBBDd",
+                  "website": "http://www.majorcineplex.com/movie/fairy-tail-movie-2-dragon-cry",
                   "email": "",
                   "tel": [
                         {
                               "name": "",
-                              "number": "02-218-4141"
+                              "number": "02-515-5555"
                         }
                   ]
             },
       "share": {
-                  "facebook": "https://www.facebook.com/sharer/sharer.php?u=https://goo.gl/ZFBBDd&display=popup",
-                  "googleplus": "https://plus.google.com/share?url=https://goo.gl/ZFBBDd",
-                  "line": "http://line.me/R/msg/text/?https://goo.gl/ZFBBDd",
-                  "twitter": "https://twitter.com/intent/tweet?url=https://goo.gl/ZFBBDd",
+                  "facebook": "https://www.facebook.com/sharer/sharer.php?u=http://www.majorcineplex.com/movie/fairy-tail-movie-2-dragon-cry&display=popup",
+                  "googleplus": "https://plus.google.com/share?url=http://www.majorcineplex.com/movie/fairy-tail-movie-2-dragon-cry",
+                  "line": "http://line.me/R/msg/text/?http://www.majorcineplex.com/movie/fairy-tail-movie-2-dragon-cry",
+                  "twitter": "https://twitter.com/intent/tweet?url=http://www.majorcineplex.com/movie/fairy-tail-movie-2-dragon-cry",
                   "email": {
-                        "subject": 'ประกวด Bioplastics Innovation Contest 2017 ภายใต้แนวคิด "การใช้งานในวิถีชีวิตยุคใหม่และสังคมยั่งยืน"',
-                        "body": "https://goo.gl/ZFBBDd"
+                        "subject": 'Fairy Tail Dragon Cry',
+                        "body": "http://www.majorcineplex.com/movie/fairy-tail-movie-2-dragon-cry"
                   }
             }
       },
@@ -578,41 +605,42 @@ var event_list = [
       "id": "#015",
       "category":
             {
-                  "type": "Competition",
-                  "color": "#ff9500"
+                  "type": "แอ็คชัน / ระทึกขวัญ",
+                  "color": "#8e8e93"
             },
       "image": "15.jpg",
-      "title": 'ประกวดภาพถ่ายนานาชาติ หัวข้อ "แฟชั่นและการแต่งกาย"',
-      "description": 'มูลนิธิสมาคมฝรั่งเศส ขอเชิญผู้สนใจ ส่งผลงานเข้าร่วมการประกวดภาพถ่ายนานาชาติ หัวข้อ "แฟชั่นและการแต่งกาย" ชิงตั๋วเครื่องบิน พร้อมที่พักเป็นเวลา 1สัปดาห์ ณ กรุงปารีส ประเทศฝรั่งเศส และโอกาสในการนำผลงานไปจัดแสดง ณ กรุงปารีส',
+      "title": 'Unlocked',
+      "description": 'A CIA interrogator is lured into a ruse that puts London at risk of a biological attack.',
       "schedule": [
             {
-                  "topic":"ส่งผลงาน",
-                  "date":"ภายในวันที่ 20 มิถุนายน 2560",
+                  "topic":"",
+                  "date":"18 พฤษภาคม 2017",
                   "time":""
             }
       ],
+      "duration": "98 นาที",
       "location": "",
-      "register": "",                                                                                                                                                                                           
+      "register": "http://www.majorcineplex.com/booking2/search_showtime/movie=76",                                                                                                                                                                                           
       "calendar": "",
       "contact": 
             {
-                  "website": "https://goo.gl/EFRZ4n",
-                  "email": "concours@afthailand.org",
+                  "website": "http://www.majorcineplex.com/movie/unlocked",
+                  "email": "",
                   "tel": [
                         {
                               "name": "",
-                              "number": "02-670-4200"
+                              "number": "02-515-5555"
                         }
                   ]
             },
       "share": {
-                  "facebook": "https://www.facebook.com/sharer/sharer.php?u=https://goo.gl/EFRZ4n&display=popup",
-                  "googleplus": "https://plus.google.com/share?url=https://goo.gl/EFRZ4n",
-                  "line": "http://line.me/R/msg/text/?https://goo.gl/EFRZ4n",
-                  "twitter": "https://twitter.com/intent/tweet?url=https://goo.gl/EFRZ4n",
+                  "facebook": "https://www.facebook.com/sharer/sharer.php?u=http://www.majorcineplex.com/movie/unlocked&display=popup",
+                  "googleplus": "https://plus.google.com/share?url=http://www.majorcineplex.com/movie/unlocked",
+                  "line": "http://line.me/R/msg/text/?http://www.majorcineplex.com/movie/unlocked",
+                  "twitter": "https://twitter.com/intent/tweet?url=http://www.majorcineplex.com/movie/unlocked",
                   "email": {
-                        "subject": 'ประกวดภาพถ่ายนานาชาติ หัวข้อ "แฟชั่นและการแต่งกาย"',
-                        "body": "https://goo.gl/EFRZ4n"
+                        "subject": 'Unlocked',
+                        "body": "http://www.majorcineplex.com/movie/unlocked"
                   }
             }
       }
