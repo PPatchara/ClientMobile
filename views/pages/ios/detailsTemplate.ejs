@@ -55,8 +55,8 @@
           <h3>รายละเอียดเพิ่มเติม</h3>
           {{#contact}}
             {{#if website}}
-<!--               <p>Website: <a href="javascript:void(0);" data-source="website" class="external-page" data-url="{{website}}">{{website}}</a></p> -->
-                <a href="javascript:void(0);" data-source="website" class="external-page" data-url="{{website}}"><i class="f7-icons icon">world</i></a>
+              <p>Website: <a href="javascript:void(0);" data-source="website" class="external-page" data-url="{{website}}">{{website}}</a></p>
+<!--                 <a href="javascript:void(0);" data-source="website" class="external-page" data-url="{{website}}"><i class="f7-icons icon">world</i></a> -->
             {{/if}}
 
             {{#if email}}
@@ -65,9 +65,9 @@
 
             {{#if tel}}
                 {{#tel}}
-<!--                   <p>Tel:&nbsp;
-                  <a href="tel:{{number}}" data-source="tel" class="external">{{number}} </a><span>{{name}}</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
-                    <a href="tel:{{number}}" data-source="tel" class="external"><i class="f7-icons icon">phone_fill</i></a>
+                  <p>Tel:&nbsp;
+                  <a href="tel:{{number}}" data-source="tel" class="external">{{number}} </a><span>{{name}}</span><br/>
+<!--                     <a href="tel:{{number}}" data-source="tel" class="external"><i class="f7-icons icon">phone_fill</i></a> -->
                 {{/tel}}
               </p>
             {{/if}}

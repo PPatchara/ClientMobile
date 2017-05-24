@@ -55,8 +55,7 @@
           <h3>รายละเอียดเพิ่มเติม</h3>
           {{#contact}}
             {{#if website}}
-              <a href="javascript:void(0);" data-source="website" class="external-page" data-url="{{website}}"><i class="f7-icons icon">world</i></a>
-
+              <p>Website: <a href="javascript:void(0);" data-source="website" class="external-page" data-url="{{website}}">{{website}}</a></p>
             {{/if}}
 
             {{#if email}}
@@ -65,8 +64,8 @@
 
             {{#if tel}}
                 {{#tel}}
-<!--                   <p>Moive Line:&nbsp; -->
-                  <a href="tel:{{number}}" data-source="tel" class="external"><i class="f7-icons icon">phone_fill</i></a>
+                  <p>Movie Line:&nbsp;
+                  <a href="tel:{{number}}" data-source="tel" class="external">{{number}} </a><span>{{name}}</span><br/>
                 {{/tel}}
               </p>
             {{/if}}
