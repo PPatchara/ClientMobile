@@ -11,51 +11,82 @@
           
         </div>
         <div class="col-66">
-          <p>{{title}}</p>
+          <div style="font-size: 20px; font-weight: bold;">{{title}}</div>
 
-          {{#category}}
+          {{#if category}}
+            <h3>หมวดหมู่: 
+            {{#category}}
+              <span class="chip chip-label" style="margin-bottom: 10px; background-color: {{color}}">{{type}}</span>
+            {{/category}}
+            </h3>
+          {{/if}}
+
+<!--           {{#category}}
             <p class="chip chip-label" style="margin-bottom: 10px; background-color: {{color}}">{{type}}</p>
-          {{/category}}
+          {{/category}} -->
 
-          <p>ความยาว: {{duration}}</p>
+<!--           <p>ความยาว: {{duration}}</p> -->
 
           {{#if register}}
-            <a href="javascript:void(0);" data-source="register" class="button external-page" data-url="{{register}}">Buy Ticket</a>
+            <a href="javascript:void(0);" data-source="register" class="button button-fill color-blue external-page" data-url="{{register}}">Buy Ticket</a>
           {{/if}}
         </div>
       </div>
       <div class="row">
-        <div>
-          {{#if description}}
-            <!-- <h3>Description</h3> -->
-            <p>{{description}}</p>
+<!--         <div class="col-33">
+          {{#if category}}
+            <p>หมวดหมู่&nbsp;
+              {{#category}}
+                <p class="chip chip-label" style="margin-bottom: 10px; background-color: {{color}}">{{type}}</p>
+              {{/category}}
+            </p>
+          {{/if}}
+        </div> -->
+        <div class="col-50">
+          {{#if duration}}
+            <h3>ความยาว</h3>
+            <p>{{duration}}</p>
+          {{/if}}
+        </div>
+        <div class="col-50">
+          {{#if schedule}}
+            <h3>วันที่เข้าฉาย</h3>
+            {{#schedule}}
+              {{#if topic}}
+                <p>{{topic}}: {{date}}</p>
+              {{else}}
+                <p>{{date}}</p>
+              {{/if}}
+            {{/schedule}}
           {{/if}}
         </div>
       </div>
-      <div>
-        {{#if schedule}}
-          <h3>วันที่เข้าฉาย</h3>
-          {{#schedule}}
-            {{#if topic}}
-              <p>{{topic}}: {{date}}</p>
-            {{else}}
-              <p>{{date}}</p>
+      <div class="row">
+        {{#if description}}
+          <h3>เรื่องย่อ</h3>
+          <div>{{description}}</div>
+        {{/if}}
+
+        {{#if contact}}
+          {{#contact}}
+            {{#if website}}
+              <span><a href="javascript:void(0);" data-source="website" class="external-page" data-url="{{website}}">Read more...</a></span>
             {{/if}}
-          {{/schedule}}
+          {{/contact}}
         {{/if}}
       </div>
-      <div>
+<!--       <div>
         {{#if location}}
           <h3>สถานที่จัดกิจกรรม</h3>
           <p>{{location}}</p>
         {{/if}}
-      </div>
-      <div>
+      </div> -->
+<!--       <div>
         {{#if contact}}
           <h3>รายละเอียดเพิ่มเติม</h3>
           {{#contact}}
             {{#if website}}
-              <p>Website: <a href="javascript:void(0);" data-source="website" class="external-page" data-url="{{website}}">{{website}}</a></p>
+              <span><i class="f7-icons icon">world</i>&nbsp;<a href="javascript:void(0);" data-source="website" class="external-page" data-url="{{website}}">Read more...</a></span>
             {{/if}}
 
             {{#if email}}
@@ -64,14 +95,13 @@
 
             {{#if tel}}
                 {{#tel}}
-                  <p>Movie Line:&nbsp;
-                  <a href="tel:{{number}}" data-source="tel" class="external">{{number}} </a><span>{{name}}</span><br/>
+                  <p><i class="f7-icons icon">phone_fill</i>&nbsp;<a href="tel:{{number}}" data-source="tel" class="external">{{number}}</a><span>{{name}}</span></p>
                 {{/tel}}
               </p>
             {{/if}}
           {{/contact}}
         {{/if}}
-      </div>
+      </div> -->
     </div>
 
 <!--     <div class="row">
