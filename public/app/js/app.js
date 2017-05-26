@@ -2,9 +2,13 @@
 // var imageAddress = 'http://172.20.10.2:3000/app/img';
 // var calendarAddress = 'http://172.20.10.2:3000/calendars';
 
-var serverAddress = 'http://10.50.8.14:3000/api';
-var imageAddress = 'http://10.50.8.14:3000/app/img';
-var calendarAddress = 'http://10.50.8.14:3000/calendars';
+// var serverAddress = 'http://10.50.8.14:3000/api';
+// var imageAddress = 'http://10.50.8.14:3000/app/img';
+// var calendarAddress = 'http://10.50.8.14:3000/calendars';
+
+var serverAddress = 'http://161.246.38.120:3000/api';
+var imageAddress = 'http://161.246.38.120:3000/app/img';
+var calendarAddress = 'http://161.246.38.120:3000/calendars';
 
 var myApp = new Framework7({
     swipeBackPage:false,
