@@ -107,7 +107,8 @@ function renderBookmarkListPage(page) {
     }
 
     let render = (responseEventList) => {
-        if (dataBookmarkList.count != 0) {
+        console.log('Render bookmark list');
+        if (dataBookmarkList.count !== 0) {
             let bookmarkListHTML = Template7.templates.bookmarkListTemplate({ event_list: responseEventList});
             $$(page.container).find('.page-content').html(bookmarkListHTML);
         }else {
