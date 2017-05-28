@@ -99,8 +99,6 @@
     // Acquiring mode page
     mc_switch.get('swipe').set({
         direction: Hammer.DIRECTION_ALL,
-        // threshold:100,
-        // velocity:2.5
     });
 
     mc_switch.on('swipedown', (ev) => {

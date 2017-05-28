@@ -20,7 +20,8 @@
                                 <div class="item-title">{{this.title}}</div>
                               </div>
                               <div class="item-subtitle" style="margin-bottom: 0px;">
-                                <p><i class="material-icons size-15 color-blue">schedule</i>
+                              <!-- <i class="material-icons size-15 color-blue">schedule</i> -->
+                                <p>วันที่เข้าฉาย: 
                                   {{#this.schedule}}
                                     {{#if this.topic}}
                                       <span>{{this.topic}}: {{this.date}}</span>
@@ -28,6 +29,13 @@
                                       <span>{{this.date}}</span>
                                     {{/if}}
                                   {{/this.schedule}}
+                                </p>
+                                <p>ความยาว: 
+                                  {{#if #this.duration}}
+                                    <span>{{this.duration}}</span>
+                                  {{else}}
+                
+                                  {{/if}}
                                 </p>
                               </div>
                               <!-- <div class="item-subtitle" style="margin-bottom: 5px;"><i class="material-icons size-15 color-blue">place</i> {{this.location}}</div> -->
