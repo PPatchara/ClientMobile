@@ -7,8 +7,7 @@
             <img src="/app/img/{{image}}" width="100" height="120">
           {{else}}
             <img src="" width="100" height="120">
-          {{/if}}
-          
+          {{/if}}        
         </div>
         <div class="col-66">
           <div style="font-size: 20px; font-weight: bold;">{{title}}</div>
@@ -21,27 +20,12 @@
             </h3>
           {{/if}}
 
-<!--           {{#category}}
-            <p class="chip chip-label" style="margin-bottom: 10px; background-color: {{color}}">{{type}}</p>
-          {{/category}} -->
-
-<!--           <p>ความยาว: {{duration}}</p> -->
-
           {{#if register}}
             <a href="javascript:void(0);" data-source="register" class="button button-fill color-blue external-page" data-url="{{register}}">Buy Ticket</a>
           {{/if}}
         </div>
       </div>
       <div class="row">
-<!--         <div class="col-33">
-          {{#if category}}
-            <p>หมวดหมู่&nbsp;
-              {{#category}}
-                <p class="chip chip-label" style="margin-bottom: 10px; background-color: {{color}}">{{type}}</p>
-              {{/category}}
-            </p>
-          {{/if}}
-        </div> -->
         <div class="col-50">
           {{#if duration}}
             <h3>ความยาว</h3>
@@ -86,7 +70,7 @@
           <h3>รายละเอียดเพิ่มเติม</h3>
           {{#contact}}
             {{#if website}}
-              <span><i class="f7-icons icon">world</i>&nbsp;<a href="javascript:void(0);" data-source="website" class="external-page" data-url="{{website}}">Read more...</a></span>
+              <span><i class="f7-icons icon">world</i>&nbsp;<a href="javascript:void(0);" data-source="website" class="external-page" data-url="{{website}}">{{website}}</a></span>
             {{/if}}
 
             {{#if email}}
