@@ -46,12 +46,12 @@ http.listen(3000, () => {
 app.get('/', (req, res) => {
     log('user-agent', req.useragent.platform);
     log('session.id', req.session.id);
-    // if(['iPad', 'iPhone'].findIndex(platform => platform === req.useragent.platform) > -1) {
-    //    res.render('pages/ios/index');
-    // } else {
-    //     res.render('pages/android/index');
-    // }
     res.render('pages/ios/index_general');
+    // if(['iPad', 'iPhone'].findIndex(platform => platform === req.useragent.platform) > -1) {
+    //     res.render('pages/ios/index_general');
+    // } else {
+    //     res.render('pages/android/index_general');
+    // }
 });
 
 app.get('/:key', (req, res) => {
@@ -306,14 +306,6 @@ io.on('connection', (socket) => {
     });
 
 
-    // socket.on('client bookmark', (data) => {
-    //     if (data === 'add') {
-    //         socket.broadcast.emit('bookmarked', 'bookmarked');
-    //     } else {
-    //         socket.broadcast.emit('unbookmarked', 'unbookmarked');
-    //     }
-    // });
-
     //Tab bar
     socket.on('tabbar bookmark', (data) => {
         if (data === 'add') {
@@ -344,6 +336,7 @@ io.on('connection', (socket) => {
         if (status == 'inactive') {
             key = helpers.generateKey();
             socket.broadcast.emit('Generate Key', key); //display
+            clearAlive();
             console.log('After inactive: ' + key);
             log('connection status', 'inactive');
         }else if (status == 'timeout') {
