@@ -1,0 +1,67 @@
+<!doctype html>
+<%- include('./header'); %>
+
+<body>
+    <div class="statusbar-overlay"></div>
+    <div class="views">
+        <div class="view view-main">
+            <!-- Navbar -->
+            <div class="navbar">
+                <!-- Wifi Login navbar -->
+                <div data-page="wifi" class="navbar-inner cached">
+                    <div class="center">Wifi Login</div>
+                </div>
+            </div>
+
+            <!-- Pages -->
+            <div class="pages navbar-fixed toolbar-fixed">
+                <!-- Wifi Login page -->
+                <div data-page="wifi" class="page cached">
+                    <div class="page-content" style="background-color: #fff"></div>
+                    <%- include('./wifiTemplate'); %>
+                </div>               
+            </div>
+        </div>
+    </div>
+
+        <!-- <script src="/vendor/jquery-3.2.1.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    
+    <script src="/vendor/js-cookie/js-cookie.js"></script>
+    <script src="/vendor/lodash.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="/framework7/js/framework7.min.js"></script>
+    <script type="text/javascript" src="/template7/template7.min.js"></script>
+    <script type="text/javascript" src="/app/js/event_list.js"></script>
+    <script type="text/javascript" src="/app/js/app.js"></script>
+    <!-- <script type="text/javascript" src="/app/js/app_ios.js"></script> -->
+    <script type="text/javascript" src="/app/js/bookmark_function.js"></script>
+    <script type="text/javascript" src="/app/js/bookmark_view.js"></script>
+    
+
+    <script type="text/javascript">
+        $(() => {
+            var socket = io();
+
+            function renderWifiPage(page) {
+//                var eventObj = _.find(event_list,{ 'id': clickedBookmarkId});
+//                console.log('detail: ' + eventObj);
+                var wifiHTML = Template7.templates.wifiTemplate(
+                    {
+                        btn1: ""
+                    }
+                );
+
+                $$(page.container).find('.page-content').html(wifiHTML);
+
+            }
+
+            myApp.onPageInit('wifi', renderWifiPage);
+            myApp.onPageReinit('wifi', renderWifiPage);
+
+        });
+
+    </script>   
+</body>
+
+</html>
