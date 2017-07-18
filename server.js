@@ -38,8 +38,8 @@ app.use(session({
     cookie: {maxAge: 157784760000}
 }));
 
-http.listen(3000, () => {
-    console.log('listening on *:3000');
+http.listen(80, () => {
+    console.log('listening on *:80');
 });
 
 // Routing
