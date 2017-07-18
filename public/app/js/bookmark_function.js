@@ -1,7 +1,7 @@
 function getBookmarkList() {
     return  $.ajax({
                 method: 'GET',
-                url: serverAddress + '/bookmarks'
+                url: '/api/bookmarks'
             });
 }
 
@@ -9,7 +9,7 @@ function addBookmark(bookmarkId) {
     console.log(`Adding bookmark=${bookmarkId}`)
     return  $.ajax({
                 method: 'POST',
-                url: serverAddress + '/bookmarks',
+                url: '/api/bookmarks',
                 data: {
                     bookmarkId: bookmarkId
                 }
@@ -20,7 +20,7 @@ function deleteBookmark(bookmarkId) {
     console.log(`Deleting bookmark=${bookmarkId}`)
     return  $.ajax({
                 method: 'DELETE',
-                url: serverAddress + '/bookmarks',
+                url: '/api/bookmarks',
                 data: {
                     bookmarkId: bookmarkId
                 }
