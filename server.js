@@ -46,7 +46,8 @@ http.listen(3000, () => {
 app.get('/', (req, res) => {
     log('user-agent', req.useragent.platform);
     log('session.id', req.session.id);
-    res.render('pages/ios/index_general');
+    res.render('pages/ios/wifi');
+//    res.render('pages/ios/index_general');
     // if(['iPad', 'iPhone'].findIndex(platform => platform === req.useragent.platform) > -1) {
     //     res.render('pages/ios/index_general');
     // } else {
