@@ -10,9 +10,9 @@
 // var imageAddress = 'http://161.246.38.120:3000/app/img';
 // var calendarAddress = 'http://161.246.38.120:3000/calendars';
 
-var serverAddress = 'http://theseeker.it.kmitl.ac.th:3000/api';
-var imageAddress = 'http://theseeker.it.kmitl.ac.th:3000/app/img';
-var calendarAddress = 'http://theseeker.it.kmitl.ac.th:3000/calendars';
+var serverAddress = 'http://theseeker.it.kmitl.ac.th/api';
+var imageAddress = 'http://theseeker.it.kmitl.ac.th/app/img';
+var calendarAddress = 'http://theseeker.it.kmitl.ac.th/calendars';
 
 
 
