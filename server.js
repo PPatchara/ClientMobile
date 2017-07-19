@@ -56,11 +56,24 @@ app.get('/', (req, res) => {
 });
 
 app.get('/wifi', (req, res) => {
-    console.log(key);
+    console.log(isControlled);
     if (key != '') {
-        res.render('pages/ios/wifi',{pass1: helpers.generateKey(),pass2:key,pass3:helpers.generateKey()});
+        if (!isControlled) {
+            var pass = [helpers.generateKey(),helpers.generateKey(),helpers.generateKey()];
+            var ranPosition = Math.floor(Math.random() * 3);
+            pass[ranPosition] = key;
+
+
+            res.render('pages/ios/wifi',{pass1: pass[0],pass2:pass[1],pass3:pass[2]});
+        }
+        else {
+            // already controlled 
+            res.render('pages/ios/error',{title:"The large display is already controlled",description:"Sorry!,Please wait for a moment.",button:"refresh",button_url:"/wifi",icon:"bookmark_fill"});
+        }
+        
     }
     else {
+        // no key
         res.render('pages/ios/index_general');
     }
     
@@ -68,7 +81,8 @@ app.get('/wifi', (req, res) => {
 });
 
 app.get('/wifi/splash', (req, res) => {
-    res.redirect('/wifi');
+    // res.redirect('/wifi');
+    res.render('pages/ios/wifi_redirect');
 });
 
 
@@ -82,7 +96,7 @@ app.get('/:key', (req, res) => {
         isControlled = true;
         controllerId = req.session.id;
     } else {
-        res.render('pages/ios/index_general');
+        res.render('pages/ios/error',{title:"Wrong Key",description:"Sorry!,You choose the wrong key",button:"Back to home",button_url:"/",icon:"bookmark"});
     }   
 });
 
@@ -359,6 +373,11 @@ io.on('connection', (socket) => {
             clearAlive();
             console.log('After inactive: ' + key);
             log('connection status', 'inactive');
+
+            isControlled = false;
+            controllerId = '';
+
+
         }else if (status == 'timeout') {
             socket.broadcast.emit('connection status display','timeout');
         }
