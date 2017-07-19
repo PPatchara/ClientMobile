@@ -1,0 +1,62 @@
+<!doctype html>
+<%- include('./header'); %>
+
+<body>
+    <div class="statusbar-overlay"></div>
+    <div class="views">
+        <div class="view view-main">
+
+            <!-- Pages -->
+            <div class="pages navbar-fixed toolbar-fixed">
+                <!-- Error page -->
+                <div data-page="error" class="page cached">
+                    <div class="page-content" style="margin-top: 20px;">
+                      <div class="content-block color-black" style="text-align: center;">
+                        <div class="empty-layout">
+                          <i class="f7-icons size-40"><%= icon %></i>
+                          <h2 class="h2-light"><%= title %></h2>
+                          <p style="padding: 0 20px 0 20px;"><%= description %></p>
+                          <a data-url="<%= button_url %>" class="button"><%= button %></a>
+                        </div>
+                      </div>
+                    </div>
+                </div>               
+            </div>
+        </div>
+    </div>
+
+        <!-- <script src="/vendor/jquery-3.2.1.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    
+    <script src="/vendor/js-cookie/js-cookie.js"></script>
+    <script src="/vendor/lodash.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="/framework7/js/framework7.min.js"></script>
+    <script type="text/javascript" src="/template7/template7.min.js"></script>
+    <script type="text/javascript" src="/app/js/event_list.js"></script>
+    <script type="text/javascript" src="/app/js/app.js"></script>
+    <!-- <script type="text/javascript" src="/app/js/app_ios.js"></script> -->
+    <script type="text/javascript" src="/app/js/bookmark_function.js"></script>
+    <script type="text/javascript" src="/app/js/bookmark_view.js"></script>
+    
+
+    <script type="text/javascript">
+        $(() => {
+            var socket = io();
+
+            mainView.router.load({
+                pageName: 'error',
+                animatePages: false
+            });
+
+        });
+        $('a').click(function(){
+        var url = $(this).data("url");
+        window.open(url, '_self'); 
+        
+    });
+
+    </script>   
+</body>
+
+</html>
