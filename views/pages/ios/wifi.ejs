@@ -17,7 +17,7 @@
             <div class="pages navbar-fixed toolbar-fixed">
                 <!-- Wifi Login page -->
                 <div data-page="wifi" class="page cached">
-                    <div class="page-content" style="background-color: #fff"></div>
+                    <div class="page-content"></div>
                     <%- include('./wifiTemplate'); %>
                 </div>               
             </div>
@@ -43,12 +43,11 @@
         $(() => {
             var socket = io();
 
-            function renderWifiPage(page) {
+        function renderWifiPage(page) {
 //                var eventObj = _.find(event_list,{ 'id': clickedBookmarkId});
 //                console.log('detail: ' + eventObj);
                 var wifiHTML = Template7.templates.wifiTemplate(
                     {
-                        btn1: ""
                     }
                 );
 
@@ -58,6 +57,23 @@
 
             myApp.onPageInit('wifi', renderWifiPage);
             myApp.onPageReinit('wifi', renderWifiPage);
+
+            mainView.router.load({
+                pageName: 'wifi',
+                animatePages: false
+            });
+
+/**        $('body').on('click', '.external-page', (e) => {
+        let elem = $(e.srcElement);
+        let url = elem.data('url');
+        console.log(e.attr("data-url"));
+        let newTab = window.open(url, '_self');      
+    }); **/
+
+    $('a').click(function(){
+        var url = $(this).data("url");
+        window.open(url, '_self');
+    });
 
         });
 
