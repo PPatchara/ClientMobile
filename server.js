@@ -14,7 +14,7 @@ var express = require('express'),
 
 let key = '';
 let isControlled = false;
-let controllerId;
+let controllerId = '';
 let aliveTime;
 let renewCode;
 
@@ -46,8 +46,8 @@ http.listen(3000, () => {
 app.get('/', (req, res) => {
     log('user-agent', req.useragent.platform);
     log('session.id', req.session.id);
-    res.render('pages/ios/wifi');
-//    res.render('pages/ios/index_general');
+//    res.render('pages/ios/wifi');
+    res.render('pages/ios/index_general');
     // if(['iPad', 'iPhone'].findIndex(platform => platform === req.useragent.platform) > -1) {
     //     res.render('pages/ios/index_general');
     // } else {
@@ -55,10 +55,29 @@ app.get('/', (req, res) => {
     // }
 });
 
+app.get('/wifi', (req, res) => {
+    console.log(key);
+    if (key != '') {
+        res.render('pages/ios/wifi',{pass1: helpers.generateKey(),pass2:key,pass3:helpers.generateKey()});
+    }
+    else {
+        res.render('pages/ios/index_general');
+    }
+    
+    
+});
+
+app.get('/wifi/splash', (req, res) => {
+    res.redirect('/wifi');
+});
+
+
 app.get('/:key', (req, res) => {
     log('API:user-agent', req.useragent.platform);
     log('API:session.id', req.session.id);
+
     if ((!isControlled && key == req.params.key) || (isControlled && req.session.id == controllerId)) {
+
         res.render('pages/ios/index_control');
         isControlled = true;
         controllerId = req.session.id;
@@ -378,6 +397,7 @@ io.on('connection', (socket) => {
       socket.broadcast.emit('connection status display', 'inactive'); //display
       socket.broadcast.emit('log disconnect', 'inactive');
       isControlled = false;
+      controllerId = '';
     }
 
     function clearAlive() {
