@@ -72,7 +72,8 @@
 
     $('a').click(function(){
         var url = $(this).data("url");
-        window.open(url, '_system');
+        window.location.href = url;
+//        window.open(url, '_system');
     });
 
         });
