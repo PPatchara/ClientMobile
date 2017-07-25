@@ -165,6 +165,8 @@
     $$('#disconnect').on('click', () => {
         myApp.confirm('Are you sure to disconnect?' , 'Disconnect', 
             function () {
+                socket.emit('connection status', 'inactive');
+                socket.emit('log disconnect', 'disconnect');
                 myApp.alert('If you want to control the display, please connect again.', 'Play Again' , function () {
                     window.location.replace("/");
                 });
@@ -173,9 +175,9 @@
                 window.location.reload();
             }
         );
-       socket.emit('connection status', 'inactive');
+
        socket.emit('log tabbar', 'disconnect');
-       socket.emit('log disconnect', 'disconnect');
+
     });
 
     socket.on('connection status', (status) => {
