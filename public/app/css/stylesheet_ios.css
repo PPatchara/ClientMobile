@@ -52,6 +52,20 @@ i.pause-icon {
     left: 10%;
     right: 0;
 }
+i.swipe-l-icon {
+	color: #e1e1e1;
+	position: absolute;
+    top: 25%;
+    left: 10%;
+    right: 0%;
+}
+i.swipe-r-icon {
+	color: #e1e1e1;
+	position: absolute;
+    top: 25%;
+    left: 0%;
+    right: 10%;
+}
 .empty-layout {
 	position: absolute;
     top: 30%;
