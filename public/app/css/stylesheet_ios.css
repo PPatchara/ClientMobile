@@ -56,15 +56,15 @@ i.swipe-l-icon {
 	color: #e1e1e1;
 	position: absolute;
     top: 25%;
-    left: 10%;
-    right: 0%;
+    left: 0%;
+    right: 65%;
 }
 i.swipe-r-icon {
 	color: #e1e1e1;
 	position: absolute;
     top: 25%;
-    left: 0%;
-    right: 10%;
+    left: 65%;
+    right: 0%;
 }
 .empty-layout {
 	position: absolute;
