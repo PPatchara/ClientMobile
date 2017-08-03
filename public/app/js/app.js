@@ -14,6 +14,10 @@
 // var imageAddress = 'http://192.168.0.175:3000/app/img';
 // var calendarAddress = 'http://192.168.0.175:3000/calendars';
 
+// var serverAddress = 'http://192.168.1.8:3000/api';
+// var imageAddress = 'http://192.168.1.8:3000/app/img';
+// var calendarAddress = 'http://192.168.1.8:3000/calendars';
+
 var serverAddress = 'http://theseeker.it.kmitl.ac.th:3000/api';
 var imageAddress = 'http://theseeker.it.kmitl.ac.th:3000/app/img';
 var calendarAddress = 'http://theseeker.it.kmitl.ac.th:3000/calendars';
