@@ -80,7 +80,7 @@ app.get('/wifi', (req, res) => {
     
 });
 
-app.get('/wifi/splash', (req, res) => {
+app.get('/wifi/login', (req, res) => {
     // res.redirect('/wifi');
     res.render('pages/ios/wifi_redirect');
 });
